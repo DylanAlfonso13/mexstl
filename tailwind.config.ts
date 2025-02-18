@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        mexRed: "#C8102E",
+        mexGreen: "#006341",
+        black: "#000000",
+        white: "#FFFFFF",
       },
     },
   },
