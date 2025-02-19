@@ -14,16 +14,6 @@ body {
   font-family: var(--font-manrope);
 }
 
-.background-image {
-  background-image: url('/MEXSTL_green_image.png');
-  background-size: cover; /* Ensures the image covers the area without distortion */
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 110vh; /* Extends slightly beyond the viewport */
-  width: 100vw;
-  overflow: hidden;
-}
-
 h1{
   font-family: var(--font-outfit)
 }
