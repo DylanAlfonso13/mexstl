@@ -22,8 +22,8 @@ function classNames(...classes: string[]) {
 export default function Nav() {
   const pathname = usePathname(); // Get the current path
   return (
-    <Disclosure as="nav" className="bg-white">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <Disclosure as="nav" className="bg-transparent">
+      <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
@@ -42,10 +42,10 @@ export default function Nav() {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
             <div className="flex shrink-0 items-center">
-              <h1 className="text-gray-900 text-2xl font-medium">Siempre Hemos Estado Aqui</h1>
+              <h1 className="text-gray-900 text-2xl">Siempre Hemos Estado Aqui</h1>
             </div>
             <div className="hidden sm:ml-10 sm:flex sm:items-center">
-              <div className="flex space-x-6">
+              <div className="flex space-x-8">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
                   return (

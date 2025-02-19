@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import { Geist, Geist_Mono, Manrope, Outfit } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +14,12 @@ const geistMono = Geist_Mono({
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // Add any weights you need
   variable: "--font-manrope", // Custom CSS variable for the font
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit", // Custom CSS variable for the font
 });
 
 export const metadata: Metadata = {
@@ -30,9 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${outfit.variable} antialiased`}>
         {children}
       </body>
     </html>
