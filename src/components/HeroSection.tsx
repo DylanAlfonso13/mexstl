@@ -13,9 +13,27 @@ export default function HeroSection() {
         invite the public to explore this rich history that dates back to the
         early 1800s. Through an interactive map, we strive to recognize the
         deep-rooted Mexican presence in St. Louis and acknowledge the city’s
-        role in a larger historical narrative of mexicanos in the United
-        States.
+        role in a larger historical narrative of mexicanos in the United States.
       </p>
+      <div className="flex flex-col mt-80 xs:mt-96">
+        <p className="text-xs xs:text-sm md:text-base max-w-4xl text-center py-1">
+          Scroll to map
+        </p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6 animate-bounce mx-auto"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+          />
+        </svg>
+      </div>
     </div>
   );
 }
