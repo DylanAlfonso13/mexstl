@@ -40,12 +40,12 @@ export default function Nav() {
               />
             </DisclosureButton>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
+          <div className="flex flex-1 items-center justify-end sm:items-stretch xs:justify-center sm:justify-between">
             <div className="flex shrink-0 items-center">
-              <h1 className="text-gray-900 text-2xl">Siempre Hemos Estado Aqui</h1>
+              <h1 className="text-gray-900 text-xl sm:text-2xl">Siempre Hemos Estado Aquí</h1>
             </div>
             <div className="hidden sm:ml-10 sm:flex sm:items-center">
-              <div className="flex space-x-8">
+              <div className="flex space-x-3 md:space-x-8">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
                   return (
