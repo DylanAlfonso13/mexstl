@@ -39,11 +39,11 @@ export default function About() {
             title="PhD Candidate in Hispanic Studies"
             imageURL="/sarah_hernandez_picture.png"
           />
-          <AboutCard
+          {/* <AboutCard
             name="María de Pilar Cuairán Chavarría"
             title="PhD Candidate in Hispanic Studies"
             imageURL="/maria_de_pilar_picture.png"
-          />
+          /> */}
           <AboutCard
             name="Elaine Peña"
             title="Professor of Performing Arts, American Culture Studies, and Anthropology"
