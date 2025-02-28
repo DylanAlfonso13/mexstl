@@ -49,11 +49,11 @@ export default function About() {
             title="Professor of Performing Arts, American Culture Studies, and Anthropology"
             imageURL="/elaine_pena_picture.jpg"
           />
-          <AboutCard
+          {/* <AboutCard
             name="Ignacio Sánchez Prado"
             title="Director of Undergraduate Studies in the Latin American Studies program"
             imageURL="/ignacio_prado_picture.png"
-          />
+          /> */}
         </div>
       </div>
     </div>
