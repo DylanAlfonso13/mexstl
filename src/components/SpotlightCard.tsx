@@ -17,8 +17,10 @@ export default function SpotlightCard({
   return (
     <Link href={articleUrl} target="_blank">
       <div className="max-w-xl w-full bg-white shadow-lg rounded-2xl overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
-      
-        <img src={imageSrc} alt={title} className="w-full" />
+        <div className="relative w-full h-96">
+          {/* Adjust height as needed */}
+          <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" />
+        </div>
         <div className="p-4">
           {/* Container for title + bar with responsive alignment */}
           <div className="inline-block mx-auto text-center lg:text-left">
