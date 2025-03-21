@@ -17,7 +17,7 @@ export default function About() {
           />
           <AboutCard
             name="Dylan Alfonso"
-            title="Web Developer / Designer"
+            title="Web Developer"
             additionalTitle="BS in Computer Science, Washington University in St. Louis"
             imageURL="/dylan_alfonso_picture.jpeg"
             linkedinURL="https://www.linkedin.com/in/dylan-alfonso/"
