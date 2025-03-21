@@ -7,7 +7,7 @@ export default function Media() {
     <div>
       <Nav />
       <div className="relative z-10 flex flex-col items-center min-h-screen text-black px-4 sm:px-6 lg:px-8">
-        <TitleText text="Spotlight" />
+        <TitleText text="Media" />
         <div className="mt-10"></div>
         <SpotlightCard
           title="Public Humanities Lab Takes on Reparative Memory"

@@ -12,19 +12,28 @@ export default function About() {
           <AboutCard
             name="Jade Pita Nuñez del Prado"
             title="Director"
+            additionalTitle="BA in Latin American Studies, Washington University in St. Louis"
             imageURL="/jade_pita_picture.jpg"
-          />
-          <AboutCard
-            name="Jonah Zacks"
-            title="Community Outreach"
-            imageURL="/jonah_zacks_picture.jpeg"
-            linkedinURL="https://www.linkedin.com/in/jonah-zacks-17930019a/"
           />
           <AboutCard
             name="Dylan Alfonso"
             title="Web Developer / Designer"
+            additionalTitle="BS in Computer Science, Washington University in St. Louis"
             imageURL="/dylan_alfonso_picture.jpeg"
             linkedinURL="https://www.linkedin.com/in/dylan-alfonso/"
+          />
+          <AboutCard
+            name="Jonah Zacks"
+            title="Community Outreach"
+            additionalTitle="BA in Economics, Washington University in St. Louis"
+            imageURL="/jonah_zacks_picture.jpeg"
+            linkedinURL="https://www.linkedin.com/in/jonah-zacks-17930019a/"
+          />
+          <AboutCard
+            name="Sara Hernández Angulo"
+            title="Researcher"
+            additionalTitle="PhD Candidate in Hispanic Studies, Washington University in St. Louis"
+            imageURL="/sarah_hernandez_picture.png"
           />
         </div>
         <TitleText text="Advisors and Supporters" />
@@ -35,13 +44,19 @@ export default function About() {
             imageURL="/daniel_gonzales_picture.png"
           />
           <AboutCard
-            name="Sara Hernández Angulo"
-            title="PhD Candidate in Hispanic Studies"
-            imageURL="/sarah_hernandez_picture.png"
+            name="Gilberto Pinela"
+            title="Director of the Office of New Americans"
+            additionalTitle="Board of Missouri Historical Society"
+            imageURL="/gilberto_pinela_picture.jpeg"
+          />
+          <AboutCard
+            name="Jorge Riopedre"
+            title="Former President of Casa de Salud and former Executive Director of Delmar DivINe"
+            imageURL="/jorge_riopedre_picture.jpg"
           />
           <AboutCard
             name="Elaine Peña"
-            title="Professor of Performing Arts, American Culture Studies, and Anthropology"
+            title="Professor of Performing Arts, American Culture Studies, and Anthropology, Washington University in St. Louis"
             imageURL="/elaine_pena_picture.jpg"
           />
         </div>
