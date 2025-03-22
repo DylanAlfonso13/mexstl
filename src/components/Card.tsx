@@ -24,9 +24,9 @@ export default function AboutCard({
       />
       <div className="text-center pt-3 px-3 mb-7">
         <h1 className="text-2xl mb-3">{name}</h1>
-        <h2 className="text-md text-gray-500">{title}</h2>
+        <h2 className="text-md text-gray-900">{title}</h2>
         {additionalTitle && (
-          <h2 className="text-md text-gray-500">{additionalTitle}</h2>
+          <h2 className="text-md text-gray-500 whitespace-pre-line">{additionalTitle}</h2>
         )}
       </div>
       {linkedinURL && (
