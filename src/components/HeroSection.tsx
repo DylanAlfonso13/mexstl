@@ -6,7 +6,13 @@ export default function HeroSection() {
   const { language } = useLanguage();
   return (
     <div className="relative z-10 flex flex-col items-center min-h-screen text-black px-4 sm:px-6 lg:px-8">
-      <TitleText text={language === "en" ? `Mexican History in St. Louis` : `Historia Mexicana en St. Louis`} />
+      <TitleText
+        text={
+          language === "en"
+            ? `Mexican History in St. Louis`
+            : `Historia Mexicana en St. Louis`
+        }
+      />
       <p className="text-sm xs:text-base sm:text-lg md:text-xl max-w-4xl text-center py-6">
         {language === "en"
           ? `MexStl is a grassroots project that engages with collective memory in
@@ -23,9 +29,7 @@ export default function HeroSection() {
       </p>
       <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
         <p className="text-xs xs:text-sm md:text-base text-center pb-1">
-          {language === "en"
-            ? `Scroll to map`
-            : `Explorar el mapa`}
+          {language === "en" ? `Scroll to map` : `Explorar el mapa`}
         </p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
