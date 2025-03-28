@@ -21,7 +21,7 @@ export default function HeroSection() {
         early 1800s. Through an interactive map, we strive to recognize the
         deep-rooted Mexican presence in St. Louis and acknowledge the city’s
         role in a larger historical narrative of mexicanos in the United States.`
-          : `Siempre Hemos Estado Aquí es un proyecto comunitario que atrae la memoria colectiva en St. Louis. 
+          : `MexStl es un proyecto comunitario que atrae la memoria colectiva en St. Louis. 
         St. Louis es el hogar de una comunidad prominente de mexicanos americanos. Por eso, invitamos al público
         a explorar esta historia rica que se remonta al principio del siglo diecinueve. A través de un mapa interactivo, 
         nos esforzamos en reconocer la arraigada presencia mexicana en St. Louis y también notar el papel de la ciudad 
