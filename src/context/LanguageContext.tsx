@@ -12,20 +12,27 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('en');
+  const [loaded, setLoaded] = useState(false);
 
   const toggleLanguage = () => {
     setLanguage(prev => (prev === 'en' ? 'es' : 'en'));
   };
-  
+
   useEffect(() => {
     const stored = localStorage.getItem('language') as Language;
-    if (stored) setLanguage(stored);
+    if (stored) {
+      setLanguage(stored);
+    }
+    setLoaded(true);
   }, []);
-  
+
   useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
-  
+    if (loaded) {
+      localStorage.setItem('language', language);
+    }
+  }, [language, loaded]);
+
+  if (!loaded) return null; // wait until we know the user's language
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
@@ -33,6 +40,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     </LanguageContext.Provider>
   );
 };
+
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
