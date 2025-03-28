@@ -7,6 +7,7 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
+import { useLanguage } from '@/context/LanguageContext';
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -21,6 +22,7 @@ function classNames(...classes: string[]) {
 
 export default function Nav() {
   const pathname = usePathname(); // Get the current path
+  const { language, toggleLanguage } = useLanguage();
   return (
     <Disclosure as="nav" className="bg-transparent">
       <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
@@ -64,6 +66,9 @@ export default function Nav() {
                     </a>
                   );
                 })}
+                <button onClick={toggleLanguage} className="text-base font-sans text-gray-900">
+                  {language === "en" ? "Español" : "English"}
+                </button>
               </div>
             </div>
           </div>

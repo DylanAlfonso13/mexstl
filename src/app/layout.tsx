@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Manrope, Outfit } from "next/font/google";
+import { LanguageProvider } from "../context/LanguageContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,8 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${outfit.variable} antialiased`}>
-        {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${outfit.variable} antialiased`}
+      >
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
