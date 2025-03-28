@@ -46,42 +46,72 @@ export default function About() {
           mexicano del Medio Oeste y a reconocer sus legados duraderos. En este sitio, los usuarios 
           pueden familiarizarse con realidades pasadas por alto, construyendo memoria para el futuro.`}
         </p>
-        <TitleText text={language === "en" ? `Meet the Team` : `Conoce al equipo`}/>
+        <TitleText
+          text={language === "en" ? `Meet the Team` : `Conoce al equipo`}
+        />
         <div className="flex flex-row min-w-full justify-evenly flex-wrap mb-12">
           <AboutCard
             name="Jade Pita Nuñez del Prado"
-            title="Director"
-            additionalTitle="BA in Latin American Studies, Washington University in St. Louis"
+            title={language === "en" ? "Director" : "Directora"}
+            additionalTitle={
+              language === "en"
+                ? "BA in Latin American Studies, Washington University in St. Louis"
+                : "BA en Estudios Latinoamericanos, Washington University in St. Louis"
+            }
             imageURL="/jade_pita_picture.jpg"
           />
           <AboutCard
             name="Dylan Alfonso"
-            title="Web Developer"
-            additionalTitle="BS in Computer Science, Washington University in St. Louis"
+            title={language === "en" ? "Web Developer" : "Desarrollador Web"}
+            additionalTitle={
+              language === "en"
+                ? "BS in Computer Science, Washington University in St. Louis"
+                : "BS en Informática, Washington University in St. Louis"
+            }
             imageURL="/dylan_alfonso_picture.jpeg"
             linkedinURL="https://www.linkedin.com/in/dylan-alfonso/"
           />
           <AboutCard
             name="Jonah Zacks"
-            title="Community Outreach"
-            additionalTitle="BA in Economics, Washington University in St. Louis"
+            title={
+              language === "en" ? "Community Outreach" : "Alcance Comunitario"
+            }
+            additionalTitle={
+              language === "en"
+                ? "BA in Economics, Washington University in St. Louis"
+                : "BA en Economía, Washington University in St. Louis"
+            }
             imageURL="/jonah_zacks_picture.jpeg"
             linkedinURL="https://www.linkedin.com/in/jonah-zacks-17930019a/"
           />
           <AboutCard
             name="Carlos Arciniega"
-            title="Curriculum Developer"
-            additionalTitle="Expected BA in Finance, Washington University in St. Louis"
+            title={
+              language === "en"
+                ? "Curriculum Developer"
+                : "Desarrollador Curricular"
+            }
+            additionalTitle={
+              language === "en"
+                ? "Expected BA in Finance, Washington University in St. Louis"
+                : "BA en Finanzas, Washington University in St. Louis"
+            }
             imageURL="/carlos_arciniega_picture.jpg"
           />
           <AboutCard
             name="Sara Hernández Angulo"
-            title="Researcher"
-            additionalTitle="PhD Candidate in Hispanic Studies, Washington University in St. Louis"
+            title={language === "en" ? "Researcher" : "Investigadora"}
+            additionalTitle={
+              language === "en"
+                ? "PhD Candidate in Hispanic Studies, Washington University in St. Louis"
+                : "Candidata a PhD en Estudios Hispánicos, Washington University in St. Louis"
+            }
             imageURL="/sarah_hernandez_picture.png"
           />
         </div>
-        <TitleText text={language === 'en' ? `Advisors and Supporters` : `Asesores`}/>
+        <TitleText
+          text={language === "en" ? `Advisors and Supporters` : `Asesores`}
+        />
         <div className="flex flex-row min-w-full justify-evenly flex-wrap mb-12">
           {/* <AboutCard
             name="Daniel Gonzales"
@@ -96,14 +126,22 @@ export default function About() {
           /> */}
           <AboutCard
             name="Jorge Riopedre"
-            title="Non-Profit Advisor"
-            additionalTitle={`Former Executive Director of Delmar DivINe\nFormer President and CEO of Casa de Salud`}
+            title={language === "en" ? "Non-Profit Advisor" : "Asesor"}
+            additionalTitle={
+              language === "en"
+                ? `Former Executive Director of Delmar DivINe\nFormer President and CEO of Casa de Salud`
+                : "Ex-Director Ejecutivo de Delmar DivINe\nEx-Presidente y CEO de Casa de Salud"
+            }
             imageURL="/jorge_riopedre_picture.jpg"
           />
           <AboutCard
             name="Elaine Peña"
-            title="Academic Advisor"
-            additionalTitle="Professor of Performing Arts, American Culture Studies, and Anthropology, Washington University in St. Louis"
+            title={language === "en" ? "Academic Advisor" : "Asesora Académica"}
+            additionalTitle={
+              language === "en"
+                ? "Professor of Performing Arts, American Culture Studies, and Anthropology, Washington University in St. Louis"
+                : "Profesora de Artes Escénicas, Estudios de Cultura Americana y Antropología, Washington University in St. Louis"
+            }
             imageURL="/elaine_pena_picture.jpg"
           />
         </div>
