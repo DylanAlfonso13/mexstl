@@ -23,7 +23,7 @@ export default function Media() {
               ? "Explore the article and podcast that mentions our work with the memory for the future lab at WashU."
               : "Explora el artículo y el podcast que menciona nuestro trabajo con el laboratorio de memoria para el futuro en WashU."
           }
-          imageSrc="/reparative-memory.png" // Change this to a real image URL
+          imageSrc="/reparative-memory.png"
           articleUrl="https://www.kbia.org/missouri-news/2023-04-27/public-humanities-lab-takes-on-reparative-memory-to-uncover-the-legacy-of-slavery-in-missouri"
         />
       </div>
