@@ -7,12 +7,13 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Media", href: "/media" },
-  { name: "Events", href: "/events" },
-  { name: "About Us", href: "/about" },
+  { name: "Home", esName: "Inicio", href: "/" },
+  { name: "Media", esName: "Media", href: "/media" },
+  { name: "Events", esName: "Eventos", href: "/events" },
+  { name: "About Us", esName: "¿Quiénes somos?", href: "/about" },
 ];
 
 function classNames(...classes: string[]) {
@@ -21,6 +22,7 @@ function classNames(...classes: string[]) {
 
 export default function Nav() {
   const pathname = usePathname(); // Get the current path
+  const { language, toggleLanguage } = useLanguage();
   return (
     <Disclosure as="nav" className="bg-transparent">
       <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
@@ -42,7 +44,9 @@ export default function Nav() {
           </div>
           <div className="flex flex-1 items-center justify-end sm:items-stretch xs:justify-center sm:justify-between">
             <div className="flex shrink-0 items-center">
-              <h1 className="text-gray-900 text-xl sm:text-2xl">Siempre Hemos Estado Aquí</h1>
+              <h1 className="text-gray-900 text-xl sm:text-2xl">
+                Siempre Hemos Estado Aquí
+              </h1>
             </div>
             <div className="hidden sm:ml-10 sm:flex sm:items-center">
               <div className="flex space-x-3 md:space-x-8">
@@ -50,7 +54,7 @@ export default function Nav() {
                   const isActive = pathname === item.href;
                   return (
                     <a
-                      key={item.name}
+                      key={language === "en" ? item.name : item.esName}
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
                       className={classNames(
@@ -60,10 +64,16 @@ export default function Nav() {
                         " text-base font-sans"
                       )}
                     >
-                      {item.name}
+                      {language === "en" ? item.name : item.esName}
                     </a>
                   );
                 })}
+                <button
+                  onClick={toggleLanguage}
+                  className="text-base font-sans text-mexRed"
+                >
+                  {language === "en" ? "Español" : "English"}
+                </button>
               </div>
             </div>
           </div>
@@ -76,7 +86,7 @@ export default function Nav() {
             const isActive = pathname === item.href;
             return (
               <DisclosureButton
-                key={item.name}
+                key={language === "en" ? item.name : item.esName}
                 as="a"
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
@@ -87,10 +97,16 @@ export default function Nav() {
                   "block rounded-md px-3 py-2 text-base font-medium"
                 )}
               >
-                {item.name}
+                {language === "en" ? item.name : item.esName}
               </DisclosureButton>
             );
           })}
+          <button
+            onClick={toggleLanguage}
+            className="text-base font-sans text-mexRed block rounded-md px-3 py-2"
+          >
+            {language === "en" ? "Español" : "English"}
+          </button>
         </div>
       </DisclosurePanel>
     </Disclosure>
