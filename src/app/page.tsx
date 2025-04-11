@@ -18,12 +18,15 @@ export default function Home() {
         <iframe
           width="100%"
           height="1000px"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+          sandbox="allow-scripts allow-same-origin"
           src={
             language === "en"
               ? "https://storymaps.arcgis.com/stories/05acb66411224a4d87b8fc1efd584868"
               : "https://storymaps.arcgis.com/stories/0c1f494986ff44caa638a37485d9a84f"
           }
-        ></iframe>
+        />
       </section>
     </div>
   );
