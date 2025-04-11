@@ -23,6 +23,7 @@ export default function Home() {
               ? "https://storymaps.arcgis.com/stories/05acb66411224a4d87b8fc1efd584868"
               : "https://storymaps.arcgis.com/stories/0c1f494986ff44caa638a37485d9a84f"
           }
+          sandbox="allow-scripts allow-same-origin"
         ></iframe>
       </section>
     </div>
