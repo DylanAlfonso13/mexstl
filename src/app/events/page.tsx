@@ -1,10 +1,8 @@
 "use client";
 import Nav from "@/components/Nav";
 import TitleText from "@/components/TitleText";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function Media() {
-  const { language } = useLanguage();
   return (
     <div>
       <Nav />
