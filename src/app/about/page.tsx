@@ -117,13 +117,16 @@ export default function About() {
             name="Daniel Gonzales"
             title="Director of Exhibitions Research at Indiana Historical Society"
             imageURL="/daniel_gonzales_picture.png"
-          />
+          /> */}
           <AboutCard
             name="Gilberto Pinela"
-            title="Director of the Office of New Americans"
-            additionalTitle="Board of Missouri Historical Society"
+            title={
+              language === "en" ? "Community Outreach Advisor" : "Asesor de Alcance Comunitario"}
+            additionalTitle={language === "en" 
+              ? `Director of the Office of New Americans\nBoard Member of Missouri History Museum Subdistrict`
+              : `Director de la Oficina de Nuevos Americanos\nMiembro de la Junta del Subdistrito del Museo de Historia de Missouri`}
             imageURL="/gilberto_pinela_picture.jpeg"
-          /> */}
+          /> 
           <AboutCard
             name="Jorge Riopedre"
             title={language === "en" ? "Non-Profit Advisor" : "Asesor"}
