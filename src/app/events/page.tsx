@@ -1,23 +1,49 @@
 "use client";
 import Nav from "@/components/Nav";
 import TitleText from "@/components/TitleText";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Media() {
+  const { language } = useLanguage();
   return (
     <div>
       <Nav />
       <div className="relative z-10 flex flex-col items-center min-h-screen text-black px-4 sm:px-6 lg:px-8">
-        <TitleText text="Community Events & Cultural Reflections" />
+        <TitleText
+          text={
+            language === "en"
+              ? "Community Events & Cultural Reflections"
+              : "Eventos Comunitarios y Reflexiones Culturales"
+          }
+        />
         <p className="text-sm xs:text-base sm:text-lg md:text-xl max-w-4xl text-center py-6">
-          On April 13, 2023, we hosted a vibrant community event, Saboreando el
-          Pasado (Savoring the Past), at the Lewis Collaborative Center that
-          explored the rich connections between food and memory. Guests enjoyed
-          a delicious catered meal from Mi Ranchito while engaging in meaningful
-          conversations about how food shapes our personal and cultural
-          identities. The evening offered an opportunity to reflect on shared
-          experiences, celebrate local flavors, and build community through
-          storytelling.
+          {language === "en" ? (
+            <>
+              On April 13, 2023, we hosted a vibrant community event,{" "}
+              <em>Saboreando el Pasado</em> (Savoring the Past), at the Lewis
+              Collaborative Center that explored the rich connections between
+              food and memory. Guests enjoyed a delicious catered meal from Mi
+              Ranchito while engaging in meaningful conversations about how food
+              shapes our personal and cultural identities. The evening offered
+              an opportunity to reflect on shared experiences, celebrate local
+              flavors, and build community through storytelling.
+            </>
+          ) : (
+            <>
+              El 13 de abril del 2023, organizamos un vibrante evento
+              comunitario, <em>Saboreando el Pasado</em>, en el Centro
+              Colaborativo Lewis que exploró las ricas conexiones entre la
+              comida y la memoria. Los asistentes disfrutaron de una comida
+              deliciosa de Mi Ranchito mientras participaban en conversaciones
+              significativas sobre cómo la comida moldea nuestras identidades
+              personales y culturales. La noche ofreció una oportunidad de
+              reflexionar sobre experiencias compartidas, celebrar los sabores
+              locales, y construir comunidad a través de la narración de
+              historias.
+            </>
+          )}
         </p>
+
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
             <img
