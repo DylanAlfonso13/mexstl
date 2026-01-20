@@ -12,10 +12,86 @@ export default function Media() {
         <TitleText
           text={
             language === "en"
-              ? "Community Events & Cultural Reflections"
-              : "Eventos Comunitarios y Reflexiones Culturales"
+              ? "Upcoming Events"
+              : "Próximos Eventos"
           }
         />
+
+        {/* Saturday Speaker Series - Upcoming Event */}
+        <div className="max-w-4xl w-full my-8">
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="p-6 sm:p-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                {language === "en"
+                  ? "Saturday Speaker Series"
+                  : "Serie de Oradores del Sábado"}
+              </h2>
+              <div className="text-lg sm:text-xl mb-4">
+                <p className="font-semibold">
+                  {language === "en"
+                    ? "Saturday, January 31, 2026 at 9:30 AM"
+                    : "Sábado, 31 de enero de 2026 a las 9:30 AM"}
+                </p>
+                <p className="text-gray-700">
+                  {language === "en"
+                    ? "Missouri History Museum - Library & Research Center"
+                    : "Museo de Historia de Missouri - Biblioteca y Centro de Investigación"}
+                </p>
+                <p className="font-semibold mt-2">
+                  {language === "en" ? "Free Admission" : "Entrada Gratuita"}
+                </p>
+              </div>
+              <p className="text-base sm:text-lg md:text-xl mb-4">
+                {language === "en" ? (
+                  <>
+                    Join Washington University history student and
+                    MexStl.org researcher <strong>Francisco Pérez</strong> as he
+                    explores the life and legacy of <strong>Ricardo Flores Magón</strong>,
+                    a Mexican anarchist, journalist, and revolutionary who fled
+                    dictatorship and found refuge in the Midwest.
+                  </>
+                ) : (
+                  <>
+                    Únase al estudiante de historia de Washington
+                    University e investigador de MexStl.org{" "}
+                    <strong>Francisco Pérez</strong> mientras explora la vida y el
+                    legado de <strong>Ricardo Flores Magón</strong>, un anarquista,
+                    periodista y revolucionario mexicano que huía de la dictadura y
+                    encontró refugio en el Medio Oeste.
+                  </>
+                )}
+              </p>
+              <div className="mt-6">
+                <a
+                  href="https://mohistory.org/events/saturday-speaker-01-31-2026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[#006341] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+                >
+                  {language === "en"
+                    ? "Register for Event"
+                    : "Registrarse para el Evento"}
+                </a>
+              </div>
+            </div>
+            <div className="px-6 pb-6 sm:px-8 sm:pb-8">
+              <img
+                src="/saturday-speaker-series.png"
+                alt="Saturday Speaker Series Flyer"
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        <TitleText
+          text={
+            language === "en"
+              ? "Past Community Events & Cultural Reflections"
+              : "Eventos Comunitarios y Reflexiones Culturales Pasados"
+          }
+        />
+
         <p className="text-sm xs:text-base sm:text-lg md:text-xl max-w-4xl text-center py-6">
           {language === "en" ? (
             <>
@@ -106,7 +182,7 @@ export default function Media() {
             />
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }
