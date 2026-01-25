@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import mapboxgl from 'mapbox-gl';
 import { useInView } from 'react-intersection-observer';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -30,9 +31,9 @@ interface ScrollytellingMapProps {
 const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, language }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
-  const [activeChapterIndex, setActiveChapterIndex] = useState(0);
 
-  const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+  const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
+  
   // Initialize map
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -53,6 +54,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     return () => {
       map.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run once on mount
 
   const flyToChapter = (chapter: Chapter) => {
@@ -69,30 +71,43 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   };
 
   return (
-    <div className="relative w-full h-screen">
-      {/* Fixed Map */}
+    <div className="relative w-full min-h-screen">
+      {/* Fixed Map Background - Always behind */}
       <div 
         ref={mapContainerRef}
-        className="fixed top-0 left-0 w-full h-screen z-0"
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100vh',
+          zIndex: 0
+        }}
       />
 
-      {/* Scrollable Story Panels */}
-      <div className="relative pointer-events-none z-10">
-        <div className="w-full md:w-1/2 lg:w-2/5 pointer-events-auto">
-          {chapters.map((chapter, index) => (
-            <ChapterPanel
-              key={chapter.id}
-              chapter={chapter}
-              language={language}
-              isFirst={index === 0}
-              isLast={index === chapters.length - 1}
-              onEnterView={() => {
-                setActiveChapterIndex(index);
-                flyToChapter(chapter);
-              }}
-            />
-          ))}
-        </div>
+      {/* Scrollable Story Panels - Always in front */}
+      <div 
+        style={{ 
+          position: 'relative',
+          zIndex: 10,
+          width: '100%',
+          maxWidth: '40%',
+          minHeight: '100vh'
+        }}
+        className="md:max-w-[50%] lg:max-w-[40%]"
+      >
+        {chapters.map((chapter, index) => (
+          <ChapterPanel
+            key={chapter.id}
+            chapter={chapter}
+            language={language}
+            isFirst={index === 0}
+            isLast={index === chapters.length - 1}
+            onEnterView={() => {
+              flyToChapter(chapter);
+            }}
+          />
+        ))}
       </div>
     </div>
   );
@@ -139,11 +154,12 @@ const ChapterPanel: React.FC<ChapterPanelProps> = ({
         </h2>
         
         {chapter.image && (
-          <div className="mb-6">
-            <img 
+          <div className="mb-6 relative w-full h-64">
+            <Image 
               src={chapter.image} 
               alt={chapter.title[language]}
-              className="w-full h-auto rounded-lg shadow-md"
+              fill
+              className="rounded-lg shadow-md object-cover"
             />
           </div>
         )}
