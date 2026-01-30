@@ -117,7 +117,7 @@ export default function About() {
                 ? "Expected BA in Latin American Studies & History, Washington University in St. Louis"
                 : "BA Esperado en Estudios Latinoamericanos e Historia, Washington University in St. Louis"
             }
-            imageURL="/francisco_perez_picture.jpeg"
+            imageURL="/francisco_perez_picture.jpg"
           />
         </div>
         <TitleText
