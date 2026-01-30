@@ -96,6 +96,7 @@ export default function About() {
                 ? "Expected BA in Finance, Washington University in St. Louis"
                 : "BA en Finanzas, Washington University in St. Louis"
             }
+            // TODO: update picture
             imageURL="/carlos_arciniega_picture.jpg"
           />
           <AboutCard
@@ -107,6 +108,16 @@ export default function About() {
                 : "Candidata a PhD en Estudios Hispánicos, Washington University in St. Louis"
             }
             imageURL="/sarah_hernandez_picture.png"
+          />
+          <AboutCard
+            name="Francisco Pérez"
+            title={language === "en" ? "Researcher" : "Investigador"}
+            additionalTitle={
+              language === "en"
+                ? "Expected BA in Latin American Studies & History"
+                : "BA Esperado en Estudios Latinoamericanos e Historia"
+            }
+            imageURL="/francisco_perez_picture.jpeg"
           />
         </div>
         <TitleText
