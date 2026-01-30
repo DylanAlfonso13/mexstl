@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface UpcomingEventProps {
   titleEn: string;
   titleEs: string;
@@ -79,9 +81,11 @@ export default function UpcomingEvent({
         </div>
         {imageUrl && (
           <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-            <img
+            <Image
               src={imageUrl}
               alt={imageAlt || "Event flyer"}
+              width={1200}
+              height={1600}
               className="w-full h-auto object-cover rounded-lg"
             />
           </div>

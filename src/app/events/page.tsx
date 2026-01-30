@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import TitleText from "@/components/TitleText";
 import UpcomingEvent from "@/components/UpcomingEvent";
@@ -30,7 +31,7 @@ export default function Media() {
           descriptionEn={
             <>
               St. Louis has a prominent Mexican American community and a rich history dating back to the early 1800s. 
-              This exhibit recognizes the deep-rooted Mexican presence in St. Louis and acknowledges the city's role 
+              This exhibit recognizes the deep-rooted Mexican presence in St. Louis and acknowledges the city&apos;s role 
               in a larger historical narrative of mexicanos in the United States.
             </>
           }
@@ -117,26 +118,34 @@ export default function Media() {
 
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
-            <img
+            <Image
               src="/stp_1.png"
               alt="Event"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
-            <img
+            <Image
               src="/stp_2.png"
               alt="Decor"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
-            <img
+            <Image
               src="/stp_3.png"
               alt="Guests"
+              width={1600}
+              height={600}
               className="md:col-span-2 w-full h-auto object-cover"
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <img
+            <Image
               src="/stp_flyer.png"
               alt="Saboreando el Pasado Poster"
+              width={800}
+              height={1000}
               className="w-full h-auto object-cover"
             />
 
@@ -165,14 +174,18 @@ export default function Media() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
-            <img
+            <Image
               src="/stp_4.png"
               alt="Food Prep"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
-            <img
+            <Image
               src="/stp_5.png"
               alt="Group Discussion"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
           </div>
