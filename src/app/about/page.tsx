@@ -114,8 +114,8 @@ export default function About() {
             title={language === "en" ? "Researcher" : "Investigador"}
             additionalTitle={
               language === "en"
-                ? "Expected BA in Latin American Studies & History"
-                : "BA Esperado en Estudios Latinoamericanos e Historia"
+                ? "Expected BA in Latin American Studies & History, Washington University in St. Louis"
+                : "BA Esperado en Estudios Latinoamericanos e Historia, Washington University in St. Louis"
             }
             imageURL="/francisco_perez_picture.jpeg"
           />
