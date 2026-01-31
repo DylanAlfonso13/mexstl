@@ -1,6 +1,8 @@
 "use client";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import TitleText from "@/components/TitleText";
+import UpcomingEvent from "@/components/UpcomingEvent";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Media() {
@@ -17,72 +19,66 @@ export default function Media() {
           }
         />
 
+        {/* Mexican American Exhibit */}
+        <UpcomingEvent
+          language={language}
+          titleEn="Mexican American Pop-Up Collection"
+          titleEs="Colección Emergente Mexicoamericana"
+          dateEn="Friday, January 30, 2026 from 12:00 PM - 5:00 PM"
+          dateEs="Viernes, 30 de enero de 2026 de 12:00 PM - 5:00 PM"
+          locationEn="225 S Skinker Blvd, St. Louis, MO 63105"
+          locationEs="225 S Skinker Blvd, St. Louis, MO 63105"
+          descriptionEn={
+            <>
+              St. Louis has a prominent Mexican American community and a rich history dating back to the early 1800s. 
+              This exhibit recognizes the deep-rooted Mexican presence in St. Louis and acknowledges the city&apos;s role 
+              in a larger historical narrative of mexicanos in the United States.
+            </>
+          }
+          descriptionEs={
+            <>
+              St. Louis tiene una prominente comunidad mexicoamericana y una rica historia que se remonta a principios 
+              del siglo XIX. Esta exhibición reconoce la presencia mexicana profundamente arraigada en St. Louis y 
+              reconoce el papel de la ciudad en una narrativa histórica más amplia de mexicanos en los Estados Unidos.
+            </>
+          }
+          registerUrl="https://www.facebook.com/events/1916072968982801/1916072985649466/?ref_source=NEWS_FEED"
+        />
+
         {/* Saturday Speaker Series - Upcoming Event */}
-        <div className="max-w-4xl w-full my-8">
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div className="p-6 sm:p-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                {language === "en"
-                  ? "Saturday Speaker Series"
-                  : "Serie de Oradores del Sábado"}
-              </h2>
-              <div className="text-lg sm:text-xl mb-4">
-                <p className="font-semibold">
-                  {language === "en"
-                    ? "Saturday, January 31, 2026 at 9:30 AM"
-                    : "Sábado, 31 de enero de 2026 a las 9:30 AM"}
-                </p>
-                <p className="text-gray-700">
-                  {language === "en"
-                    ? "Missouri History Museum - Library & Research Center"
-                    : "Museo de Historia de Missouri - Biblioteca y Centro de Investigación"}
-                </p>
-                <p className="font-semibold mt-2">
-                  {language === "en" ? "Free Admission" : "Entrada Gratuita"}
-                </p>
-              </div>
-              <p className="text-base sm:text-lg md:text-xl mb-4">
-                {language === "en" ? (
-                  <>
-                    Join Washington University history student and
-                    MexStl.org researcher <strong>Francisco Pérez</strong> as he
-                    explores the life and legacy of <strong>Ricardo Flores Magón</strong>,
-                    a Mexican anarchist, journalist, and revolutionary who fled
-                    dictatorship and found refuge in the Midwest.
-                  </>
-                ) : (
-                  <>
-                    Únase al estudiante de historia de Washington
-                    University e investigador de MexStl.org{" "}
-                    <strong>Francisco Pérez</strong> mientras explora la vida y el
-                    legado de <strong>Ricardo Flores Magón</strong>, un anarquista,
-                    periodista y revolucionario mexicano que huía de la dictadura y
-                    encontró refugio en el Medio Oeste.
-                  </>
-                )}
-              </p>
-              <div className="mt-6">
-                <a
-                  href="https://mohistory.org/events/saturday-speaker-01-31-2026"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-[#006341] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-                >
-                  {language === "en"
-                    ? "Register for Event"
-                    : "Registrarse para el Evento"}
-                </a>
-              </div>
-            </div>
-            <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-              <img
-                src="/saturday-speaker-series.png"
-                alt="Saturday Speaker Series Flyer"
-                className="w-full h-auto object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </div>
+        <UpcomingEvent
+          language={language}
+          titleEn="Saturday Speaker Series"
+          titleEs="Serie de Oradores del Sábado"
+          dateEn="Saturday, January 31, 2026 at 9:30 AM"
+          dateEs="Sábado, 31 de enero de 2026 a las 9:30 AM"
+          locationEn="225 S Skinker Blvd, St. Louis, MO 63105"
+          locationEs="225 S Skinker Blvd, St. Louis, MO 63105"
+          admissionEn="Free Admission"
+          admissionEs="Entrada Gratuita"
+          descriptionEn={
+            <>
+              Join Washington University history student and
+              MexStl.org researcher <strong>Francisco Pérez</strong> as he
+              explores the life and legacy of <strong>Ricardo Flores Magón</strong>,
+              a Mexican anarchist, journalist, and revolutionary who fled
+              dictatorship and found refuge in the Midwest.
+            </>
+          }
+          descriptionEs={
+            <>
+              Únase al estudiante de historia de Washington
+              University e investigador de MexStl.org{" "}
+              <strong>Francisco Pérez</strong> mientras explora la vida y el
+              legado de <strong>Ricardo Flores Magón</strong>, un anarquista,
+              periodista y revolucionario mexicano que huía de la dictadura y
+              encontró refugio en el Medio Oeste.
+            </>
+          }
+          registerUrl="https://mohistory.org/events/saturday-speaker-01-31-2026"
+          imageUrl="/saturday-speaker-series.png"
+          imageAlt="Saturday Speaker Series Flyer"
+        />
 
         <TitleText
           text={
@@ -122,26 +118,34 @@ export default function Media() {
 
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
-            <img
+            <Image
               src="/stp_1.png"
               alt="Event"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
-            <img
+            <Image
               src="/stp_2.png"
               alt="Decor"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
-            <img
+            <Image
               src="/stp_3.png"
               alt="Guests"
+              width={1600}
+              height={600}
               className="md:col-span-2 w-full h-auto object-cover"
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <img
+            <Image
               src="/stp_flyer.png"
               alt="Saboreando el Pasado Poster"
+              width={800}
+              height={1000}
               className="w-full h-auto object-cover"
             />
 
@@ -170,14 +174,18 @@ export default function Media() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
-            <img
+            <Image
               src="/stp_4.png"
               alt="Food Prep"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
-            <img
+            <Image
               src="/stp_5.png"
               alt="Group Discussion"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover"
             />
           </div>
