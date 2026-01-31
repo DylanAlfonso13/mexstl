@@ -4,8 +4,10 @@ import Link from "next/link";
 interface SpotlightCardProps {
   title: string;
   description: string;
-  imageSrc: string;
+  imageSrc?: string;
   articleUrl: string;
+  iframeSrc?: string;
+  iframeTitle?: string;
 }
 
 export default function SpotlightCard({
@@ -13,14 +15,30 @@ export default function SpotlightCard({
   description,
   imageSrc,
   articleUrl,
+  iframeSrc,
+  iframeTitle,
 }: SpotlightCardProps) {
   return (
     <Link href={articleUrl} target="_blank">
       <div className="max-w-xl w-full bg-white shadow-lg rounded-2xl overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
-        <div className="relative w-full h-96">
-          {/* Adjust height as needed */}
-          <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" />
-        </div>
+        {iframeSrc ? (
+          <div className="w-full p-4">
+            <iframe
+              src={iframeSrc}
+              width="100%"
+              height="290"
+              frameBorder="0"
+              scrolling="no"
+              title={iframeTitle || "Embedded content"}
+              className="rounded-lg"
+            ></iframe>
+          </div>
+        ) : imageSrc ? (
+          <div className="relative w-full h-96">
+            {/* Adjust height as needed */}
+            <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" />
+          </div>
+        ) : null}
         <div className="p-4">
           {/* Container for title + bar with responsive alignment */}
           <div className="inline-block mx-auto text-center lg:text-left">
