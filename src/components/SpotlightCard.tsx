@@ -5,9 +5,12 @@ interface SpotlightCardProps {
   title: string;
   description: string;
   imageSrc?: string;
-  articleUrl: string;
+  articleUrl?: string;
+  articleUrlEn?: string;
+  articleUrlEs?: string;
   iframeSrc?: string;
   iframeTitle?: string;
+  language?: string;
 }
 
 export default function SpotlightCard({
@@ -15,11 +18,19 @@ export default function SpotlightCard({
   description,
   imageSrc,
   articleUrl,
+  articleUrlEn,
+  articleUrlEs,
   iframeSrc,
   iframeTitle,
+  language,
 }: SpotlightCardProps) {
+  // Determine which URL to use
+  const finalUrl = articleUrlEn && articleUrlEs && language
+    ? (language === "en" ? articleUrlEn : articleUrlEs)
+    : articleUrl;
+
   return (
-    <Link href={articleUrl} target="_blank">
+    <Link href={finalUrl || "#"} target="_blank">
       <div className="max-w-xl w-full bg-white shadow-lg rounded-2xl overflow-hidden transition-transform transform hover:scale-105 cursor-pointer">
         {iframeSrc ? (
           <div className="w-full p-4">
