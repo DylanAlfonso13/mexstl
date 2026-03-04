@@ -18,7 +18,7 @@ export default function Media() {
           title={
             language === "en"
               ? "How a St. Louis-based newspaper helped ignite the spark that led to the Mexican Revolution"
-              : "Cómo un periódico con sede en St. Louis ayudó a encender la chispa que llevó a la Revolución Mexicana"
+              : "Cómo un periódico radicado en St. Louis encendió la chispa de la Revolución Mexicana"
           }
           description={
             language === "en"
@@ -27,7 +27,9 @@ export default function Media() {
           }
           iframeSrc="https://www.npr.org/player/embed/fis-381444658-8414b3d5985635ae4291169f4093181c/fis-381444658-8414b3d5985635ae4291169f4093181c-enclosure-audio"
           iframeTitle="NPR embedded audio player"
-          articleUrl="https://www.npr.org/"
+          articleUrlEn="https://www.stlpr.org/show/st-louis-on-the-air/2026-01-30/how-a-st-louis-based-newspaper-helped-ignite-the-spark-that-led-to-the-mexican-revolution"
+          articleUrlEs="https://www.stlpr.org/show/st-louis-on-the-air/2026-01-30/st-louis-periodico-radicado-revolucion-mexicana"
+          language={language}
         />
 
         <div className="mt-10"></div>
