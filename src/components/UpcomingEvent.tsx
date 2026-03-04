@@ -5,9 +5,9 @@ interface UpcomingEventProps {
   titleEs: string;
   dateEn: string;
   dateEs: string;
-  location?: string;
-  locationEn?: string;
-  locationEs?: string;
+  location?: string | React.ReactNode;
+  locationEn?: string | React.ReactNode;
+  locationEs?: string | React.ReactNode;
   admissionEn?: string;
   admissionEs?: string;
   descriptionEn: React.ReactNode;

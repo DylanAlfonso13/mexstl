@@ -22,27 +22,41 @@ export default function Media() {
         {/* Mexican American Exhibit */}
         <UpcomingEvent
           language={language}
-          titleEn="Mexican American Pop-Up Collection"
-          titleEs="Colección Emergente Mexicoamericana"
-          dateEn="Friday, January 30, 2026 from 12:00 PM - 5:00 PM"
-          dateEs="Viernes, 30 de enero de 2026 de 12:00 PM - 5:00 PM"
-          locationEn="225 S Skinker Blvd, St. Louis, MO 63105"
-          locationEs="225 S Skinker Blvd, St. Louis, MO 63105"
+          titleEn="Mexican American Pop-Up Exhibit"
+          titleEs="Exhibición Emergente Mexicoamericana"
+          dateEn="Open January 30 - February 28, 2026"
+          dateEs="Abierto del 30 de enero al 28 de febrero de 2026"
+          locationEn={
+            <>
+              Missouri Historical Society Library and Research Center
+              <br />
+              225 S Skinker Blvd, St. Louis, MO 63105
+            </>
+          }
+          locationEs={
+            <>
+              Missouri Historical Society Library and Research Center
+              <br />
+              225 S Skinker Blvd, St. Louis, MO 63105
+            </>
+          }
           descriptionEn={
             <>
               St. Louis has a prominent Mexican American community and a rich history dating back to the early 1800s. 
-              This exhibit recognizes the deep-rooted Mexican presence in St. Louis and acknowledges the city&apos;s role 
+              This bilingual exhibit recognizes the deep-rooted Mexican presence in St. Louis and acknowledges the city&apos;s role 
               in a larger historical narrative of mexicanos in the United States.
             </>
           }
           descriptionEs={
             <>
               St. Louis tiene una prominente comunidad mexicoamericana y una rica historia que se remonta a principios 
-              del siglo XIX. Esta exhibición reconoce la presencia mexicana profundamente arraigada en St. Louis y 
+              del siglo XIX. Esta exhibición bilingüe reconoce la presencia mexicana profundamente arraigada en St. Louis y 
               reconoce el papel de la ciudad en una narrativa histórica más amplia de mexicanos en los Estados Unidos.
             </>
           }
           registerUrl="https://www.facebook.com/events/1916072968982801/1916072985649466/?ref_source=NEWS_FEED"
+          registerTextEn="Learn More"
+          registerTextEs="Más Información"
         />
 
         {/* Saturday Speaker Series - Upcoming Event */}
