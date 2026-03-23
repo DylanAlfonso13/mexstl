@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 
 interface AboutCardProps {
@@ -17,10 +18,12 @@ export default function AboutCard({
 }: AboutCardProps) {
   return (
     <div className="flex flex-col w-80 h-auto m-10 rounded-lg transition-transform transform hover:shadow-2xl hover:scale-105">
-      <img
+      <Image
         className="size-48 rounded-full mx-auto my-5"
         src={imageURL}
         alt={`${name}'s picture`}
+        width={192}
+        height={192}
       />
       <div className="text-center pt-3 px-3 mb-7">
         <h1 className="text-2xl mb-3">{name}</h1>

@@ -28,7 +28,7 @@ export default function HeroSection() {
         en la narrativa histórica de mexicanos en los Estados Unidos.`}
       </p>
       <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <p className="text-xs xs:text-sm md:text-base text-center pb-1">
+        <p className="text-sm xs:text-base md:text-xl text-center pb-1">
           {language === "en" ? `Scroll to map` : `Explorar el mapa`}
         </p>
         <svg
