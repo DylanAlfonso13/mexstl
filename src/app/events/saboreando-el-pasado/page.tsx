@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import Nav from "@/components/Nav";
 import TitleText from "@/components/TitleText";
 import { useLanguage } from "@/context/LanguageContext";
@@ -20,54 +19,35 @@ export default function SaboreandoElPasado() {
           }
         />
 
-        <div className="max-w-4xl w-full my-8">
-          <Link
-            href="/events"
-            className="inline-block mb-6 text-[#006341] hover:text-green-700 font-semibold"
-          >
-            ← {language === "en" ? "Back to Events" : "Volver a Eventos"}
-          </Link>
-
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div className="p-6 sm:p-8">
-              <div className="text-lg sm:text-xl mb-4">
-                <p className="font-semibold">
-                  {language === "en"
-                    ? "April 13, 2023"
-                    : "13 de abril de 2023"}
-                </p>
-                <p className="text-gray-700">Lewis Collaborative Center</p>
-              </div>
-              <p className="text-base sm:text-lg md:text-xl mb-4">
-                {language === "en" ? (
-                  <>
-                    On April 13, 2023, we hosted a vibrant community event,{" "}
-                    <em>Saboreando el Pasado</em> (Savoring the Past), at the
-                    Lewis Collaborative Center that explored the rich connections
-                    between food and memory. Guests enjoyed a delicious catered
-                    meal from Mi Ranchito while engaging in meaningful
-                    conversations about how food shapes our personal and cultural
-                    identities. The evening offered an opportunity to reflect on
-                    shared experiences, celebrate local flavors, and build
-                    community through storytelling.
-                  </>
-                ) : (
-                  <>
-                    El 13 de abril del 2023, organizamos un vibrante evento
-                    comunitario, <em>Saboreando el Pasado</em>, en el Centro
-                    Colaborativo Lewis que exploró las ricas conexiones entre la
-                    comida y la memoria. Los asistentes disfrutaron de una comida
-                    deliciosa de Mi Ranchito mientras participaban en
-                    conversaciones significativas sobre cómo la comida moldea
-                    nuestras identidades personales y culturales. La noche
-                    ofreció una oportunidad de reflexionar sobre experiencias
-                    compartidas, celebrar los sabores locales, y construir
-                    comunidad a través de la narración de historias.
-                  </>
-                )}
-              </p>
-            </div>
-          </div>
+        <div className="max-w-4xl w-full my-8 text-center">
+          <p className="text-base sm:text-lg md:text-xl mb-4">
+            {language === "en" ? (
+              <>
+                On April 13, 2023, we hosted a vibrant community event,{" "}
+                <em>Saboreando el Pasado</em> (Savoring the Past), at the
+                Lewis Collaborative Center that explored the rich connections
+                between food and memory. Guests enjoyed a delicious catered
+                meal from Mi Ranchito while engaging in meaningful
+                conversations about how food shapes our personal and cultural
+                identities. The evening offered an opportunity to reflect on
+                shared experiences, celebrate local flavors, and build
+                community through storytelling.
+              </>
+            ) : (
+              <>
+                El 13 de abril del 2023, organizamos un vibrante evento
+                comunitario, <em>Saboreando el Pasado</em>, en el Centro
+                Colaborativo Lewis que exploró las ricas conexiones entre la
+                comida y la memoria. Los asistentes disfrutaron de una comida
+                deliciosa de Mi Ranchito mientras participaban en
+                conversaciones significativas sobre cómo la comida moldea
+                nuestras identidades personales y culturales. La noche
+                ofreció una oportunidad de reflexionar sobre experiencias
+                compartidas, celebrar los sabores locales, y construir
+                comunidad a través de la narración de historias.
+              </>
+            )}
+          </p>
         </div>
 
         {/* Event Images Grid */}
