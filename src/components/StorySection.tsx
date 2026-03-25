@@ -59,20 +59,21 @@ const StorySection: React.FC<StorySectionProps> = ({
   const hasSingleImage = !hasMultipleImages && image;
 
   return (
-    <div
+    <section
       ref={ref}
       className={`
         min-h-screen flex justify-center px-4 sm:px-6 lg:px-8
         ${isFirst ? 'items-start pt-24 sm:pt-28 md:pt-32' : 'items-center pt-20'}
         ${isLast ? 'pb-32 md:pb-40' : 'pb-20'}
       `}
+      aria-label={`Story section: ${title}`}
     >
       <article
         className={`
-          bg-white bg-opacity-90 backdrop-blur-md
-          p-8 sm:p-10 md:p-12 lg:p-16
+          bg-white/90 backdrop-blur-md
+          p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16
           rounded-2xl shadow-2xl
-          max-w-5xl w-full
+          max-w-4xl xl:max-w-5xl w-full
           ${isMapInteractive ? 'pointer-events-none' : 'pointer-events-auto'}
           transform transition-all duration-700 ease-out
           ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
@@ -80,21 +81,24 @@ const StorySection: React.FC<StorySectionProps> = ({
       >
         {/* Era Label */}
         {era && (
-          <div className="mb-4">
-            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-mexRed border-b-2 border-mexRed pb-1">
+          <div className="mb-4 md:mb-5">
+            <span 
+              className="inline-block text-xs sm:text-sm font-semibold tracking-widest uppercase text-mexRed border-b-2 border-mexRed pb-1"
+              aria-label={`Time period: ${era}`}
+            >
               {era}
             </span>
           </div>
         )}
 
         {/* Title */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 font-[family-name:var(--font-outfit)] leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-gray-900 font-[family-name:var(--font-outfit)] leading-tight">
           {title}
         </h2>
 
         {/* Images */}
         {hasMultipleImages && (
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <ImageCarousel
               images={images.map(img => ({
                 src: img.src,
@@ -107,7 +111,7 @@ const StorySection: React.FC<StorySectionProps> = ({
         )}
 
         {hasSingleImage && (
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <ImageWithCaption
               src={image}
               alt={title}
@@ -117,13 +121,13 @@ const StorySection: React.FC<StorySectionProps> = ({
         )}
 
         {/* Description */}
-        <div className="prose prose-lg max-w-none">
-          <p className="text-xl leading-loose text-gray-700 whitespace-pre-line">
+        <div className="prose prose-lg md:prose-xl max-w-none">
+          <p className="text-lg sm:text-xl md:text-2xl leading-relaxed md:leading-loose text-gray-800 font-[family-name:var(--font-manrope)]">
             {description}
           </p>
         </div>
       </article>
-    </div>
+    </section>
   );
 };
 

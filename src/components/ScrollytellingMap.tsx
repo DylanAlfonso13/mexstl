@@ -127,7 +127,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden" role="region" aria-label="Interactive story map">
       {/* Fixed Map Background */}
       <div 
         ref={mapContainerRef}
@@ -135,12 +135,21 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
         className={`absolute top-0 left-0 w-full h-full z-0 ${
           !isMapInteractive ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'
         }`}
+        role={!isMapInteractive ? "button" : undefined}
+        aria-label={!isMapInteractive ? "Click to explore map" : undefined}
+        tabIndex={!isMapInteractive ? 0 : -1}
+        onKeyDown={!isMapInteractive ? (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateMap();
+          }
+        } : undefined}
       />
 
       {/* Map Interaction Hint - Only show when not interactive */}
       {!isMapInteractive && (
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-          <div className="bg-black/70 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm shadow-lg">
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none animate-pulse">
+          <div className="bg-black/70 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg">
             Click map to explore
           </div>
         </div>
@@ -150,19 +159,21 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
       {isMapInteractive && (
         <button
           onClick={exitMapMode}
-          className="absolute top-20 right-4 z-30 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-mexRed"
-          aria-label="Back to story"
+          className="absolute top-20 sm:top-24 right-4 sm:right-6 z-30 bg-white hover:bg-gray-50 active:bg-gray-100 text-gray-800 font-semibold px-4 sm:px-5 py-2 sm:py-3 rounded-lg shadow-xl flex items-center gap-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mexRed focus:ring-offset-2 hover:shadow-2xl"
+          aria-label="Exit map exploration and return to story"
         >
-          <XMarkIcon className="w-5 h-5" />
-          Back to Story
+          <XMarkIcon className="w-5 h-5" aria-hidden="true" />
+          <span className="hidden sm:inline">Back to Story</span>
+          <span className="sm:hidden">Back</span>
         </button>
       )}
 
       {/* Scrollable Story Sections - Hidden when map is interactive */}
       <div 
-        className={`absolute top-0 left-0 w-full h-full z-10 overflow-y-auto overflow-x-hidden transition-opacity duration-300 pointer-events-none ${
+        className={`absolute top-0 left-0 w-full h-full z-10 overflow-y-auto overflow-x-hidden transition-opacity duration-300 pointer-events-none scroll-smooth ${
           isMapInteractive ? 'opacity-0' : 'opacity-100'
         }`}
+        aria-hidden={isMapInteractive}
       >
         {chapters.map((chapter, index) => (
           <StorySection

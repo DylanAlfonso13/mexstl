@@ -23,25 +23,25 @@ const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
   priority = false
 }) => {
   return (
-    <figure className="w-full space-y-3">
-      <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-sm overflow-hidden border border-gray-200 shadow-sm">
+    <figure className="w-full space-y-3" role="figure">
+      <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-md overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
         <Image
           src={src}
           alt={alt}
           fill
           className="object-cover object-center"
           priority={priority}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 1200px"
         />
       </div>
       
       {(caption || credit) && (
-        <figcaption className="text-sm text-gray-600 leading-relaxed">
+        <figcaption className="text-sm sm:text-base text-gray-600 leading-relaxed px-1">
           {caption && (
-            <p className="mb-1">{caption}</p>
+            <p className="mb-1 font-[family-name:var(--font-manrope)]">{caption}</p>
           )}
           {credit && (
-            <p className="text-xs text-gray-500 italic">
+            <p className="text-xs sm:text-sm text-gray-500 italic">
               {credit}
             </p>
           )}

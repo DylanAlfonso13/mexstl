@@ -99,11 +99,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
       role="region"
       aria-label="Image carousel"
       aria-roledescription="carousel"
+      aria-live="polite"
     >
       {/* Main Image Container */}
       <div className="relative group">
         <div 
-          className="relative w-full aspect-[4/3] bg-gray-100 rounded-sm overflow-hidden border border-gray-200 shadow-sm"
+          className="relative w-full aspect-[4/3] bg-gray-100 rounded-md overflow-hidden border border-gray-200 shadow-md group-hover:shadow-lg transition-shadow duration-300"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -114,7 +115,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
             fill
             className="object-cover object-center transition-opacity duration-500"
             priority={priority && currentIndex === 0}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 1200px"
           />
         </div>
 
@@ -124,23 +125,23 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
             {/* Previous Button */}
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-mexRed"
+              className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white p-2 sm:p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-mexRed focus:ring-offset-2 hover:scale-110 active:scale-95"
               aria-label="Previous image"
             >
-              <ChevronLeftIcon className="w-6 h-6 text-gray-800" />
+              <ChevronLeftIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" aria-hidden="true" />
             </button>
 
             {/* Next Button */}
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-mexRed"
+              className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white p-2 sm:p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-mexRed focus:ring-offset-2 hover:scale-110 active:scale-95"
               aria-label="Next image"
             >
-              <ChevronRightIcon className="w-6 h-6 text-gray-800" />
+              <ChevronRightIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" aria-hidden="true" />
             </button>
 
             {/* Image Counter */}
-            <div className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">
+            <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/70 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md font-medium">
               {currentIndex + 1} / {images.length}
             </div>
           </>
@@ -148,10 +149,10 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
       </div>
 
       {/* Caption */}
-      <figcaption className="text-sm text-gray-600 leading-relaxed">
-        <p className="mb-1">{currentImage.caption}</p>
+      <figcaption className="text-sm sm:text-base text-gray-600 leading-relaxed px-1">
+        <p className="mb-1 font-[family-name:var(--font-manrope)]">{currentImage.caption}</p>
         {currentImage.credit && (
-          <p className="text-xs text-gray-500 italic">
+          <p className="text-xs sm:text-sm text-gray-500 italic">
             {currentImage.credit}
           </p>
         )}
@@ -168,13 +169,14 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
             <button
               key={index}
               onClick={() => goToIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-mexRed focus:ring-offset-2 ${
+              className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-mexRed focus:ring-offset-2 ${
                 index === currentIndex
-                  ? 'bg-mexRed w-8'
-                  : 'bg-gray-300 hover:bg-gray-400'
+                  ? 'bg-mexRed w-8 sm:w-10'
+                  : 'bg-gray-300 hover:bg-gray-400 w-2'
               }`}
-              aria-label={`Go to image ${index + 1}`}
+              aria-label={`Go to image ${index + 1} of ${images.length}`}
               aria-selected={index === currentIndex}
+              aria-current={index === currentIndex ? 'true' : 'false'}
               role="tab"
             />
           ))}
