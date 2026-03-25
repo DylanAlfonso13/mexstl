@@ -1,13 +1,22 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import Image from 'next/image';
 import mapboxgl from 'mapbox-gl';
-import { useInView } from 'react-intersection-observer';
+import StorySection from './StorySection';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+interface ImageData {
+  src: string;
+  caption: {
+    en: string;
+    es: string;
+  };
+  credit?: string;
+}
 
 interface Chapter {
   id: string;
+  era?: string;
   title: {
     en: string;
     es: string;
@@ -21,6 +30,11 @@ interface Chapter {
   pitch?: number;
   bearing?: number;
   image?: string;
+  images?: ImageData[];
+  sources?: {
+    en: string[];
+    es: string[];
+  };
 }
 
 interface ScrollytellingMapProps {
@@ -71,35 +85,23 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   };
 
   return (
-    <div className="relative w-full min-h-screen">
-      {/* Fixed Map Background - Always behind */}
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Fixed Map Background */}
       <div 
         ref={mapContainerRef}
-        style={{ 
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          zIndex: 0
-        }}
+        className="absolute top-0 left-0 w-full h-full z-0"
       />
 
-      {/* Scrollable Story Panels - Always in front */}
-      <div 
-        style={{ 
-          position: 'relative',
-          zIndex: 10,
-          width: '100%',
-          maxWidth: '40%',
-          minHeight: '100vh'
-        }}
-        className="md:max-w-[50%] lg:max-w-[40%]"
-      >
+      {/* Scrollable Story Sections - Absolute Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full z-10 overflow-y-auto overflow-x-hidden">
         {chapters.map((chapter, index) => (
-          <ChapterPanel
+          <StorySection
             key={chapter.id}
-            chapter={chapter}
+            era={chapter.era}
+            title={chapter.title[language]}
+            description={chapter.description[language]}
+            image={chapter.image}
+            images={chapter.images}
             language={language}
             isFirst={index === 0}
             isLast={index === chapters.length - 1}
@@ -108,65 +110,6 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
             }}
           />
         ))}
-      </div>
-    </div>
-  );
-};
-
-interface ChapterPanelProps {
-  chapter: Chapter;
-  language: 'en' | 'es';
-  isFirst: boolean;
-  isLast: boolean;
-  onEnterView: () => void;
-}
-
-const ChapterPanel: React.FC<ChapterPanelProps> = ({
-  chapter,
-  language,
-  isFirst,
-  isLast,
-  onEnterView
-}) => {
-  const { ref, inView } = useInView({
-    threshold: 0.5, // Trigger when 50% of the panel is visible
-    triggerOnce: false
-  });
-
-  useEffect(() => {
-    if (inView) {
-      onEnterView();
-    }
-  }, [inView, onEnterView]);
-
-  return (
-    <div
-      ref={ref}
-      className={`
-        min-h-screen flex items-center
-        ${isFirst ? 'pt-20' : ''}
-        ${isLast ? 'pb-20' : ''}
-      `}
-    >
-      <div className="bg-white bg-opacity-95 backdrop-blur-sm p-8 m-6 rounded-lg shadow-2xl max-w-lg transition-all duration-500">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">
-          {chapter.title[language]}
-        </h2>
-        
-        {chapter.image && (
-          <div className="mb-6 relative w-full h-64">
-            <Image 
-              src={chapter.image} 
-              alt={chapter.title[language]}
-              fill
-              className="rounded-lg shadow-md object-cover"
-            />
-          </div>
-        )}
-        
-        <p className="text-lg text-gray-700 leading-relaxed">
-          {chapter.description[language]}
-        </p>
       </div>
     </div>
   );
