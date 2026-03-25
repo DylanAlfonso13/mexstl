@@ -23,6 +23,7 @@ interface StorySectionProps {
   language: 'en' | 'es';
   isFirst: boolean;
   isLast: boolean;
+  isMapInteractive?: boolean;
   onEnterView: () => void;
 }
 
@@ -39,6 +40,7 @@ const StorySection: React.FC<StorySectionProps> = ({
   language,
   isFirst,
   isLast,
+  isMapInteractive = false,
   onEnterView
 }) => {
   const { ref, inView } = useInView({
@@ -71,6 +73,7 @@ const StorySection: React.FC<StorySectionProps> = ({
           p-8 sm:p-10 md:p-12 lg:p-16
           rounded-2xl shadow-2xl
           max-w-5xl w-full
+          ${isMapInteractive ? 'pointer-events-none' : 'pointer-events-auto'}
           transform transition-all duration-700 ease-out
           ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
         `}
