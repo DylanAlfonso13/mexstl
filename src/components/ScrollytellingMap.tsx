@@ -46,6 +46,7 @@ interface ScrollytellingMapProps {
 const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, language }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
+  const markersRef = useRef<mapboxgl.Marker[]>([]);
   const [isMapInteractive, setIsMapInteractive] = useState(false);
 
   const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
@@ -72,7 +73,19 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
 
     mapRef.current = map;
 
+    // Add markers for each chapter location
+    map.on('load', () => {
+      chapters.forEach((chapter) => {
+        const marker = new mapboxgl.Marker({ color: '#C8102E' })
+          .setLngLat(chapter.center)
+          .addTo(map);
+        markersRef.current.push(marker);
+      });
+    });
+
     return () => {
+      markersRef.current.forEach((m) => m.remove());
+      markersRef.current = [];
       map.remove();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
