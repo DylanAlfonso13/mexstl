@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ImageCarousel from './ImageCarousel';
 import ImageWithCaption from './ImageWithCaption';
@@ -43,6 +43,8 @@ const StorySection: React.FC<StorySectionProps> = ({
   isMapInteractive = false,
   onEnterView
 }) => {
+  const [hasBeenSeen, setHasBeenSeen] = useState(false);
+
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: false
@@ -50,6 +52,7 @@ const StorySection: React.FC<StorySectionProps> = ({
 
   useEffect(() => {
     if (inView) {
+      setHasBeenSeen(true);
       onEnterView();
     }
   }, [inView, onEnterView]);
@@ -76,7 +79,7 @@ const StorySection: React.FC<StorySectionProps> = ({
           max-w-4xl xl:max-w-5xl w-full
           ${isMapInteractive ? 'pointer-events-none' : 'pointer-events-auto'}
           transform transition-all duration-700 ease-out
-          ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
+          ${hasBeenSeen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
         `}
       >
         {/* Era Label */}

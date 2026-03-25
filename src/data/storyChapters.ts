@@ -174,6 +174,32 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: -20,
+    images: [
+      {
+        src: '/stp_1.png',
+        caption: {
+          en: 'Historic St. Louis downtown district, home to major railroad and commercial operations in the early 1900s.',
+          es: 'Distrito histórico del centro de St. Louis, hogar de importantes operaciones ferroviarias y comerciales a principios del siglo XX.'
+        },
+        credit: 'St. Louis Post-Dispatch Archives'
+      },
+      {
+        src: '/stp_2.png',
+        caption: {
+          en: 'The National Bank of Commerce building and surrounding business district where the Mexican Central Railway established its U.S. headquarters.',
+          es: 'El edificio del National Bank of Commerce y el distrito comercial circundante donde el Ferrocarril Central Mexicano estableció su sede en EE.UU.'
+        },
+        credit: 'St. Louis Post-Dispatch Archives'
+      },
+      {
+        src: '/stp_3.png',
+        caption: {
+          en: 'North Broadway and Olive Street area, the heart of St. Louis commercial activity and railroad operations in 1902.',
+          es: 'Zona de North Broadway y Olive Street, el corazón de la actividad comercial y operaciones ferroviarias de St. Louis en 1902.'
+        },
+        credit: 'St. Louis Post-Dispatch Archives'
+      }
+    ],
     sources: {
       en: [
         'https://mexstl.org/mexican_center',
