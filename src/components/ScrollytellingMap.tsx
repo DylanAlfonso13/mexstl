@@ -148,7 +148,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
 
       {/* Map Interaction Hint - Only show when not interactive */}
       {!isMapInteractive && (
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none animate-pulse">
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
           <div className="bg-black/70 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg">
             Click map to explore
           </div>
