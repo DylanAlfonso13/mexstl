@@ -39,8 +39,8 @@ export default function Media() {
         <PastEvent
           language={language}
           slug="saturday-speaker-series"
-          titleEn="Saturday Speaker Series"
-          titleEs="Serie de Oradores del Sábado"
+          titleEn="Saturday Speaker Series at MHO"
+          titleEs="Serie de Oradores del Sábado en MHO"
           dateEn="Saturday, January 31, 2026 at 9:30 AM"
           dateEs="Sábado, 31 de enero de 2026 a las 9:30 AM"
           locationEn="225 S Skinker Blvd, St. Louis, MO 63105"
@@ -48,7 +48,7 @@ export default function Media() {
           descriptionEn={
             <>
               Join Washington University history student and
-              MexStl.org researcher <strong>Francisco Pérez</strong> as he
+              MexStl.org researcher, <strong>Francisco Pérez</strong>, as he
               explores the life and legacy of <strong>Ricardo Flores Magón</strong>,
               a Mexican anarchist, journalist, and revolutionary who fled
               dictatorship and found refuge in the Midwest.
@@ -57,8 +57,7 @@ export default function Media() {
           descriptionEs={
             <>
               Únase al estudiante de historia de Washington
-              University e investigador de MexStl.org{" "}
-              <strong>Francisco Pérez</strong> mientras explora la vida y el
+              University e investigador de MexStl.org, <strong>Francisco Pérez</strong>, mientras explora la vida y el
               legado de <strong>Ricardo Flores Magón</strong>, un anarquista,
               periodista y revolucionario mexicano que huía de la dictadura y
               encontró refugio en el Medio Oeste.
@@ -70,8 +69,8 @@ export default function Media() {
         <PastEvent
           language={language}
           slug="mexican-american-exhibit"
-          titleEn="Mexican American Pop-Up Exhibit"
-          titleEs="Exhibición Emergente Mexicoamericana"
+          titleEn="Mexican American Pop-Up Exhibit at MHO"
+          titleEs="Exhibición Emergente Mexicoamericana at MHO"
           dateEn="January 30 - February 28, 2026"
           dateEs="30 de enero al 28 de febrero de 2026"
           locationEn={
