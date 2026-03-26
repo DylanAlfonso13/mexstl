@@ -44,8 +44,8 @@ export default function Nav() {
           </div>
           <div className="flex flex-1 items-center justify-end sm:items-stretch xs:justify-center sm:justify-between">
             <div className="flex shrink-0 items-center">
-              <h1 className="text-gray-900 text-xl sm:text-2xl">
-                Siempre Hemos Estado Aquí
+              <h1 className="text-gray-900 text-2xl sm:text-3xl">
+                MexStl
               </h1>
             </div>
             <div className="hidden sm:ml-10 sm:flex sm:items-center">
