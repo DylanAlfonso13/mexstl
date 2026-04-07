@@ -46,6 +46,13 @@ export default function About() {
           mexicano del Medio Oeste y a reconocer sus legados duraderos. En este sitio, los usuarios 
           pueden familiarizarse con realidades pasadas por alto, construyendo memoria para el futuro.`}
         </p>
+        <p className="text-sm xs:text-base sm:text-lg md:text-xl max-w-4xl text-center py-6">
+          {language === "en"
+            ? <>Have questions or want to get involved? Reach out to us at{" "}
+                <a href="mailto:MexStl.org@gmail.com" className="underline hover:opacity-70">MexStl.org@gmail.com</a>.</>
+            : <>¿Tienes preguntas o quieres participar? Contáctanos en{" "}
+                <a href="mailto:MexStl.org@gmail.com" className="underline hover:opacity-70">MexStl.org@gmail.com</a>.</>}
+        </p>
         <TitleText
           text={language === "en" ? `Meet the Team` : `Conoce al equipo`}
         />
