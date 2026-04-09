@@ -38,7 +38,7 @@ export default function PastEvent({
 }: PastEventProps) {
   return (
     <Link href={`/events/${slug}`}>
-      <div className="max-w-4xl w-full my-8 cursor-pointer">
+      <article className="max-w-4xl w-full my-8 cursor-pointer">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-[1.02] hover:shadow-xl">
           <div className="p-6 sm:p-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
@@ -82,7 +82,7 @@ export default function PastEvent({
             </div>
           )}
         </div>
-      </div>
+      </article>
     </Link>
   );
 }

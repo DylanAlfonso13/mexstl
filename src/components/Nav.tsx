@@ -7,6 +7,7 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 const navigation = [
@@ -44,9 +45,9 @@ export default function Nav() {
           </div>
           <div className="flex flex-1 items-center justify-end sm:items-stretch xs:justify-center sm:justify-between">
             <div className="flex shrink-0 items-center">
-              <h1 className="text-gray-900 text-2xl sm:text-3xl">
+              <Link href="/" className="text-gray-900 text-2xl sm:text-3xl font-bold">
                 MexStl
-              </h1>
+              </Link>
             </div>
             <div className="hidden sm:ml-10 sm:flex sm:items-center">
               <div className="flex space-x-3 md:space-x-8">
