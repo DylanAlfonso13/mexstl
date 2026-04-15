@@ -32,7 +32,7 @@ export default function SpeakerSeriesContent() {
                 <strong>Ricardo Flores Magón</strong>, a Mexican anarchist,
                 journalist, and revolutionary who fled dictatorship and found
                 refuge in the Midwest. Attendees explored primary-source
-                archives and engaged in a lively discussion about Magón's
+                archives and engaged in a lively discussion about Mag&oacute;n&apos;s
                 enduring impact on Mexican and Mexican-American activism.
               </>
             ) : (
