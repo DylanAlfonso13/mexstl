@@ -19,45 +19,79 @@ export default function SpeakerSeriesContent() {
           }
         />
 
-        <div className="max-w-4xl w-full my-8">
-          <div className="text-lg sm:text-xl mb-4">
-            <p className="font-semibold">
-              {language === "en"
-                ? "Saturday, January 31, 2026 at 9:30 AM"
-                : "Sábado, 31 de enero de 2026 a las 9:30 AM"}
-            </p>
-            <p className="text-gray-700">
-              225 S Skinker Blvd, St. Louis, MO 63105
-            </p>
-          </div>
+        <div className="max-w-4xl w-full my-8 text-center">
           <p className="text-base sm:text-lg md:text-xl mb-4">
             {language === "en" ? (
               <>
-                Join Washington University history student and MexStl.org
-                researcher <strong>Francisco Pérez</strong> as he explores
-                the life and legacy of{" "}
+                On January 31, 2026, we held were invited to{" "}
+                <em>Saturday Speaker Series</em> at the Missouri Historical
+                Society (225 S Skinker Blvd). Washington University
+                student and MexStl researcher{" "}
+                <strong>Francisco Pérez</strong> delivered a captivating
+                presentation on the life and legacy of{" "}
                 <strong>Ricardo Flores Magón</strong>, a Mexican anarchist,
                 journalist, and revolutionary who fled dictatorship and found
-                refuge in the Midwest.
+                refuge in the Midwest. Attendees explored primary-source
+                archives and engaged in a lively discussion about Magón's
+                enduring impact on Mexican and Mexican-American activism.
               </>
             ) : (
               <>
-                Únase al estudiante de historia de Washington University e
-                investigador de MexStl.org{" "}
-                <strong>Francisco Pérez</strong> mientras explora la vida y
-                el legado de <strong>Ricardo Flores Magón</strong>, un
-                anarquista, periodista y revolucionario mexicano que huía de
-                la dictadura y encontró refugio en el Medio Oeste.
+                El 31 de enero de 2026, fuimos invitados a la{" "}
+                <em>Serie de Oradores del Sábado</em> en la Sociedad
+                Histórica de Missouri (225 S Skinker Blvd). El estudiante de
+                Washington University e investigador de MexStl,{" "}
+                <strong>Francisco Pérez</strong>, ofreció una presentación
+                cautivadora sobre la vida y el legado de{" "}
+                <strong>Ricardo Flores Magón</strong>, un anarquista,
+                periodista y revolucionario mexicano que huyó de la
+                dictadura y encontró refugio en el Medio Oeste. Los
+                asistentes exploraron archivos de fuentes primarias y
+                participaron en una animada discusión sobre el impacto
+                duradero de Magón en el activismo mexicano y
+                mexicoamericano.
               </>
             )}
           </p>
-          <div className="mt-6">
+        </div>
+
+        {/* Event Images Grid */}
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
             <Image
-              src="/saturday-speaker-series.png"
-              alt="Saturday Speaker Series Flyer — Ricardo Flores Magón talk at Missouri Historical Society"
-              width={1200}
-              height={1600}
-              className="w-full h-auto object-cover rounded-lg"
+              src="/saturday-speaker-series/main_presentation.jpg"
+              alt="Francisco Pérez presenting on Ricardo Flores Magón"
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover"
+            />
+            <Image
+              src="/saturday-speaker-series/archives.jpg"
+              alt="Primary-source archives explored during the event"
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover"
+            />
+            <Image
+              src="/saturday-speaker-series/angled-behind-presentation.jpg"
+              alt="Audience view of the Saturday Speaker Series presentation"
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover"
+            />
+            <Image
+              src="/saturday-speaker-series/side-presentation.jpg"
+              alt="Side view of the speaker series presentation"
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover"
+            />
+            <Image
+              src="/saturday-speaker-series/group-photo.jpg"
+              alt="Group photo of Saturday Speaker Series attendees"
+              width={1600}
+              height={600}
+              className="md:col-span-2 w-full h-auto object-cover"
             />
           </div>
         </div>
