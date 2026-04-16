@@ -1,5 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
+import ImageCarousel from "@/components/ImageCarousel";
+
+interface CarouselImage {
+  src: string;
+  alt: string;
+}
 
 interface PastEventProps {
   titleEn: string;
@@ -13,8 +18,7 @@ interface PastEventProps {
   admissionEs?: string;
   descriptionEn: React.ReactNode;
   descriptionEs: React.ReactNode;
-  imageUrl?: string;
-  imageAlt?: string;
+  images?: CarouselImage[];
   language: string;
   slug: string; // URL slug for the detail page
 }
@@ -31,8 +35,7 @@ export default function PastEvent({
   admissionEs,
   descriptionEn,
   descriptionEs,
-  imageUrl,
-  imageAlt,
+  images,
   language,
   slug,
 }: PastEventProps) {
@@ -64,23 +67,17 @@ export default function PastEvent({
             <p className="text-base sm:text-lg md:text-xl mb-4">
               {language === "en" ? descriptionEn : descriptionEs}
             </p>
+            {images && images.length > 0 && (
+              <div className="px-6 pb-6 sm:px-8 sm:pb-8">
+                <ImageCarousel images={images} />
+              </div>
+            )}
             <div className="mt-6">
               <span className="inline-block bg-[#006341] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                 {language === "en" ? "Learn More →" : "Más Información →"}
               </span>
             </div>
           </div>
-          {imageUrl && (
-            <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-              <Image
-                src={imageUrl}
-                alt={imageAlt || "Event flyer"}
-                width={1200}
-                height={1600}
-                className="w-full h-auto object-cover rounded-lg"
-              />
-            </div>
-          )}
         </div>
       </article>
     </Link>

@@ -23,7 +23,7 @@ export default function SpeakerSeriesContent() {
           <p className="text-base sm:text-lg md:text-xl mb-4">
             {language === "en" ? (
               <>
-                On January 31, 2026, we held were invited to{" "}
+                On January 31, 2026, we were invited to{" "}
                 <em>Saturday Speaker Series</em> at the Missouri Historical
                 Society (225 S Skinker Blvd). Washington University
                 student and MexStl researcher{" "}

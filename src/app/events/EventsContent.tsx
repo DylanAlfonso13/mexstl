@@ -44,6 +44,13 @@ export default function EventsContent() {
           titleEs="Serie de Oradores del Sábado en el MHO"
           dateEn="January 31, 2026"
           dateEs="31 de enero de 2026"
+          images={[
+            { src: "/saturday-speaker-series/main_presentation.jpg", alt: "Francisco Pérez presenting on Ricardo Flores Magón" },
+            { src: "/saturday-speaker-series/archives.jpg", alt: "Primary-source archives explored during the event" },
+            { src: "/saturday-speaker-series/angled-behind-presentation.jpg", alt: "Audience view of the Saturday Speaker Series presentation" },
+            { src: "/saturday-speaker-series/side-presentation.jpg", alt: "Side view of the speaker series presentation" },
+            { src: "/saturday-speaker-series/group-photo.jpg", alt: "Group photo of Saturday Speaker Series attendees" },
+          ]}
           locationEn={
             <>
               Missouri Historical Society Library and Research Center
@@ -129,6 +136,14 @@ export default function EventsContent() {
           titleEs="Saboreando el Pasado  |  Savoring the Past"
           dateEn="April 13, 2023"
           dateEs="13 de abril de 2023"
+          images={[
+            { src: "/stp_1.png", alt: "Saboreando el Pasado community event at Lewis Collaborative Center" },
+            { src: "/stp_2.png", alt: "Table decorations at Saboreando el Pasado event" },
+            { src: "/stp_3.png", alt: "Guests gathered at Saboreando el Pasado community dinner" },
+            { src: "/stp_flyer.png", alt: "Saboreando el Pasado event poster and flyer" },
+            { src: "/stp_4.png", alt: "Food preparation at Saboreando el Pasado" },
+            { src: "/stp_5.png", alt: "Group discussion at Saboreando el Pasado" },
+          ]}
           locationEn={
             <>
               Lewis Collaborative Center
