@@ -112,8 +112,8 @@ export default function AboutContent() {
             title={language === "en" ? "Researcher" : "Investigadora"}
             additionalTitle={
               language === "en"
-                ? "PhD Candidate in Hispanic Studies, Washington University in St. Louis"
-                : "Candidata a PhD en Estudios Hispánicos, Washington University in St. Louis"
+                ? "PhD in Hispanic Studies, Washington University in St. Louis"
+                : "PhD en Estudios Hispánicos, Washington University in St. Louis"
             }
             imageURL="/sarah_hernandez_picture.png"
           />

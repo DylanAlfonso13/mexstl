@@ -14,8 +14,8 @@ export default function SpeakerSeriesContent() {
         <TitleText
           text={
             language === "en"
-              ? "Saturday Speaker Series"
-              : "Serie de Oradores del Sábado"
+              ? "Saturday Speaker Series at the MHO"
+              : "Serie de Oradores del Sábado en el MHO"
           }
         />
 

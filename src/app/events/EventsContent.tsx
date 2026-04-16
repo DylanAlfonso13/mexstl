@@ -40,12 +40,24 @@ export default function EventsContent() {
         <PastEvent
           language={language}
           slug="saturday-speaker-series"
-          titleEn="Saturday Speaker Series at MHO"
-          titleEs="Serie de Oradores del Sábado en MHO"
-          dateEn="Saturday, January 31, 2026 at 9:30 AM"
-          dateEs="Sábado, 31 de enero de 2026 a las 9:30 AM"
-          locationEn="225 S Skinker Blvd, St. Louis, MO 63105"
-          locationEs="225 S Skinker Blvd, St. Louis, MO 63105"
+          titleEn="Saturday Speaker Series at the MHO"
+          titleEs="Serie de Oradores del Sábado en el MHO"
+          dateEn="January 31, 2026"
+          dateEs="31 de enero de 2026"
+          locationEn={
+            <>
+              Missouri Historical Society Library and Research Center
+              <br />
+              225 S Skinker Blvd, St. Louis, MO 63105
+            </>
+          }
+          locationEs={
+            <>
+              Missouri Historical Society Library and Research Center
+              <br />
+              225 S Skinker Blvd, St. Louis, MO 63105
+            </>
+          }
           descriptionEn={
             <>
               Join Washington University history student and
@@ -57,11 +69,12 @@ export default function EventsContent() {
           }
           descriptionEs={
             <>
-              Únase al estudiante de historia de Washington
-              University e investigador de MexStl.org, <strong>Francisco Pérez</strong>, mientras explora la vida y el
-              legado de <strong>Ricardo Flores Magón</strong>, un anarquista,
-              periodista y revolucionario mexicano que huía de la dictadura y
-              encontró refugio en el Medio Oeste.
+              Únase al estudiante de historia de Washington University e
+              investigador de MexStl.org, <strong>Francisco Pérez</strong>,
+              mientras explora la vida y el legado de{" "}
+              <strong>Ricardo Flores Magón</strong>, un anarquista, periodista y
+              revolucionario mexicano que huía de la dictadura y encontró
+              refugio en el Medio Oeste.
             </>
           }
         />
@@ -70,8 +83,8 @@ export default function EventsContent() {
         <PastEvent
           language={language}
           slug="mexican-american-exhibit"
-          titleEn="Mexican American Pop-Up Exhibit at MHO"
-          titleEs="Exhibición Emergente Mexicoamericana at MHO"
+          titleEn="Mexican American Pop-Up Exhibit at the MHO"
+          titleEs="Exhibición Emergente Mexicoamericana en el MHO"
           dateEn="January 30 - February 28, 2026"
           dateEs="30 de enero al 28 de febrero de 2026"
           locationEn={
@@ -90,16 +103,20 @@ export default function EventsContent() {
           }
           descriptionEn={
             <>
-              St. Louis has a prominent Mexican American community and a rich history dating back to the early 1800s. 
-              This bilingual exhibit recognizes the deep-rooted Mexican presence in St. Louis and acknowledges the city&apos;s role 
-              in a larger historical narrative of mexicanos in the United States.
+              St. Louis has a prominent Mexican American community and a rich
+              history dating back to the early 1800s. This bilingual exhibit
+              recognizes the deep-rooted Mexican presence in St. Louis and
+              acknowledges the city&apos;s role in a larger historical narrative
+              of mexicanos in the United States.
             </>
           }
           descriptionEs={
             <>
-              St. Louis tiene una prominente comunidad mexicoamericana y una rica historia que se remonta a principios 
-              del siglo XIX. Esta exhibición bilingüe reconoce la presencia mexicana profundamente arraigada en St. Louis y 
-              reconoce el papel de la ciudad en una narrativa histórica más amplia de mexicanos en los Estados Unidos.
+              St. Louis tiene una prominente comunidad mexicoamericana y una
+              rica historia que se remonta a principios del siglo XIX. Esta
+              exhibición bilingüe reconoce la presencia mexicana profundamente
+              arraigada en St. Louis y reconoce el papel de la ciudad en una
+              narrativa histórica más amplia de mexicanos en los Estados Unidos.
             </>
           }
         />
@@ -108,30 +125,46 @@ export default function EventsContent() {
         <PastEvent
           language={language}
           slug="saboreando-el-pasado"
-          titleEn="Saboreando el Pasado - Savoring the Past"
-          titleEs="Saboreando el Pasado"
+          titleEn="Savoring the Past  |  Saboreando el Pasado"
+          titleEs="Saboreando el Pasado  |  Savoring the Past"
           dateEn="April 13, 2023"
           dateEs="13 de abril de 2023"
-          locationEn="Lewis Collaborative Center"
-          locationEs="Centro Colaborativo Lewis"
+          locationEn={
+            <>
+              Lewis Collaborative Center
+              <br />
+              725 Kingsland Ave, St. Louis, MO 63130
+            </>
+          }
+          locationEs={
+            <>
+              Lewis Collaborative Center
+              <br />
+              725 Kingsland Ave, St. Louis, MO 63130
+            </>
+          }
           descriptionEn={
             <>
-              We hosted a vibrant community event, <em>Saboreando el Pasado</em> (Savoring the Past), 
-              at the Lewis Collaborative Center that explored the rich connections between food and memory. 
-              Guests enjoyed a delicious catered meal from Mi Ranchito while engaging in meaningful 
-              conversations about how food shapes our personal and cultural identities.
+              We hosted a vibrant community event, <em>Saboreando el Pasado</em>{" "}
+              (Savoring the Past), at the Lewis Collaborative Center that
+              explored the rich connections between food and memory. Guests
+              enjoyed a delicious catered meal from Mi Ranchito while engaging
+              in meaningful conversations about how food shapes our personal and
+              cultural identities.
             </>
           }
           descriptionEs={
             <>
-              Organizamos un vibrante evento comunitario, <em>Saboreando el Pasado</em>, 
-              en el Centro Colaborativo Lewis que exploró las ricas conexiones entre la comida y la memoria. 
-              Los asistentes disfrutaron de una comida deliciosa de Mi Ranchito mientras participaban en 
-              conversaciones significativas sobre cómo la comida moldea nuestras identidades personales y culturales.
+              Organizamos un vibrante evento comunitario,{" "}
+              <em>Saboreando el Pasado</em>, en el Centro Colaborativo Lewis que
+              exploró las ricas conexiones entre la comida y la memoria. Los
+              asistentes disfrutaron de una comida deliciosa de Mi Ranchito
+              mientras participaban en conversaciones significativas sobre cómo
+              la comida moldea nuestras identidades personales y culturales.
             </>
           }
         />
-      </div> 
+      </div>
     </main>
   );
 }

@@ -13,8 +13,8 @@ export default function MexicanAmericanExhibitContent() {
         <TitleText
           text={
             language === "en"
-              ? "Mexican American Pop-Up Exhibit"
-              : "Exhibición Emergente Mexicoamericana"
+              ? "Mexican American Pop-Up Exhibit at the MHO"
+              : "Exhibición Emergente Mexicoamericana en el MHO"
           }
         />
 
