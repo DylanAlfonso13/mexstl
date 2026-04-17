@@ -94,6 +94,13 @@ export default function EventsContent() {
           titleEs="Exhibición Emergente Mexicoamericana en el MHO"
           dateEn="January 30 - February 28, 2026"
           dateEs="30 de enero al 28 de febrero de 2026"
+          images={[
+            { src: "/mexican-american-exhibit/pop-up-sign.jpg", alt: "Mexican American Pop-Up Exhibit sign" },
+            { src: "/mexican-american-exhibit/person-observing.jpg", alt: "Visitor observing the Mexican American exhibit" },
+            { src: "/mexican-american-exhibit/flipping-page.jpg", alt: "Attendee exploring exhibit materials" },
+            { src: "/mexican-american-exhibit/regeneracion.jpg", alt: "Regeneración display at the exhibit" },
+            { src: "/mexican-american-exhibit/mercantile-exchange.jpg", alt: "Mercantile exchange historical display" },
+          ]}
           locationEn={
             <>
               Missouri Historical Society Library and Research Center
