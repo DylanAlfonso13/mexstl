@@ -23,12 +23,12 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
   }, [images.length]);
 
-  if (images.length === 0) return null;
-
   const stopPropagation = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
   }, []);
+
+  if (images.length === 0) return null;
 
   return (
     <div className="relative w-full max-w-4xl mx-auto my-8" onClick={stopPropagation}>
