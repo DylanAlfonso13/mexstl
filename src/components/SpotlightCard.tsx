@@ -47,7 +47,7 @@ export default function SpotlightCard({
         ) : imageSrc ? (
           <div className="relative w-full h-96">
             {/* Adjust height as needed */}
-            <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" />
+            <Image src={imageSrc} alt={title} fill style={{ objectFit: "cover" }} />
           </div>
         ) : null}
         <div className="p-4">
