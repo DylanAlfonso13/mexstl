@@ -117,6 +117,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
       mapRef.current.dragRotate.enable();
       mapRef.current.doubleClickZoom.enable();
       mapRef.current.touchZoomRotate.enable();
+      mapRef.current.easeTo({ pitch: 0, bearing: 0, duration: 800 });
       setIsMapInteractive(true);
     }
   };
@@ -210,7 +211,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
             isLast={index === chapters.length - 1}
             isMapInteractive={isMapInteractive}
             onEnterView={() => {
-              flyToChapter(chapter);
+              if (!isMapInteractive) flyToChapter(chapter);
             }}
           />
         ))}
