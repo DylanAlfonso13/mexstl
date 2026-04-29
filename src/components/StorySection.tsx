@@ -125,9 +125,10 @@ const StorySection: React.FC<StorySectionProps> = ({
 
         {/* Description */}
         <div className="prose prose-lg md:prose-xl max-w-none">
-          <p className="text-lg sm:text-xl md:text-2xl leading-relaxed md:leading-loose text-gray-800 font-[family-name:var(--font-manrope)]">
-            {description}
-          </p>
+          <p
+            className="text-lg sm:text-xl md:text-2xl leading-relaxed md:leading-loose text-gray-800 font-[family-name:var(--font-manrope)] [&_a]:text-mexRed [&_a]:underline [&_a]:underline-offset-2 [&_a]:font-semibold hover:[&_a]:opacity-80"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
       </article>
     </section>
