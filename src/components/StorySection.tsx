@@ -86,7 +86,7 @@ const StorySection: React.FC<StorySectionProps> = ({
         {era && (
           <div className="mb-4 md:mb-5">
             <span 
-              className="inline-block text-xs sm:text-sm font-semibold tracking-widest uppercase text-mexRed border-b-2 border-mexRed pb-1"
+              className="inline-block text-lg sm:text-xl md:text-2xl font-semibold tracking-widest uppercase text-mexRed border-b-2 border-mexRed pb-1"
               aria-label={`Time period: ${era}`}
             >
               {era}
