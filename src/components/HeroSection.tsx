@@ -27,25 +27,6 @@ export default function HeroSection() {
         nos esforzamos en reconocer la arraigada presencia mexicana en St. Louis y también notar el papel de la ciudad 
         en la narrativa histórica de mexicanos en los Estados Unidos.`}
       </p>
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <p className="text-sm xs:text-base md:text-xl text-center pb-1">
-          {language === "en" ? `Scroll to map` : `Explorar el mapa`}
-        </p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6 animate-bounce"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-          />
-        </svg>
-      </div>
     </section>
   );
 }
