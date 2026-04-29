@@ -134,7 +134,7 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    image: '/mexican_mercantile_exchange.png',
+    image: '/Mexican_mercantile_exchange.png',
     imageCaption: 'Learn more about this archival document',
     imageCaptionHref: 'https://digitalcommons.lindenwood.edu/cgi/viewcontent.cgi?article=1120&context=confluence_2009',
     sources: {
