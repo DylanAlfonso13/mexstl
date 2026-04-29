@@ -108,7 +108,6 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
 
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMapInteractive]);
 
   const activateMap = () => {

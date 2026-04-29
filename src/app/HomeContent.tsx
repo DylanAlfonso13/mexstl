@@ -2,10 +2,8 @@
 
 import Nav from "@/components/Nav";
 import HeroSection from "@/components/HeroSection";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function HomeContent() {
-  const { language } = useLanguage();
   return (
     <main>
       <div
