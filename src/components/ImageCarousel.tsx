@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/outline';
 
 interface ImageData {
   src: string;
@@ -21,6 +21,7 @@ interface ImageCarouselProps {
  */
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -46,7 +47,9 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === 'Escape') {
+        setLightboxOpen(false);
+      } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
         goToPrevious();
       } else if (e.key === 'ArrowRight') {
@@ -94,6 +97,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
   const currentImage = images[currentIndex];
 
   return (
+    <>
     <div 
       className="w-full space-y-4"
       role="region"
@@ -104,19 +108,23 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
       {/* Main Image Container */}
       <div className="relative group">
         <div 
-          className="relative w-full aspect-[4/3] bg-gray-100 rounded-md overflow-hidden border border-gray-200 shadow-md group-hover:shadow-lg transition-shadow duration-300"
+          className="relative w-full aspect-[4/3] bg-black rounded-md overflow-hidden border border-gray-200 shadow-md group-hover:shadow-lg transition-shadow duration-300 cursor-zoom-in"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
+          onClick={() => setLightboxOpen(true)}
         >
           <Image
             src={currentImage.src}
             alt={currentImage.caption}
             fill
-            className="object-cover object-center transition-opacity duration-500"
+            className="object-contain object-center transition-opacity duration-500"
             priority={priority && currentIndex === 0}
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 1200px"
           />
+          <div className="absolute top-2 left-2 bg-black/60 text-white p-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <ArrowsPointingOutIcon className="w-4 h-4" />
+          </div>
         </div>
 
         {/* Navigation Buttons - Only show if multiple images */}
@@ -183,6 +191,42 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
         </div>
       )}
     </div>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors duration-200"
+            onClick={() => setLightboxOpen(false)}
+            aria-label="Close fullscreen"
+          >
+            <XMarkIcon className="w-6 h-6" />
+          </button>
+          <div
+            className="relative w-full h-full max-w-5xl max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={currentImage.src}
+              alt={currentImage.caption}
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+            />
+          </div>
+          {(currentImage.caption || currentImage.credit) && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-sm px-4 py-2 rounded-md text-center max-w-xl">
+              {currentImage.caption && <p>{currentImage.caption}</p>}
+              {currentImage.credit && <p className="text-gray-400 italic text-xs mt-1">{currentImage.credit}</p>}
+            </div>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 

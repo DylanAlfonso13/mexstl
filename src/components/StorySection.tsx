@@ -46,7 +46,7 @@ const StorySection: React.FC<StorySectionProps> = ({
   const [hasBeenSeen, setHasBeenSeen] = useState(false);
 
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.15,
     triggerOnce: false
   });
 
@@ -73,12 +73,12 @@ const StorySection: React.FC<StorySectionProps> = ({
     >
       <article
         className={`
-          bg-white/90 backdrop-blur-md
+          bg-white
           p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16
           rounded-2xl shadow-2xl
           max-w-4xl xl:max-w-5xl w-full
           ${isMapInteractive ? 'pointer-events-none' : 'pointer-events-auto'}
-          transform transition-all duration-700 ease-out
+          transform transition-[opacity,transform] duration-500 ease-out
           ${hasBeenSeen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
         `}
       >
