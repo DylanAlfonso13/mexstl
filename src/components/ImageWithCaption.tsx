@@ -9,6 +9,7 @@ interface ImageWithCaptionProps {
   src: string;
   alt: string;
   caption?: string;
+  captionHref?: string;
   credit?: string;
   priority?: boolean;
 }
@@ -17,6 +18,7 @@ const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
   src,
   alt,
   caption,
+  captionHref,
   credit,
   priority = false
 }) => {
@@ -45,7 +47,18 @@ const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
         {(caption || credit) && (
           <figcaption className="text-sm sm:text-base text-gray-600 leading-relaxed px-1">
             {caption && (
-              <p className="mb-1 font-[family-name:var(--font-manrope)]">{caption}</p>
+              <p className="mb-1 font-[family-name:var(--font-manrope)]">
+                {captionHref ? (
+                  <a
+                    href={captionHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 italic hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {caption}
+                  </a>
+                ) : caption}
+              </p>
             )}
             {credit && (
               <p className="text-xs sm:text-sm text-gray-500 italic">{credit}</p>

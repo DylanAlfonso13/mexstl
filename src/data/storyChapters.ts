@@ -30,6 +30,8 @@ export interface StoryChapter {
   pitch?: number;
   bearing?: number;
   image?: string; // Single image path (for backward compatibility)
+  imageCaption?: string;
+  imageCaptionHref?: string;
   images?: ImageData[]; // Multiple images for carousel
   sources?: {
     en: string[];
@@ -73,6 +75,8 @@ export const storyChapters: StoryChapter[] = [
     pitch: 0,
     bearing: 0,
     image: '/santa_fe_trail.png',
+    imageCaption: 'Learn more about this archival document',
+    imageCaptionHref: 'https://www.nps.gov/safe/index.htm',
     sources: {
       en: [
         'https://muse.jhu.edu/pub/15/article/690128/pdf',
@@ -102,6 +106,8 @@ export const storyChapters: StoryChapter[] = [
     pitch: 30,
     bearing: 0,
     image: '/missouri_pacific_railroad.jpg',
+    imageCaption: 'Learn more about this archival document',
+    imageCaptionHref: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad',
     sources: {
       en: [
         'https://muse.jhu.edu/pub/15/article/690128/pdf',
@@ -129,6 +135,8 @@ export const storyChapters: StoryChapter[] = [
     pitch: 45,
     bearing: -17.6,
     image: '/mexican_mercantile_exchange.png',
+    imageCaption: 'Learn more about this archival document',
+    imageCaptionHref: 'https://digitalcommons.lindenwood.edu/cgi/viewcontent.cgi?article=1120&context=confluence_2009',
     sources: {
       en: [
         'https://muse.jhu.edu/pub/15/article/690128/pdf',
@@ -211,6 +219,8 @@ export const storyChapters: StoryChapter[] = [
     pitch: 45,
     bearing: 0,
     image: '/regeneracion.jpg',
+    imageCaption: 'Learn more about this archival document',
+    imageCaptionHref: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html',
     sources: {
       en: [
         'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'

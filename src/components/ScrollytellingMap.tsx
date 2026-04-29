@@ -35,6 +35,8 @@ interface Chapter {
   pitch?: number;
   bearing?: number;
   image?: string;
+  imageCaption?: string;
+  imageCaptionHref?: string;
   images?: ImageData[];
   sources?: {
     en: string[];
@@ -200,6 +202,8 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
             subtitle={chapter.subtitle?.[language]}
             description={chapter.description[language]}
             image={chapter.image}
+            imageCaption={chapter.imageCaption}
+            imageCaptionHref={chapter.imageCaptionHref}
             images={chapter.images}
             language={language}
             isFirst={index === 0}

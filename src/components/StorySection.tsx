@@ -20,6 +20,8 @@ interface StorySectionProps {
   subtitle?: string;
   description: string;
   image?: string;
+  imageCaption?: string;
+  imageCaptionHref?: string;
   images?: ImageData[];
   language: 'en' | 'es';
   isFirst: boolean;
@@ -38,6 +40,8 @@ const StorySection: React.FC<StorySectionProps> = ({
   subtitle,
   description,
   image,
+  imageCaption,
+  imageCaptionHref,
   images,
   language,
   isFirst,
@@ -125,6 +129,8 @@ const StorySection: React.FC<StorySectionProps> = ({
             <ImageWithCaption
               src={image}
               alt={title}
+              caption={imageCaption}
+              captionHref={imageCaptionHref}
               priority={isFirst}
             />
           </div>
