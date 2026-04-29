@@ -22,6 +22,10 @@ interface Chapter {
     en: string;
     es: string;
   };
+  subtitle?: {
+    en?: string;
+    es?: string;
+  };
   description: {
     en: string;
     es: string;
@@ -193,6 +197,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
             key={chapter.id}
             era={chapter.era}
             title={chapter.title[language]}
+            subtitle={chapter.subtitle?.[language]}
             description={chapter.description[language]}
             image={chapter.image}
             images={chapter.images}

@@ -17,6 +17,7 @@ interface ImageData {
 interface StorySectionProps {
   era?: string;
   title: string;
+  subtitle?: string;
   description: string;
   image?: string;
   images?: ImageData[];
@@ -34,6 +35,7 @@ interface StorySectionProps {
 const StorySection: React.FC<StorySectionProps> = ({
   era,
   title,
+  subtitle,
   description,
   image,
   images,
@@ -95,9 +97,14 @@ const StorySection: React.FC<StorySectionProps> = ({
         )}
 
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-gray-900 font-[family-name:var(--font-outfit)] leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-outfit)] leading-tight mb-2">
           {title}
         </h2>
+        {subtitle && (
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-500 italic font-[family-name:var(--font-manrope)] mb-6 md:mb-8">
+            {subtitle}
+          </p>
+        )}
 
         {/* Images */}
         {hasMultipleImages && (

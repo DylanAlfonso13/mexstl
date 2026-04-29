@@ -17,6 +17,10 @@ export interface StoryChapter {
     en: string;
     es: string;
   };
+  subtitle?: {
+    en?: string;
+    es?: string;
+  };
   description: {
     en: string;
     es: string;
@@ -40,6 +44,9 @@ export const storyChapters: StoryChapter[] = [
     title: {
       en: 'Siempre Hemos Estado Aquí',
       es: 'Siempre Hemos Estado Aquí'
+    },
+    subtitle: {
+      en: 'We Have Always Been Here'
     },
     description: {
       en: 'Explore the rich history of the Mexican community in St. Louis, dating back to the early 1800s. This interactive map highlights key locations and stories of Mexican heritage in the Gateway City. From the Santa Fe Trail to the Mexican Revolution, discover how St. Louis has been a vital connection point between the United States and Mexico.',
