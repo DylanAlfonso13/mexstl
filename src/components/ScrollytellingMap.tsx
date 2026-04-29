@@ -53,6 +53,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const activeChapterIdRef = useRef<string>(chapters[0]?.id ?? '');
   const [isMapInteractive, setIsMapInteractive] = useState(false);
 
   const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
@@ -135,12 +136,16 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
 
   const flyToChapter = (chapter: Chapter) => {
     if (mapRef.current) {
+      const SLOW_ID = 'santa-fe-trail';
+      const involvesSantaFe = chapter.id === SLOW_ID || activeChapterIdRef.current === SLOW_ID;
+      const duration = involvesSantaFe ? 5000 : 2000;
+      activeChapterIdRef.current = chapter.id;
       mapRef.current.flyTo({
         center: chapter.center,
         zoom: chapter.zoom,
         pitch: chapter.pitch || 0,
         bearing: chapter.bearing || 0,
-        duration: 2000,
+        duration,
         essential: true
       });
     }
