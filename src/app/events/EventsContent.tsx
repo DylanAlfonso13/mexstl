@@ -46,7 +46,7 @@ export default function EventsContent() {
           dateEs="31 de enero de 2026"
           images={[
             { src: "/saturday-speaker-series/main_presentation.jpg", alt: "Francisco Pérez presenting on Ricardo Flores Magón" },
-            { src: "/saturday-speaker-series/archives.jpg", alt: "Primary-source archives explored during the event" },
+            { src: "/saturday-speaker-series.png", alt: "Francisco Pérez presenting on Ricardo Flores Magón" },
             { src: "/saturday-speaker-series/angled-behind-presentation.jpg", alt: "Audience view of the Saturday Speaker Series presentation" },
             { src: "/saturday-speaker-series/side-presentation.jpg", alt: "Side view of the speaker series presentation" },
             { src: "/saturday-speaker-series/group-photo.jpg", alt: "Group photo of Saturday Speaker Series attendees" },
