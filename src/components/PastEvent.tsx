@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ImageCarousel from "@/components/ImageCarousel";
+import ImageCarousel from "@/components/EventImageCarousel";
 
 interface CarouselImage {
   src: string;
