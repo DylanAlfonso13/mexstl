@@ -145,11 +145,11 @@ export default function EventsContent() {
           dateEs="13 de abril de 2023"
           images={[
             { src: "/stp_flyer.png", alt: "Saboreando el Pasado event poster and flyer" },
-            { src: "/stp_3.jpg", alt: "Guests gathered at Saboreando el Pasado community dinner" },
-            { src: "/stp_1.jpg", alt: "Saboreando el Pasado community event at Lewis Collaborative Center" },
-            { src: "/stp_4.jpg", alt: "Food preparation at Saboreando el Pasado" },
-            { src: "/stp_5.jpg", alt: "Group discussion at Saboreando el Pasado" },
-            { src: "/stp_2.jpg", alt: "Table decorations at Saboreando el Pasado event" },
+            { src: "/stp_3.jpg", alt: "Guests gathered at Saboreando el Pasado community dinner", coverFit: true },
+            { src: "/stp_1.jpg", alt: "Saboreando el Pasado community event at Lewis Collaborative Center", coverFit: true },
+            { src: "/stp_4.jpg", alt: "Food preparation at Saboreando el Pasado", coverFit: true },
+            { src: "/stp_5.jpg", alt: "Group discussion at Saboreando el Pasado", coverFit: true },
+            { src: "/stp_2.jpg", alt: "Table decorations at Saboreando el Pasado event", coverFit: true },
           ]}
           locationEn={
             <>

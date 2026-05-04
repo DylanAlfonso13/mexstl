@@ -6,6 +6,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 interface CarouselImage {
   src: string;
   alt: string;
+  coverFit?: boolean;
 }
 
 interface ImageCarouselProps {
@@ -38,7 +39,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           src={images[current].src}
           alt={images[current].alt}
           fill
-          className="object-contain"
+          className={images[current].coverFit ? "object-cover" : "object-contain"}
           sizes="(max-width: 768px) 100vw, 896px"
           priority={current === 0}
         />
