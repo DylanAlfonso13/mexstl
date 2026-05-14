@@ -53,7 +53,10 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const labelsRef = useRef<Record<string, HTMLElement>>({});
   const activeChapterIdRef = useRef<string>(chapters[0]?.id ?? '');
+  const exitMapModeRef = useRef<(() => void) | null>(null);
+  const flyToChapterFnRef = useRef<((chapter: Chapter) => void) | null>(null);
   const [isMapInteractive, setIsMapInteractive] = useState(false);
 
   const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
@@ -80,14 +83,76 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
 
     mapRef.current = map;
 
-    // Add markers for each chapter location
+    // Add custom markers with labels for each chapter (skip intro)
     map.on('load', () => {
-      chapters.forEach((chapter) => {
-        const marker = new mapboxgl.Marker({ color: '#C8102E' })
-          .setLngLat(chapter.center)
-          .addTo(map);
-        markersRef.current.push(marker);
-      });
+      chapters
+        .filter((chapter) => chapter.id !== 'intro')
+        .forEach((chapter) => {
+          // Outer wrapper
+          const el = document.createElement('div');
+          el.style.cssText = 'display:flex;flex-direction:column;align-items:center;cursor:pointer;';
+
+          // Label pill above the pin
+          const label = document.createElement('div');
+          label.textContent = chapter.title['en'];
+          label.style.cssText = [
+            'background:white',
+            'color:#1c1917',
+            'font-size:11px',
+            'font-weight:700',
+            'font-family:inherit',
+            'letter-spacing:0.02em',
+            'padding:3px 8px',
+            'border-radius:4px',
+            'box-shadow:0 2px 8px rgba(0,0,0,0.28)',
+            'margin-bottom:4px',
+            'white-space:nowrap',
+            'pointer-events:none',
+            'user-select:none',
+            'border:1px solid rgba(0,0,0,0.08)',
+          ].join(';');
+          labelsRef.current[chapter.id] = label;
+
+          // Red pin SVG
+          const svgNS = 'http://www.w3.org/2000/svg';
+          const svg = document.createElementNS(svgNS, 'svg');
+          svg.setAttribute('width', '22');
+          svg.setAttribute('height', '30');
+          svg.setAttribute('viewBox', '0 0 22 30');
+          svg.setAttribute('fill', 'none');
+          svg.style.cssText = 'pointer-events:none;display:block;';
+
+          const path = document.createElementNS(svgNS, 'path');
+          path.setAttribute('d', 'M11 0C5.477 0 1 4.477 1 10c0 7.5 10 20 10 20s10-12.5 10-20C21 4.477 16.523 0 11 0z');
+          path.setAttribute('fill', '#C8102E');
+          path.setAttribute('stroke', 'white');
+          path.setAttribute('stroke-width', '1.5');
+
+          const circle = document.createElementNS(svgNS, 'circle');
+          circle.setAttribute('cx', '11');
+          circle.setAttribute('cy', '10');
+          circle.setAttribute('r', '3.5');
+          circle.setAttribute('fill', 'white');
+
+          svg.appendChild(path);
+          svg.appendChild(circle);
+          el.appendChild(label);
+          el.appendChild(svg);
+
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            exitMapModeRef.current?.();
+            flyToChapterFnRef.current?.(chapter);
+            document
+              .getElementById(`chapter-${chapter.id}`)
+              ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+
+          const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })
+            .setLngLat(chapter.center)
+            .addTo(map);
+          markersRef.current.push(marker);
+        });
     });
 
     return () => {
@@ -97,6 +162,16 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run once on mount
+
+  // Update marker label text when language changes
+  useEffect(() => {
+    chapters.forEach((chapter) => {
+      const labelEl = labelsRef.current[chapter.id];
+      if (labelEl) {
+        labelEl.textContent = chapter.title[language];
+      }
+    });
+  }, [language, chapters]);
 
   // Handle escape key to exit map interaction mode
   useEffect(() => {
@@ -150,6 +225,10 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     }
   };
 
+  // Keep refs current so Mapbox event handlers always call the latest versions
+  exitMapModeRef.current = exitMapMode;
+  flyToChapterFnRef.current = flyToChapter;
+
   return (
     <div className="relative w-full h-screen overflow-hidden" role="region" aria-label="Interactive story map">
       {/* Fixed Map Background */}
@@ -200,24 +279,25 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
         aria-hidden={isMapInteractive}
       >
         {chapters.map((chapter, index) => (
-          <StorySection
-            key={chapter.id}
-            era={chapter.era}
-            title={chapter.title[language]}
-            subtitle={chapter.subtitle?.[language]}
-            description={chapter.description[language]}
-            image={chapter.image}
-            imageCaption={chapter.imageCaption}
-            imageCaptionHref={chapter.imageCaptionHref}
-            images={chapter.images}
-            language={language}
-            isFirst={index === 0}
-            isLast={index === chapters.length - 1}
-            isMapInteractive={isMapInteractive}
-            onEnterView={() => {
-              if (!isMapInteractive) flyToChapter(chapter);
-            }}
-          />
+          <div key={chapter.id} id={`chapter-${chapter.id}`}>
+            <StorySection
+              era={chapter.era}
+              title={chapter.title[language]}
+              subtitle={chapter.subtitle?.[language]}
+              description={chapter.description[language]}
+              image={chapter.image}
+              imageCaption={chapter.imageCaption}
+              imageCaptionHref={chapter.imageCaptionHref}
+              images={chapter.images}
+              language={language}
+              isFirst={index === 0}
+              isLast={index === chapters.length - 1}
+              isMapInteractive={isMapInteractive}
+              onEnterView={() => {
+                if (!isMapInteractive) flyToChapter(chapter);
+              }}
+            />
+          </div>
         ))}
       </div>
     </div>
