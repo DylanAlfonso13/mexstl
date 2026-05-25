@@ -1,5 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
+import ImageCarousel from "@/components/EventImageCarousel";
+
+interface CarouselImage {
+  src: string;
+  alt: string;
+  coverFit?: boolean;
+}
 
 interface PastEventProps {
   titleEn: string;
@@ -13,8 +19,7 @@ interface PastEventProps {
   admissionEs?: string;
   descriptionEn: React.ReactNode;
   descriptionEs: React.ReactNode;
-  imageUrl?: string;
-  imageAlt?: string;
+  images?: CarouselImage[];
   language: string;
   slug: string; // URL slug for the detail page
 }
@@ -31,14 +36,13 @@ export default function PastEvent({
   admissionEs,
   descriptionEn,
   descriptionEs,
-  imageUrl,
-  imageAlt,
+  images,
   language,
   slug,
 }: PastEventProps) {
   return (
     <Link href={`/events/${slug}`}>
-      <div className="max-w-4xl w-full my-8 cursor-pointer">
+      <article className="max-w-4xl w-full my-8 cursor-pointer">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-[1.02] hover:shadow-xl">
           <div className="p-6 sm:p-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
@@ -64,25 +68,19 @@ export default function PastEvent({
             <p className="text-base sm:text-lg md:text-xl mb-4">
               {language === "en" ? descriptionEn : descriptionEs}
             </p>
+            {images && images.length > 0 && (
+              <div className="px-6 pb-6 sm:px-8 sm:pb-8">
+                <ImageCarousel images={images} />
+              </div>
+            )}
             <div className="mt-6">
               <span className="inline-block bg-[#006341] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                 {language === "en" ? "Learn More →" : "Más Información →"}
               </span>
             </div>
           </div>
-          {imageUrl && (
-            <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-              <Image
-                src={imageUrl}
-                alt={imageAlt || "Event flyer"}
-                width={1200}
-                height={1600}
-                className="w-full h-auto object-cover rounded-lg"
-              />
-            </div>
-          )}
         </div>
-      </div>
+      </article>
     </Link>
   );
 }
