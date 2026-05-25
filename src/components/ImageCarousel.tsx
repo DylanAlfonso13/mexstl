@@ -108,7 +108,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
       {/* Main Image Container */}
       <div className="relative group">
         <div 
-          className="relative w-full aspect-[4/3] bg-black rounded-md overflow-hidden border border-gray-200 shadow-md group-hover:shadow-lg transition-shadow duration-300 cursor-zoom-in"
+          className="relative w-full aspect-[4/3] bg-gray-100 rounded-md overflow-hidden border border-gray-200 shadow-md group-hover:shadow-lg transition-shadow duration-300 cursor-zoom-in"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}

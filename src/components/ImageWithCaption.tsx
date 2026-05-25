@@ -28,7 +28,7 @@ const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
     <>
       <figure className="w-full space-y-3" role="figure">
         <div
-          className="relative w-full aspect-[4/3] bg-black rounded-md overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 cursor-zoom-in group"
+          className="relative w-full aspect-[4/3] bg-gray-100 rounded-md overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 cursor-zoom-in group"
           onClick={() => setLightboxOpen(true)}
         >
           <Image
