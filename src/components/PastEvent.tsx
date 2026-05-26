@@ -4,6 +4,7 @@ import EventImageCarousel from "@/components/EventImageCarousel";
 interface CarouselImage {
   src: string;
   alt: string;
+  coverFit?: boolean;
 }
 
 interface PastEventProps {

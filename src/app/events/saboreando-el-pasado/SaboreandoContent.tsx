@@ -54,21 +54,21 @@ export default function SaboreandoContent() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
             <Image
-              src="/stp_1.png"
+              src="/stp_1.jpg"
               alt="Saboreando el Pasado community event at Lewis Collaborative Center"
               width={800}
               height={600}
               className="w-full h-auto object-cover"
             />
             <Image
-              src="/stp_2.png"
+              src="/stp_2.jpg"
               alt="Table decorations at Saboreando el Pasado event"
               width={800}
               height={600}
               className="w-full h-auto object-cover"
             />
             <Image
-              src="/stp_3.png"
+              src="/stp_3.jpg"
               alt="Guests gathered at Saboreando el Pasado community dinner"
               width={1600}
               height={600}
@@ -147,14 +147,14 @@ export default function SaboreandoContent() {
           {/* Additional Event Images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
             <Image
-              src="/stp_4.png"
+              src="/stp_4.jpg"
               alt="Food preparation at Saboreando el Pasado"
               width={800}
               height={600}
               className="w-full h-auto object-cover"
             />
             <Image
-              src="/stp_5.png"
+              src="/stp_5.jpg"
               alt="Group discussion at Saboreando el Pasado"
               width={800}
               height={600}

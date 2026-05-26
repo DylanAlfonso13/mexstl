@@ -73,7 +73,7 @@ export default function SpeakerSeriesContent() {
               className="w-full h-auto object-cover"
             />
             <Image
-              src="/saturday-speaker-series/angled-behind-presentation.jpg"
+              src="/saturday-speaker-series.png"
               alt="Audience view of the Saturday Speaker Series presentation"
               width={800}
               height={600}
