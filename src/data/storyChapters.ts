@@ -25,8 +25,8 @@ export interface StoryChapter {
     en: string;
     es: string;
   };
-  center: [number, number]; // [longitude, latitude]
-  zoom: number;
+  center?: [number, number]; // [longitude, latitude]
+  zoom?: number;
   pitch?: number;
   bearing?: number;
   image?: string; // Single image path (for backward compatibility)
@@ -101,10 +101,6 @@ export const storyChapters: StoryChapter[] = [
       en: 'The <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">Missouri Pacific Railroad Company</a> was influential in creating physical connections between St. Louis and Mexico. In 1883, the <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">Mexican Central Railway Line</a> was connected to U.S. railways; in 1888, the Mexican National Railway Line was extended into the United States. Meanwhile, in Mexico, <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">President Porfirio Díaz</a> championed the growth of the Mexican National and Mexican Central Railroads, seeking to stimulate the economy by improving access to U.S. markets and lowering transportation costs. The Mexican Central Railway Line ran from Mexico City to El Paso, Texas, and from there to St. Louis.',
       es: '<a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">La Compañía de Ferrocarriles del Pacifico de Missouri</a> fue influyente en crear conexiones físicas entre St. Louis y México. En 1883, el <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">Ferrocarril Central Mexicano</a> fue conectado a los ferrocarriles de los EE.UU; en 1888, los Ferrocarriles Nacionales de México fueron extendidos a los Estados Unidos. Mientras, en México, el <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">Presidente Porfirio Diaz</a> celebraba el crecimiento de los Ferrocarriles Nacionales y Centrales de México, con la meta de estimular la economía mexicana a través del acceso a los mercados estadounidenses con costos de transportación reducidos. La línea del Ferrocarril Central Mexicano corría desde la Ciudad de México hasta El Paso, Texas y de allí a St. Louis.'
     },
-    center: [-90.1994, 38.6270],
-    zoom: 16,
-    pitch: 50,
-    bearing: 0,
     image: '/missouri_pacific_railroad.jpg',
     imageCaption: 'Learn more about this archival document',
     imageCaptionHref: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad',

@@ -30,8 +30,8 @@ interface Chapter {
     en: string;
     es: string;
   };
-  center: [number, number];
-  zoom: number;
+  center?: [number, number];
+  zoom?: number;
   pitch?: number;
   bearing?: number;
   image?: string;
@@ -70,8 +70,8 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: chapters[0].center,
-      zoom: chapters[0].zoom,
+      center: chapters[0].center ?? [-90.1994, 38.6270],
+      zoom: chapters[0].zoom ?? 11,
       pitch: chapters[0].pitch || 0,
       bearing: chapters[0].bearing || 0,
       scrollZoom: false,
@@ -86,7 +86,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     // Add custom markers with labels for each chapter (skip intro)
     map.on('load', () => {
       chapters
-        .filter((chapter) => chapter.id !== 'intro')
+        .filter((chapter) => chapter.id !== 'intro' && chapter.center)
         .forEach((chapter) => {
           // Outer wrapper
           const el = document.createElement('div');
@@ -149,7 +149,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
           });
 
           const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })
-            .setLngLat(chapter.center)
+            .setLngLat(chapter.center!)
             .addTo(map);
           markersRef.current.push(marker);
         });
@@ -209,14 +209,14 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   };
 
   const flyToChapter = (chapter: Chapter) => {
-    if (mapRef.current) {
+    if (mapRef.current && chapter.center) {
       const SLOW_ID = 'santa-fe-trail';
       const involvesSantaFe = chapter.id === SLOW_ID || activeChapterIdRef.current === SLOW_ID;
       const duration = involvesSantaFe ? 5000 : 2000;
       activeChapterIdRef.current = chapter.id;
       mapRef.current.flyTo({
         center: chapter.center,
-        zoom: chapter.zoom,
+        zoom: chapter.zoom ?? 16,
         pitch: chapter.pitch || 0,
         bearing: chapter.bearing || 0,
         duration,
