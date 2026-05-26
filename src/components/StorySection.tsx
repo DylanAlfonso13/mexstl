@@ -27,6 +27,7 @@ interface StorySectionProps {
   isFirst: boolean;
   isLast: boolean;
   isMapInteractive?: boolean;
+  footnote?: string;
   onEnterView: () => void;
 }
 
@@ -47,9 +48,11 @@ const StorySection: React.FC<StorySectionProps> = ({
   isFirst,
   isLast,
   isMapInteractive = false,
+  footnote,
   onEnterView
 }) => {
   const [hasBeenSeen, setHasBeenSeen] = useState(false);
+  const [isFootnoteOpen, setIsFootnoteOpen] = useState(false);
 
   const { ref, inView } = useInView({
     threshold: 0.15,
@@ -143,6 +146,33 @@ const StorySection: React.FC<StorySectionProps> = ({
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>
+
+        {/* Footnote */}
+        {footnote && (
+          <div className="mt-6 md:mt-8">
+            <button
+              onClick={() => setIsFootnoteOpen(prev => !prev)}
+              className="flex items-center gap-1.5 text-sm italic text-gray-500 hover:text-gray-700 transition-colors duration-200 font-[family-name:var(--font-manrope)]"
+              aria-expanded={isFootnoteOpen}
+            >
+              <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+                <circle cx="8" cy="5.5" r="0.9" fill="currentColor"/>
+                <line x1="8" y1="7.5" x2="8" y2="11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+              Learn More
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isFootnoteOpen ? 'max-h-96' : 'max-h-0'
+              }`}
+            >
+              <p className="text-xs text-gray-400 italic leading-relaxed font-[family-name:var(--font-manrope)] pt-3">
+                {footnote}
+              </p>
+            </div>
+          </div>
+        )}
       </article>
     </section>
   );

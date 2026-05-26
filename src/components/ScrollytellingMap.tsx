@@ -42,6 +42,10 @@ interface Chapter {
     en: string[];
     es: string[];
   };
+  footnote?: {
+    en: string;
+    es: string;
+  };
 }
 
 interface ScrollytellingMapProps {
@@ -293,6 +297,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
               isFirst={index === 0}
               isLast={index === chapters.length - 1}
               isMapInteractive={isMapInteractive}
+              footnote={chapter.footnote?.[language]}
               onEnterView={() => {
                 if (!isMapInteractive) flyToChapter(chapter);
               }}
