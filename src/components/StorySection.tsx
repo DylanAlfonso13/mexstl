@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ImageCarousel from './ImageCarousel';
 import ImageWithCaption from './ImageWithCaption';
@@ -12,6 +12,35 @@ interface ImageData {
     es: string;
   };
   credit?: string;
+}
+
+interface Citation {
+  num: number;
+  url: string;
+  text: string;
+}
+
+/** Extracts <a> links from HTML, replaces them with plain text + [N] superscript,
+ *  and returns the modified HTML alongside a deduplicated citations list. */
+function processDescriptionLinks(html: string): { processedHtml: string; citations: Citation[] } {
+  const urlToNum = new Map<string, number>();
+  const citations: Citation[] = [];
+  let counter = 1;
+
+  const processedHtml = html.replace(
+    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/g,
+    (_match, url: string, text: string) => {
+      if (!urlToNum.has(url)) {
+        urlToNum.set(url, counter);
+        citations.push({ num: counter, url, text });
+        counter++;
+      }
+      const num = urlToNum.get(url)!;
+      return `${text}<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
+    }
+  );
+
+  return { processedHtml, citations };
 }
 
 interface StorySectionProps {
@@ -27,7 +56,6 @@ interface StorySectionProps {
   isFirst: boolean;
   isLast: boolean;
   isMapInteractive?: boolean;
-  footnote?: string;
   onEnterView: () => void;
 }
 
@@ -48,11 +76,27 @@ const StorySection: React.FC<StorySectionProps> = ({
   isFirst,
   isLast,
   isMapInteractive = false,
-  footnote,
   onEnterView
 }) => {
   const [hasBeenSeen, setHasBeenSeen] = useState(false);
   const [isFootnoteOpen, setIsFootnoteOpen] = useState(false);
+  const [highlightedCitation, setHighlightedCitation] = useState<number | null>(null);
+  const citationRefs = useRef<Record<number, HTMLElement | null>>({});
+
+  const { processedHtml, citations } = processDescriptionLinks(description);
+
+  const handleCitationClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const sup = (e.target as HTMLElement).closest('sup[data-citation]');
+    if (!sup) return;
+    const num = parseInt(sup.getAttribute('data-citation') ?? '0', 10);
+    if (!num) return;
+    setIsFootnoteOpen(true);
+    setTimeout(() => {
+      citationRefs.current[num]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setHighlightedCitation(num);
+      setTimeout(() => setHighlightedCitation(null), 1500);
+    }, 320);
+  };
 
   const { ref, inView } = useInView({
     threshold: 0.15,
@@ -140,15 +184,15 @@ const StorySection: React.FC<StorySectionProps> = ({
         )}
 
         {/* Description */}
-        <div className="prose prose-lg md:prose-xl max-w-none">
+        <div className="prose prose-lg md:prose-xl max-w-none" onClick={handleCitationClick}>
           <p
-            className="text-lg sm:text-xl md:text-2xl leading-relaxed md:leading-loose text-gray-800 font-[family-name:var(--font-manrope)] [&_a]:text-mexRed [&_a]:underline [&_a]:underline-offset-2 [&_a]:font-semibold hover:[&_a]:opacity-80"
-            dangerouslySetInnerHTML={{ __html: description }}
+            className="text-lg sm:text-xl md:text-2xl leading-relaxed md:leading-loose text-gray-800 font-[family-name:var(--font-manrope)]"
+            dangerouslySetInnerHTML={{ __html: processedHtml }}
           />
         </div>
 
-        {/* Footnote */}
-        {footnote && (
+        {/* Citations footnote */}
+        {citations.length > 0 && (
           <div className="mt-6 md:mt-8">
             <button
               onClick={() => setIsFootnoteOpen(prev => !prev)}
@@ -167,9 +211,27 @@ const StorySection: React.FC<StorySectionProps> = ({
                 isFootnoteOpen ? 'max-h-96' : 'max-h-0'
               }`}
             >
-              <p className="text-xs text-gray-400 italic leading-relaxed font-[family-name:var(--font-manrope)] pt-3">
-                {footnote}
-              </p>
+              <div className="pt-3 space-y-1">
+                {citations.map((citation) => (
+                  <p
+                    key={citation.num}
+                    ref={(el) => { citationRefs.current[citation.num] = el; }}
+                    className={`text-xs font-[family-name:var(--font-manrope)] leading-relaxed transition-colors duration-300 rounded px-1 -mx-1 ${
+                      highlightedCitation === citation.num ? 'text-mexRed bg-red-50' : 'text-mexRed/70'
+                    }`}
+                  >
+                    <span className="font-semibold not-italic">[{citation.num}]</span>{' '}
+                    <a
+                      href={citation.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="italic underline underline-offset-1 hover:text-mexRed transition-colors duration-200"
+                    >
+                      {citation.text}
+                    </a>
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         )}
