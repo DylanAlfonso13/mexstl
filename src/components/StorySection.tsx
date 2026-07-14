@@ -32,6 +32,20 @@ function normalizeUrl(url: string): string {
   return url.replace(/#.*$/, '').replace(/\/+$/, '');
 }
 
+const CITATION_LINK_CLASS = 'underline underline-offset-1 hover:text-mexRed transition-colors duration-200 break-words';
+
+// For curated Chicago citations, underline/link only the trailing URL and leave
+// the descriptive text (which may contain <i> for journal titles) plain. For
+// auto-generated footnotes, whose text is just a link label, link the whole label.
+function formatCitationHtml(citation: Citation): string {
+  const match = citation.text.match(/^(.*?)(https?:\/\/\S+?)(\.?)$/);
+  if (match) {
+    const [, before, url, trailing] = match;
+    return `${before}<a href="${url}" target="_blank" rel="noopener noreferrer" class="${CITATION_LINK_CLASS}">${url}</a>${trailing}`;
+  }
+  return `<a href="${citation.url}" target="_blank" rel="noopener noreferrer" class="italic ${CITATION_LINK_CLASS}">${citation.text}</a>`;
+}
+
 /** Extracts <a> links from HTML, replaces them with plain text + [N] superscript,
  *  and returns the modified HTML alongside a deduplicated citations list.
  *  When curated sources are provided they become the citation list (numbered in
@@ -48,9 +62,11 @@ function processDescriptionLinks(html: string, sources?: Source[]): { processedH
   );
   let counter = citations.length + 1;
 
+  // Capture any punctuation immediately after the link so the marker can sit
+  // after it (Chicago style: superscript follows the comma/period, not before)
   const processedHtml = html.replace(
-    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/g,
-    (_match, url: string, text: string) => {
+    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>([.,;:]?)/g,
+    (_match, url: string, text: string, punct: string) => {
       const key = normalizeUrl(url);
       if (!urlToNum.has(key)) {
         urlToNum.set(key, counter);
@@ -58,7 +74,7 @@ function processDescriptionLinks(html: string, sources?: Source[]): { processedH
         counter++;
       }
       const num = urlToNum.get(key)!;
-      return `${text}<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
+      return `${text}${punct}<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
     }
   );
 
@@ -250,13 +266,7 @@ const StorySection: React.FC<StorySectionProps> = ({
                     }`}
                   >
                     <span className="font-semibold not-italic">[{citation.num}]</span>{' '}
-                    <a
-                      href={citation.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline underline-offset-1 hover:text-mexRed transition-colors duration-200 break-words"
-                      dangerouslySetInnerHTML={{ __html: citation.text }}
-                    />
+                    <span dangerouslySetInnerHTML={{ __html: formatCitationHtml(citation) }} />
                   </p>
                 ))}
               </div>
