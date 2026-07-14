@@ -12,6 +12,7 @@ interface ImageData {
     es: string;
   };
   credit?: string;
+  citation?: number;
 }
 
 interface Citation {
@@ -20,22 +21,43 @@ interface Citation {
   text: string;
 }
 
+interface Source {
+  text: string;
+  url: string;
+}
+
+// Description hrefs may carry #:~:text= fragments or trailing slashes that the
+// curated source URLs don't, so compare without them
+function normalizeUrl(url: string): string {
+  return url.replace(/#.*$/, '').replace(/\/+$/, '');
+}
+
 /** Extracts <a> links from HTML, replaces them with plain text + [N] superscript,
- *  and returns the modified HTML alongside a deduplicated citations list. */
-function processDescriptionLinks(html: string): { processedHtml: string; citations: Citation[] } {
-  const urlToNum = new Map<string, number>();
-  const citations: Citation[] = [];
-  let counter = 1;
+ *  and returns the modified HTML alongside a deduplicated citations list.
+ *  When curated sources are provided they become the citation list (numbered in
+ *  source order, matched to links by URL); otherwise citations are derived from
+ *  the links themselves. */
+function processDescriptionLinks(html: string, sources?: Source[]): { processedHtml: string; citations: Citation[] } {
+  const citations: Citation[] = (sources ?? []).map((source, index) => ({
+    num: index + 1,
+    url: source.url,
+    text: source.text
+  }));
+  const urlToNum = new Map<string, number>(
+    citations.map((citation) => [normalizeUrl(citation.url), citation.num])
+  );
+  let counter = citations.length + 1;
 
   const processedHtml = html.replace(
     /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/g,
     (_match, url: string, text: string) => {
-      if (!urlToNum.has(url)) {
-        urlToNum.set(url, counter);
+      const key = normalizeUrl(url);
+      if (!urlToNum.has(key)) {
+        urlToNum.set(key, counter);
         citations.push({ num: counter, url, text });
         counter++;
       }
-      const num = urlToNum.get(url)!;
+      const num = urlToNum.get(key)!;
       return `${text}<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
     }
   );
@@ -52,6 +74,7 @@ interface StorySectionProps {
   imageCaption?: string;
   imageCaptionHref?: string;
   images?: ImageData[];
+  sources?: Source[];
   language: 'en' | 'es';
   isFirst: boolean;
   isLast: boolean;
@@ -72,6 +95,7 @@ const StorySection: React.FC<StorySectionProps> = ({
   imageCaption,
   imageCaptionHref,
   images,
+  sources,
   language,
   isFirst,
   isLast,
@@ -83,12 +107,9 @@ const StorySection: React.FC<StorySectionProps> = ({
   const [highlightedCitation, setHighlightedCitation] = useState<number | null>(null);
   const citationRefs = useRef<Record<number, HTMLElement | null>>({});
 
-  const { processedHtml, citations } = processDescriptionLinks(description);
+  const { processedHtml, citations } = processDescriptionLinks(description, sources);
 
-  const handleCitationClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const sup = (e.target as HTMLElement).closest('sup[data-citation]');
-    if (!sup) return;
-    const num = parseInt(sup.getAttribute('data-citation') ?? '0', 10);
+  const scrollToCitation = (num: number) => {
     if (!num) return;
     setIsFootnoteOpen(true);
     setTimeout(() => {
@@ -96,6 +117,12 @@ const StorySection: React.FC<StorySectionProps> = ({
       setHighlightedCitation(num);
       setTimeout(() => setHighlightedCitation(null), 1500);
     }, 320);
+  };
+
+  const handleCitationClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const sup = (e.target as HTMLElement).closest('sup[data-citation]');
+    if (!sup) return;
+    scrollToCitation(parseInt(sup.getAttribute('data-citation') ?? '0', 10));
   };
 
   const { ref, inView } = useInView({
@@ -164,8 +191,10 @@ const StorySection: React.FC<StorySectionProps> = ({
               images={images.map(img => ({
                 src: img.src,
                 caption: img.caption[language],
-                credit: img.credit
+                credit: img.credit,
+                citation: img.citation
               }))}
+              onCitationClick={scrollToCitation}
               priority={isFirst}
             />
           </div>
@@ -208,7 +237,7 @@ const StorySection: React.FC<StorySectionProps> = ({
             </button>
             <div
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                isFootnoteOpen ? 'max-h-96' : 'max-h-0'
+                isFootnoteOpen ? 'max-h-[60rem]' : 'max-h-0'
               }`}
             >
               <div className="pt-3 space-y-1">
@@ -225,10 +254,9 @@ const StorySection: React.FC<StorySectionProps> = ({
                       href={citation.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="italic underline underline-offset-1 hover:text-mexRed transition-colors duration-200"
-                    >
-                      {citation.text}
-                    </a>
+                      className="underline underline-offset-1 hover:text-mexRed transition-colors duration-200 break-words"
+                      dangerouslySetInnerHTML={{ __html: citation.text }}
+                    />
                   </p>
                 ))}
               </div>

@@ -8,6 +8,12 @@ export interface ImageData {
     es: string;
   };
   credit?: string;
+  citation?: number; // Footnote number shown as a superscript on the caption
+}
+
+export interface Source {
+  text: string; // Chicago-format citation; may contain minimal HTML (e.g. <i> for journal titles)
+  url: string; // Link target; must match the href used in the description for in-text numbering
 }
 
 export interface StoryChapter {
@@ -34,8 +40,8 @@ export interface StoryChapter {
   imageCaptionHref?: string;
   images?: ImageData[]; // Multiple images for carousel
   sources?: {
-    en: string[];
-    es: string[];
+    en: Source[];
+    es: Source[];
   };
 }
 
@@ -74,19 +80,113 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    image: '/santa_fe_trail.png',
-    imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://www.nps.gov/safe/index.htm',
+    images: [
+      {
+        src: '/santa-fe/conestoga_wagon.jpg',
+        citation: 1,
+        caption: {
+          en: 'The Conestoga wagon was popular on the Santa Fe Trail because its curved design kept cargo centered on rough terrain.',
+          es: 'La carreta Conestoga era popular en el Camino de Santa Fe porque su diseño curvado mantenía la carga centrada en terrenos accidentados.'
+        },
+        credit: 'National Park Service'
+      },
+      {
+        src: '/santa-fe/francisca_lopez.webp',
+        citation: 2,
+        caption: {
+          en: 'Francisca López, who journeyed from New Mexico to St. Louis via the Santa Fe Trail in 1850.',
+          es: 'Francisca López, quien viajó de Nuevo México a St. Louis por el Camino de Santa Fe en 1850.'
+        },
+        credit: 'National Park Service'
+      },
+      {
+        src: '/santa-fe/felipe_chavez.jpg',
+        citation: 3,
+        caption: {
+          en: 'Don Felipe Chávez, an elite New Mexican scholar, was a highly successful trader along the Santa Fe Trail known as <i>el millonario</i>.',
+          es: 'Don Felipe Chávez, un erudito de la élite nuevomexicana, fue un comerciante muy exitoso a lo largo del Camino de Santa Fe, conocido como <i>el millonario</i>.'
+        },
+        credit: 'Santa Fe National Historic Trail: Special History Study'
+      },
+      {
+        src: '/santa-fe/santa_fe_trail_map.png',
+        citation: 4,
+        caption: {
+          en: 'The Santa Fe Trail connected Franklin, Missouri to Santa Fe, New Mexico (Spanish territory until 1848). St. Louis was connected via the Mississippi River.',
+          es: 'El Camino de Santa Fe conectaba Franklin, Missouri con Santa Fe, Nuevo México (territorio español hasta 1848). St. Louis estaba conectado a través del río Mississippi.'
+        },
+        credit: 'ArcGIS web application, National Park Service'
+      }
+    ],
     sources: {
       en: [
-        'https://muse.jhu.edu/pub/15/article/690128/pdf',
-        'https://www.nps.gov/safe/learn/historyculture/index.htm',
-        'https://santafetrail.org/history/'
+        {
+          text: '“Laboring for a Living on the Santa Fe Trail (U.S. National Park Service).” National Parks Service. https://www.nps.gov/articles/000/laboring-for-a-living-on-the-santa-fe-trail.htm.',
+          url: 'https://www.nps.gov/articles/000/laboring-for-a-living-on-the-santa-fe-trail.htm'
+        },
+        {
+          text: '“People of the Santa Fe Trail: Francisca López.” National Parks Service. https://www.nps.gov/people/francisca-lopez.htm.',
+          url: 'https://www.nps.gov/people/francisca-lopez.htm'
+        },
+        {
+          text: '“Felipe Chávez.” Santa Fe National Historic Trail: Special History Study (Chapter 6). https://npshistory.com/publications/safe/shs/chap6.htm.',
+          url: 'https://npshistory.com/publications/safe/shs/chap6.htm'
+        },
+        {
+          text: 'ArcGIS web application. https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=24fc463363f54929833580280cc1a751.',
+          url: 'https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=24fc463363f54929833580280cc1a751'
+        },
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 18. https://doi.org/10.1353/dlg.2018.0003.',
+          // Matches the in-text link, which points to the full text on Project MUSE
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '“History &amp; Culture - Santa Fe National Historic Trail.” National Parks Service. https://www.nps.gov/safe/learn/historyculture/index.htm.',
+          url: 'https://www.nps.gov/safe/learn/historyculture/index.htm'
+        },
+        {
+          text: 'Myers, Harry C. “A History of the Santa Fe Trail.” Santa Fe Trail. https://santafetrail.org/history/.',
+          url: 'https://santafetrail.org/history/'
+        },
+        {
+          text: '“Treaty of Guadalupe Hidalgo (1848).” Archives. https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo.',
+          url: 'https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo'
+        }
       ],
       es: [
-        'https://muse.jhu.edu/pub/15/article/690128/pdf',
-        'https://www.nps.gov/safe/learn/historyculture/index.htm',
-        'https://santafetrail.org/history/'
+        {
+          text: '“Laboring for a Living on the Santa Fe Trail (U.S. National Park Service).” National Parks Service. https://www.nps.gov/articles/000/laboring-for-a-living-on-the-santa-fe-trail.htm.',
+          url: 'https://www.nps.gov/articles/000/laboring-for-a-living-on-the-santa-fe-trail.htm'
+        },
+        {
+          text: '“People of the Santa Fe Trail: Francisca López.” National Parks Service. https://www.nps.gov/people/francisca-lopez.htm.',
+          url: 'https://www.nps.gov/people/francisca-lopez.htm'
+        },
+        {
+          text: '“Felipe Chávez.” Santa Fe National Historic Trail: Special History Study (Chapter 6). https://npshistory.com/publications/safe/shs/chap6.htm.',
+          url: 'https://npshistory.com/publications/safe/shs/chap6.htm'
+        },
+        {
+          text: 'ArcGIS web application. https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=24fc463363f54929833580280cc1a751.',
+          url: 'https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=24fc463363f54929833580280cc1a751'
+        },
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 18. https://doi.org/10.1353/dlg.2018.0003.',
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '“History &amp; Culture - Santa Fe National Historic Trail.” National Parks Service. https://www.nps.gov/safe/learn/historyculture/index.htm.',
+          url: 'https://www.nps.gov/safe/learn/historyculture/index.htm'
+        },
+        {
+          text: 'Myers, Harry C. “A History of the Santa Fe Trail.” Santa Fe Trail. https://santafetrail.org/history/.',
+          url: 'https://santafetrail.org/history/'
+        },
+        {
+          text: '“Treaty of Guadalupe Hidalgo (1848).” Archives. https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo.',
+          url: 'https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo'
+        }
       ]
     }
   },
@@ -103,17 +203,7 @@ export const storyChapters: StoryChapter[] = [
     },
     image: '/missouri_pacific_railroad.jpg',
     imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad',
-    sources: {
-      en: [
-        'https://muse.jhu.edu/pub/15/article/690128/pdf',
-        'https://www.houstonculture.org/hispanic/roads.html'
-      ],
-      es: [
-        'https://muse.jhu.edu/pub/15/article/690128/pdf',
-        'https://www.houstonculture.org/hispanic/roads.html'
-      ]
-    }
+    imageCaptionHref: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad'
   },
   {
     id: 'mercantile-exchange',
@@ -132,17 +222,7 @@ export const storyChapters: StoryChapter[] = [
     bearing: 0,
     image: '/Mexican_mercantile_exchange.png',
     imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://digitalcommons.lindenwood.edu/cgi/viewcontent.cgi?article=1120&context=confluence_2009',
-    sources: {
-      en: [
-        'https://muse.jhu.edu/pub/15/article/690128/pdf',
-        'https://mexstl.org/stl_post_dispatch'
-      ],
-      es: [
-        'https://muse.jhu.edu/pub/15/article/690128/pdf',
-        'https://mexstl.org/stl_post_dispatch'
-      ]
-    }
+    imageCaptionHref: 'https://digitalcommons.lindenwood.edu/cgi/viewcontent.cgi?article=1120&context=confluence_2009'
   },
   {
     id: 'armijo-home',
@@ -158,19 +238,7 @@ export const storyChapters: StoryChapter[] = [
     center: [-90.2120, 38.6356], // Home of Juan C. Armijo
     zoom: 16,
     pitch: 50,
-    bearing: 0,
-    sources: {
-      en: [
-        'https://timesmachine.nytimes.com/timesmachine/1890/12/23/103287788.html',
-        'https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187',
-        'http://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30'
-      ],
-      es: [
-        'https://timesmachine.nytimes.com/timesmachine/1890/12/23/103287788.html',
-        'https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187',
-        'http://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30'
-      ]
-    }
+    bearing: 0
   },
   {
     id: 'railway-headquarters',
@@ -187,17 +255,7 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    image: '/railway_headquarters.png',
-    sources: {
-      en: [
-        'https://mexstl.org/mexican_center',
-        'https://www.builtstlouis.net/opos/chamber.html'
-      ],
-      es: [
-        'https://mexstl.org/mexican_center',
-        'https://www.builtstlouis.net/opos/chamber.html'
-      ]
-    }
+    image: '/railway_headquarters.png'
   },
   {
     id: 'regeneracion',
@@ -216,14 +274,6 @@ export const storyChapters: StoryChapter[] = [
     bearing: 0,
     image: '/regeneracion.jpg',
     imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html',
-    sources: {
-      en: [
-        'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
-      ],
-      es: [
-        'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
-      ]
-    }
+    imageCaptionHref: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
   }
 ];

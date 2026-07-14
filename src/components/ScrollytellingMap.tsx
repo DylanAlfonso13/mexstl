@@ -13,6 +13,12 @@ interface ImageData {
     es: string;
   };
   credit?: string;
+  citation?: number;
+}
+
+interface Source {
+  text: string;
+  url: string;
 }
 
 interface Chapter {
@@ -39,8 +45,8 @@ interface Chapter {
   imageCaptionHref?: string;
   images?: ImageData[];
   sources?: {
-    en: string[];
-    es: string[];
+    en: Source[];
+    es: Source[];
   };
 }
 
@@ -289,6 +295,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
               imageCaption={chapter.imageCaption}
               imageCaptionHref={chapter.imageCaptionHref}
               images={chapter.images}
+              sources={chapter.sources?.[language]}
               language={language}
               isFirst={index === 0}
               isLast={index === chapters.length - 1}

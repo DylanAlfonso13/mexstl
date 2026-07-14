@@ -1,25 +1,31 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/outline';
 
 interface ImageData {
   src: string;
-  caption: string;
+  caption: string; // May contain minimal HTML (e.g. <i> for foreign phrases)
   credit?: string;
+  citation?: number;
 }
 
 interface ImageCarouselProps {
   images: ImageData[];
   priority?: boolean;
+  onCitationClick?: (num: number) => void;
 }
+
+// Captions may carry <i> tags; alt text must be plain
+const stripHtml = (html: string): string => html.replace(/<[^>]*>/g, '');
 
 /**
  * Museum-style image carousel with navigation
  * Supports keyboard, touch, and click navigation
  */
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false, onCitationClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -116,7 +122,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
         >
           <Image
             src={currentImage.src}
-            alt={currentImage.caption}
+            alt={stripHtml(currentImage.caption)}
             fill
             className="object-contain object-center transition-opacity duration-500"
             priority={priority && currentIndex === 0}
@@ -158,7 +164,18 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
 
       {/* Caption */}
       <figcaption className="text-sm sm:text-base text-gray-600 leading-relaxed px-1">
-        <p className="mb-1 font-[family-name:var(--font-manrope)]">{currentImage.caption}</p>
+        <p className="mb-1 font-[family-name:var(--font-manrope)]">
+          <span dangerouslySetInnerHTML={{ __html: currentImage.caption }} />
+          {currentImage.citation != null && (
+            <sup
+              onClick={() => onCitationClick?.(currentImage.citation!)}
+              className="text-mexRed font-bold text-[0.7em] cursor-pointer ml-0.5"
+              title={`View citation ${currentImage.citation}`}
+            >
+              [{currentImage.citation}]
+            </sup>
+          )}
+        </p>
         {currentImage.credit && (
           <p className="text-xs sm:text-sm text-gray-500 italic">
             {currentImage.credit}
@@ -193,7 +210,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
     </div>
 
       {/* Lightbox */}
-      {lightboxOpen && (
+      {lightboxOpen && createPortal(
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setLightboxOpen(false)}
@@ -211,7 +228,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
           >
             <Image
               src={currentImage.src}
-              alt={currentImage.caption}
+              alt={stripHtml(currentImage.caption)}
               fill
               className="object-contain"
               sizes="100vw"
@@ -220,11 +237,19 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false 
           </div>
           {(currentImage.caption || currentImage.credit) && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-sm px-4 py-2 rounded-md text-center max-w-xl">
-              {currentImage.caption && <p>{currentImage.caption}</p>}
+              {currentImage.caption && (
+                <p>
+                  <span dangerouslySetInnerHTML={{ __html: currentImage.caption }} />
+                  {currentImage.citation != null && (
+                    <sup className="font-bold text-[0.7em] ml-0.5">[{currentImage.citation}]</sup>
+                  )}
+                </p>
+              )}
               {currentImage.credit && <p className="text-gray-400 italic text-xs mt-1">{currentImage.credit}</p>}
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
