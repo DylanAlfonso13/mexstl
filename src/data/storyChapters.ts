@@ -409,14 +409,36 @@ export const storyChapters: StoryChapter[] = [
       es: 'Sede del Ferrocarril Central Mexicano'
     },
     description: {
-      en: 'In 1902, the Mexican Central Railway (Ferrocarril Central Mexicano) headquarters in the United States was moved from Boston to St. Louis. Henry Clay Pierce, president of the Waters-Pierce Oil Company, spearheaded the move in an effort to develop the American west, where St. Louis was a leading metropolis. According to this <a href="https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf" target="_blank" rel="noopener noreferrer">St. Louis Dispatch</a> article, the new headquarters were to be located in St. Louis\' <a href="https://www.builtstlouis.net/opos/chamber.html" target="_blank" rel="noopener noreferrer">National Bank of Commerce</a> building downtown, off North Broadway and Olive Street.',
-      es: 'En 1902, la gerencia general del Ferrocarril Central Mexicano en los Estados Unidos fue trasladada de Boston a St. Louis. Henry Clay Pierce, presidente de la compañía petrolera Waters-Pierce, lideró el movimiento para desarrollar el Oeste de América, donde St. Louis era la metropolis. De acuerdo al artículo del <a href="https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf" target="_blank" rel="noopener noreferrer">St. Louis Dispatch</a>, la nueva gerencia general iba a estar ubicada en el <a href="https://www.builtstlouis.net/opos/chamber.html" target="_blank" rel="noopener noreferrer">Banco Nacional de Comercio</a> de St. Louis, junto a North Broadway y Olive Street.'
+      en: 'In 1902, the Mexican Central Railway (<i>Ferrocarril Central Mexicano</i>) headquarters in the United States was moved from Boston to St. Louis. Henry Clay Pierce, president of the Waters-Pierce Oil Company, spearheaded the move in an effort to develop the American west, where St. Louis was a leading metropolis. According to this <a href="https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf" target="_blank" rel="noopener noreferrer"><i>St. Louis Post-Dispatch</i></a> article, the new headquarters were to be located in St. Louis\' <a href="https://www.builtstlouis.net/opos/chamber.html" target="_blank" rel="noopener noreferrer">National Bank of Commerce</a> building downtown, off North Broadway and Olive Street.',
+      es: 'En 1902, la gerencia general del Ferrocarril Central Mexicano en los Estados Unidos fue trasladada de Boston a St. Louis. Henry Clay Pierce, presidente de la compañía petrolera Waters-Pierce, lideró el movimiento para desarrollar el Oeste de América, donde St. Louis era la metropolis. De acuerdo al artículo del <a href="https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf" target="_blank" rel="noopener noreferrer"><i>St. Louis Post-Dispatch</i></a>, la nueva gerencia general iba a estar ubicada en el <a href="https://www.builtstlouis.net/opos/chamber.html" target="_blank" rel="noopener noreferrer">Banco Nacional de Comercio</a> de St. Louis, junto a North Broadway y Olive Street.'
     },
     center: [-90.1891, 38.6281], // North Broadway and Olive Street area
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    image: '/railway_headquarters.png'
+    image: '/railway_headquarters.png',
+    sources: {
+      en: [
+        {
+          text: '“Mexican Central a St. Louis Road: H. Cay Pierce is Now its Moving Spirit.” <i>St. Louis Post-Dispatch</i>. May 8, 1902. https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf.',
+          url: 'https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf'
+        },
+        {
+          text: '“Chamber of Commerce Building.” Built St. Louis. https://www.builtstlouis.net/opos/chamber.html.',
+          url: 'https://www.builtstlouis.net/opos/chamber.html'
+        }
+      ],
+      es: [
+        {
+          text: '“Mexican Central a St. Louis Road: H. Cay Pierce is Now its Moving Spirit.” <i>St. Louis Post-Dispatch</i>. May 8, 1902. https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf.',
+          url: 'https://www.mexstl.org/MEXICAN_CENTRAL_A_ST._LOUIS_RO.pdf'
+        },
+        {
+          text: '“Chamber of Commerce Building.” Built St. Louis. https://www.builtstlouis.net/opos/chamber.html.',
+          url: 'https://www.builtstlouis.net/opos/chamber.html'
+        }
+      ]
+    }
   },
   {
     id: 'regeneracion',
