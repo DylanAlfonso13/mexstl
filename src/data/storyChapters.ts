@@ -82,7 +82,7 @@ export const storyChapters: StoryChapter[] = [
     bearing: 0,
     images: [
       {
-        src: '/santa-fe/conestoga_wagon.jpg',
+        src: '/story-map/santa-fe/conestoga_wagon.jpg',
         citation: 1,
         caption: {
           en: 'The Conestoga wagon was popular on the Santa Fe Trail because its curved design kept cargo centered on rough terrain.',
@@ -91,7 +91,7 @@ export const storyChapters: StoryChapter[] = [
         credit: 'National Park Service'
       },
       {
-        src: '/santa-fe/francisca_lopez.webp',
+        src: '/story-map/santa-fe/francisca_lopez.webp',
         citation: 2,
         caption: {
           en: 'Francisca López, who journeyed from New Mexico to St. Louis via the Santa Fe Trail in 1850.',
@@ -100,7 +100,7 @@ export const storyChapters: StoryChapter[] = [
         credit: 'National Park Service'
       },
       {
-        src: '/santa-fe/felipe_chavez.jpg',
+        src: '/story-map/santa-fe/felipe_chavez.jpg',
         citation: 3,
         caption: {
           en: 'Don Felipe Chávez, an elite New Mexican scholar, was a highly successful trader along the Santa Fe Trail known as <i>el millonario</i>.',
@@ -109,7 +109,7 @@ export const storyChapters: StoryChapter[] = [
         credit: 'Santa Fe National Historic Trail: Special History Study'
       },
       {
-        src: '/santa-fe/santa_fe_trail_map.png',
+        src: '/story-map/santa-fe/santa_fe_trail_map.png',
         citation: 4,
         caption: {
           en: 'The Santa Fe Trail connected Franklin, Missouri to Santa Fe, New Mexico (Spanish territory until 1848). St. Louis was connected via the Mississippi River.',
@@ -205,11 +205,9 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    // TODO: both images point at the existing placeholder for now — swap in the
-    // c.1891 Missouri Pacific and c.1898 Mexican Central map images once available
     images: [
       {
-        src: '/missouri_pacific_railroad.jpg',
+        src: '/story-map/missouri_pacific_railroad_company/missouri_pacific_railway.jpg',
         citation: 1,
         caption: {
           en: 'Missouri Pacific Railway lines (c. 1891), showing connections to El Paso and Mexican rail networks.',
@@ -218,7 +216,7 @@ export const storyChapters: StoryChapter[] = [
         credit: 'Wikipedia'
       },
       {
-        src: '/missouri_pacific_railroad.jpg',
+        src: '/story-map/missouri_pacific_railroad_company/mexican_central_railway.jpg',
         citation: 2,
         caption: {
           en: 'Mexican Central Railway lines (c. 1898), showing connections to El Paso and U.S. rail networks.',
@@ -247,9 +245,7 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
         },
         {
-          // TODO: placeholder URL — the source doc lists this article twice (footnotes
-          // 5 and 6) with "[Insert embedded link]"; replace with the real embedded link
-          text: '“Looking Towards Mexico.” <i>St. Louis Globe-Democrat</i>. January 23, 1883.',
+          text: '“Looking Towards Mexico.” <i>St. Louis Globe-Democrat</i>. January 23, 1883. https://www.mexstl.org/looking-towards-mexico.',
           url: 'https://www.mexstl.org/looking-towards-mexico'
         }
       ],
@@ -271,7 +267,7 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
         },
         {
-          text: '“Looking Towards Mexico.” <i>St. Louis Globe-Democrat</i>. January 23, 1883.',
+          text: '“Looking Towards Mexico.” <i>St. Louis Globe-Democrat</i>. January 23, 1883. https://www.mexstl.org/looking-towards-mexico.',
           url: 'https://www.mexstl.org/looking-towards-mexico'
         }
       ]

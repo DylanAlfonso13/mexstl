@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: "/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf",
         permanent: true,
       },
+      {
+        source: "/looking-towards-mexico",
+        destination: "/St__Louis_Globe_Democrat_Tue__Jan_23__1883_.pdf",
+        permanent: true,
+      },
       // Redirect old underscore URLs to new hyphenated ones
       {
         source: "/mexican_center",
