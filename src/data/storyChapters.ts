@@ -285,16 +285,75 @@ export const storyChapters: StoryChapter[] = [
       es: 'Intercambio Mercantil Mexicano'
     },
     description: {
-      en: 'In 1883, the <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">Mexican and Spanish-American Mercantile Exchange</a> organization was founded in St. Louis. This organization hosted visits of prominent Mexican businessmen, encouraged the study of Spanish in St. Louis, and distributed pamphlets in Mexico promoting relations with the Midwest. This company was established by John F. Cahill, a mercantile drug business owner who had previously worked in Mexico and Cuba. Efforts such as this solidified growing relations between St. Louis and Mexico, and facilitated the beginnings of Mexican immigration to St. Louis. By the end of the nineteenth century, exports from St. Louis to Mexico amounted to <a href="https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf" target="_blank" rel="noopener noreferrer">$7.5 million a year</a>.',
-      es: 'En 1883, la organización del <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">Intercambio Mercantil de México e Hispanoamérica</a> fue fundada en St. Louis. Esta organización auspiciaba visitas de empresarios mexicanos destacados, motivaba el aprendizaje del idioma del español en St. Louis, y distribuía folletos en México promoviendo relaciones con el Medio Oeste. La compañía fue establecida por John F. Cahill, un propietario de un negocio de medicamentos que previamente trabajaba en México y Cuba. Esfuerzos como estos fortalecieron el crecimiento de relaciones entre St. Louis y México, al igual que facilitaron los inicios de la inmigración mexicana a St. Louis. A finales del siglo 19, las exportaciones de St. Louis a México ascendieron a <a href="https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf" target="_blank" rel="noopener noreferrer">$7.5 millones al año</a>.'
+      en: 'In 1883, the <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">Mexican and Spanish-American Mercantile Exchange</a> organization was founded in St. Louis. This organization hosted visits of prominent Mexican businessmen, encouraged the study of Spanish in St. Louis, and distributed pamphlets in Mexico promoting relations with the Midwest. This company was established by John F. Cahill, a mercantile drug business owner who had previously worked in Mexico and Cuba. Efforts such as this solidified growing relations between St. Louis and Mexico, and facilitated the beginnings of Mexican immigration to St. Louis. By the end of the nineteenth century, exports from St. Louis to Mexico amounted to <a href="https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf" target="_blank" rel="noopener noreferrer">$7.5 million a year — about $250 million in today’s economy</a>.',
+      es: 'En 1883, la organización del <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">Intercambio Mercantil de México e Hispanoamérica</a> fue fundada en St. Louis. Esta organización auspiciaba visitas de empresarios mexicanos destacados, motivaba el aprendizaje del idioma del español en St. Louis, y distribuía folletos en México promoviendo relaciones con el Medio Oeste. La compañía fue establecida por John F. Cahill, un propietario de un negocio de medicamentos que previamente trabajaba en México y Cuba. Esfuerzos como estos fortalecieron el crecimiento de relaciones entre St. Louis y México, al igual que facilitaron los inicios de la inmigración mexicana a St. Louis. A finales del siglo 19, las exportaciones de St. Louis a México ascendieron a <a href="https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf" target="_blank" rel="noopener noreferrer">$7.5 millones al año — unos 250 millones en la economía actual</a>.'
     },
-    center: [-90.1924, 38.6287], // Downtown St. Louis (8th & Olive area)
+    center: [-90.1924, 38.6287], // 8th and Olive Street, downtown St. Louis
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    image: '/Mexican_mercantile_exchange.png',
-    imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://digitalcommons.lindenwood.edu/cgi/viewcontent.cgi?article=1120&context=confluence_2009'
+    // TODO: both images point at the existing placeholder for now — swap in the
+    // Mercantile Exchange building and John F. Cahill portrait once available
+    images: [
+      {
+        src: '/Mexican_mercantile_exchange.png',
+        citation: 1,
+        caption: {
+          en: 'The Mexican and Spanish American Mercantile Exchange building was three stories tall and housed the organization’s headquarters as well as a Spanish printing office.',
+          es: 'El edificio del Intercambio Mercantil de México e Hispanoamérica tenía tres pisos y albergaba la sede de la organización, así como una imprenta en español.'
+        },
+        credit: 'Diálogo'
+      },
+      {
+        src: '/Mexican_mercantile_exchange.png',
+        citation: 2,
+        caption: {
+          en: 'John F. Cahill, the founder of the Mexican and Spanish American Mercantile Exchange.',
+          es: 'John F. Cahill, el fundador del Intercambio Mercantil de México e Hispanoamérica.'
+        },
+        credit: 'Missouri Historical Society'
+      }
+    ],
+    sources: {
+      en: [
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 30. https://doi.org/10.1353/dlg.2018.0003.',
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '<i>John F. Cahill</i>. Photograph. 1891. Missouri Historical Society, St. Louis. http://collections.mohistory.org/resource/804628.',
+          url: 'http://collections.mohistory.org/resource/804628'
+        },
+        {
+          // Same work as footnote 1 (Gonzales), different page; the in-text link
+          // resolves here, the image caption resolves to footnote 1
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 32. https://doi.org/10.1353/dlg.2018.0003.',
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '“Mexican Trade.” <i>St. Louis Post-Dispatch</i>. February 20, 1895. https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf.',
+          url: 'https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf'
+        }
+      ],
+      es: [
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 30. https://doi.org/10.1353/dlg.2018.0003.',
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '<i>John F. Cahill</i>. Photograph. 1891. Missouri Historical Society, St. Louis. http://collections.mohistory.org/resource/804628.',
+          url: 'http://collections.mohistory.org/resource/804628'
+        },
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 32. https://doi.org/10.1353/dlg.2018.0003.',
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '“Mexican Trade.” <i>St. Louis Post-Dispatch</i>. February 20, 1895. https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf.',
+          url: 'https://www.mexstl.org/St_Louis_Post_Dispatch_1895_02_20_Page_4_copy.pdf'
+        }
+      ]
+    }
   },
   {
     id: 'armijo-home',
