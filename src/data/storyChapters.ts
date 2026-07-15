@@ -448,15 +448,31 @@ export const storyChapters: StoryChapter[] = [
       es: 'Periódico Regeneración'
     },
     description: {
-      en: 'In 1905, <a href="https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Ricardo Flores Magón</a>, an exiled journalist, escaped the Porfiriato dictatorship and settled in St. Louis. Here, Magón published the revolutionary newspaper Regeneración, a leftist publication that inspired uprisings and the Mexican Revolution in 1910. From an apartment building that would later become the campus of St. Louis University, Magón founded the Mexican Liberal Party. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
-      es: 'En 1905, <a href="https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Ricardo Flores Magón</a>, un periodista expulsado de México, escapó de la dictadura del Porfiriato y se estableció en St. Louis. Aquí, Magón publicaba el periódico revolucionario Regeneración, una publicación democrática que inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, Magón fundó el Partido Liberal Mexicano. El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
+      en: 'In 1905, <a href="https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Ricardo Flores Magón</a>, an exiled journalist, escaped the Porfiriato dictatorship and settled in St. Louis. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that inspired uprisings and the Mexican Revolution in 1910. From an apartment building that would later become the campus of St. Louis University, Magón founded the Mexican Liberal Party. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
+      es: 'En 1905, <a href="https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Ricardo Flores Magón</a>, un periodista expulsado de México, escapó de la dictadura del Porfiriato y se estableció en St. Louis. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, Magón fundó el Partido Liberal Mexicano. El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
     },
-    center: [-90.2346, 38.6354], // Saint Louis University area
+    center: [-90.2346, 38.6354], // 107 N Channing Avenue (now SLU athletic complex)
     zoom: 16,
     pitch: 50,
     bearing: 0,
     image: '/regeneracion.jpg',
     imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
+    imageCaptionHref: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html',
+    sources: {
+      en: [
+        {
+          // PDF gave only a bare URL as the archival element; title/publisher
+          // constructed from the article — verify
+          text: '“How a Mexican Journalist Sparked a Revolution from St. Louis.” <i>St. Louis Post-Dispatch</i>. https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html.',
+          url: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
+        }
+      ],
+      es: [
+        {
+          text: '“How a Mexican Journalist Sparked a Revolution from St. Louis.” <i>St. Louis Post-Dispatch</i>. https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html.',
+          url: 'https://www.stltoday.com/lifestyles/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
+        }
+      ]
+    }
   }
 ];
