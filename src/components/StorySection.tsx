@@ -19,6 +19,7 @@ interface Citation {
   num: number;
   url: string;
   text: string;
+  curated?: boolean; // From a chapter's `sources` (full Chicago citation) vs. an auto-generated link label
 }
 
 interface Source {
@@ -43,6 +44,11 @@ function formatCitationHtml(citation: Citation): string {
     const [, before, url, trailing] = match;
     return `${before}<a href="${url}" target="_blank" rel="noopener noreferrer" class="${CITATION_LINK_CLASS}">${url}</a>${trailing}`;
   }
+  // Curated citation with no visible URL yet (e.g. embedded link pending) — keep
+  // the text plain; there's nothing to underline.
+  if (citation.curated) {
+    return citation.text;
+  }
   return `<a href="${citation.url}" target="_blank" rel="noopener noreferrer" class="italic ${CITATION_LINK_CLASS}">${citation.text}</a>`;
 }
 
@@ -55,7 +61,8 @@ function processDescriptionLinks(html: string, sources?: Source[]): { processedH
   const citations: Citation[] = (sources ?? []).map((source, index) => ({
     num: index + 1,
     url: source.url,
-    text: source.text
+    text: source.text,
+    curated: true
   }));
   const urlToNum = new Map<string, number>(
     citations.map((citation) => [normalizeUrl(citation.url), citation.num])

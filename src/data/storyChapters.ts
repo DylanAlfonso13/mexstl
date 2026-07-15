@@ -192,18 +192,90 @@ export const storyChapters: StoryChapter[] = [
   },
   {
     id: 'railroad',
-    era: '1883-1888',
+    era: '1883',
     title: {
       en: 'Missouri Pacific Railroad Company',
       es: 'Compañía Ferroviaria Missouri Pacific'
     },
     description: {
-      en: 'The <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">Missouri Pacific Railroad Company</a> was influential in creating physical connections between St. Louis and Mexico. In 1883, the <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">Mexican Central Railway Line</a> was connected to U.S. railways; in 1888, the Mexican National Railway Line was extended into the United States. Meanwhile, in Mexico, <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">President Porfirio Díaz</a> championed the growth of the Mexican National and Mexican Central Railroads, seeking to stimulate the economy by improving access to U.S. markets and lowering transportation costs. The Mexican Central Railway Line ran from Mexico City to El Paso, Texas, and from there to St. Louis.',
-      es: '<a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">La Compañía de Ferrocarriles del Pacifico de Missouri</a> fue influyente en crear conexiones físicas entre St. Louis y México. En 1883, el <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">Ferrocarril Central Mexicano</a> fue conectado a los ferrocarriles de los EE.UU; en 1888, los Ferrocarriles Nacionales de México fueron extendidos a los Estados Unidos. Mientras, en México, el <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">Presidente Porfirio Diaz</a> celebraba el crecimiento de los Ferrocarriles Nacionales y Centrales de México, con la meta de estimular la economía mexicana a través del acceso a los mercados estadounidenses con costos de transportación reducidos. La línea del Ferrocarril Central Mexicano corría desde la Ciudad de México hasta El Paso, Texas y de allí a St. Louis.'
+      en: 'The Missouri Pacific Railroad Company was instrumental in physically connecting St. Louis to Mexico. During the late 19th century, Mexican President Porfirio Díaz <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">championed the expansion of the Mexican National and Mexican Central Railroads</a>, seeking to stimulate the economy by improving access to U.S. markets and lowering transportation costs. <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">In 1883, the Mexican Central Railway Line was connected to U.S. railways</a>; in 1888, the Mexican National Railway Line was extended into the United States. Together, the Missouri Pacific and Mexican Central Railways formed <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer">a direct link from Mexico City to St. Louis via El Paso, Texas</a>. Celebrating this expanding binational infrastructure, the <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer"><i>St. Louis Globe-Democrat</i></a> noted that the new routes made St. Louis a highly competitive trading partner with the "sister republic."',
+      es: 'La Compañía Ferroviaria del Pacífico de Missouri fue instrumental en la conexión física entre St. Louis y México. A finales del siglo XIX, el presidente mexicano Porfirio Díaz <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">promovió la expansión de los Ferrocarriles Nacionales y Centrales de México</a>, con la meta de estimular la economía mexicana a través del acceso a los mercados estadounidenses con costos de transportación reducidos. <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">En 1883, el Ferrocarril Central Mexicano fue conectado a los ferrocarriles de los EE.UU</a>; en 1888, los Ferrocarriles Nacionales de México fueron extendidos a los Estados Unidos. Juntos, el Missouri Pacific y los Ferrocarriles Centrales Mexicanos formaron <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer">un enlace directo desde la Ciudad de México a St. Louis a través de El Paso, Texas</a>. Celebrando esta infraestructura binacional expandida, el <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer"><i>St. Louis Globe-Democrat</i></a> señaló que las nuevas vías convirtieron a St. Louis en un socio comercial altamente competitivo con la "república hermana."'
     },
-    image: '/missouri_pacific_railroad.jpg',
-    imageCaption: 'Learn more about this archival document',
-    imageCaptionHref: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad'
+    center: [-90.1907, 38.6274], // 611 Olive Street, downtown St. Louis
+    zoom: 16,
+    pitch: 50,
+    bearing: 0,
+    // TODO: both images point at the existing placeholder for now — swap in the
+    // c.1891 Missouri Pacific and c.1898 Mexican Central map images once available
+    images: [
+      {
+        src: '/missouri_pacific_railroad.jpg',
+        citation: 1,
+        caption: {
+          en: 'Missouri Pacific Railway lines (c. 1891), showing connections to El Paso and Mexican rail networks.',
+          es: 'Líneas del Ferrocarril Missouri Pacific (c. 1891), mostrando las conexiones con El Paso y las redes ferroviarias mexicanas.'
+        },
+        credit: 'Wikipedia'
+      },
+      {
+        src: '/missouri_pacific_railroad.jpg',
+        citation: 2,
+        caption: {
+          en: 'Mexican Central Railway lines (c. 1898), showing connections to El Paso and U.S. rail networks.',
+          es: 'Líneas del Ferrocarril Central Mexicano (c. 1898), mostrando las conexiones con El Paso y las redes ferroviarias de los EE.UU.'
+        },
+        credit: 'Internet Archive'
+      }
+    ],
+    sources: {
+      en: [
+        {
+          text: 'Missouri Pacific Railroad - Wikipedia. https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad.',
+          url: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad'
+        },
+        {
+          text: '<i>Map Of The Mexican Central Railway And Connections. May, 1898.</i> Photograph. <i>Internet Archive</i>. Chicago: Poole Brothers, 1898. https://archive.org/details/dr_map-of-the-mexican-central-railway-and-connections-may-1898-0738003.',
+          url: 'https://archive.org/details/dr_map-of-the-mexican-central-railway-and-connections-may-1898-0738003'
+        },
+        {
+          text: 'Morales, Donna S, and John P Schmal. “How We Got Here: The Roads We Took to America.” The Hispanic Experience: Cultural Heritage. https://www.houstonculture.org/hispanic/roads.html.',
+          url: 'https://www.houstonculture.org/hispanic/roads.html'
+        },
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 19. https://doi.org/10.1353/dlg.2018.0003.',
+          // Matches the in-text link, which points to the full text on Project MUSE
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          // TODO: placeholder URL — the source doc lists this article twice (footnotes
+          // 5 and 6) with "[Insert embedded link]"; replace with the real embedded link
+          text: '“Looking Towards Mexico.” <i>St. Louis Globe-Democrat</i>. January 23, 1883.',
+          url: 'https://www.mexstl.org/looking-towards-mexico'
+        }
+      ],
+      es: [
+        {
+          text: 'Missouri Pacific Railroad - Wikipedia. https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad.',
+          url: 'https://en.wikipedia.org/wiki/Missouri_Pacific_Railroad'
+        },
+        {
+          text: '<i>Map Of The Mexican Central Railway And Connections. May, 1898.</i> Photograph. <i>Internet Archive</i>. Chicago: Poole Brothers, 1898. https://archive.org/details/dr_map-of-the-mexican-central-railway-and-connections-may-1898-0738003.',
+          url: 'https://archive.org/details/dr_map-of-the-mexican-central-railway-and-connections-may-1898-0738003'
+        },
+        {
+          text: 'Morales, Donna S, and John P Schmal. “How We Got Here: The Roads We Took to America.” The Hispanic Experience: Cultural Heritage. https://www.houstonculture.org/hispanic/roads.html.',
+          url: 'https://www.houstonculture.org/hispanic/roads.html'
+        },
+        {
+          text: 'Gonzales, Daniel. “Mexican Immigration and the Saint Louis Region, 1900–1935.” <i>Diálogo</i> 21, no. 1 (2018): 19. https://doi.org/10.1353/dlg.2018.0003.',
+          url: 'https://muse.jhu.edu/pub/15/article/690128/pdf'
+        },
+        {
+          text: '“Looking Towards Mexico.” <i>St. Louis Globe-Democrat</i>. January 23, 1883.',
+          url: 'https://www.mexstl.org/looking-towards-mexico'
+        }
+      ]
+    }
   },
   {
     id: 'mercantile-exchange',
