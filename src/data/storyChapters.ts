@@ -357,19 +357,49 @@ export const storyChapters: StoryChapter[] = [
   },
   {
     id: 'armijo-home',
-    era: 'Late 19th Century',
+    era: '1890',
     title: {
       en: 'Home of Juan C. Armijo',
       es: 'Casa de Juan C. Armijo'
     },
     description: {
-      en: 'By the late nineteenth century, many prominent Mexican families had settled and established their lives in St. Louis. This <a href="https://timesmachine.nytimes.com/timesmachine/1890/12/23/103287788.html?auth=login-email&login=email&auth=login-email&pageNumber=1" target="_blank" rel="noopener noreferrer">New York Times</a> article highlights Juan C. Armijo, the son of the wealthiest man in Mexico at the time, Nicholas F. Armijo. Juan Armijo attended <a href="https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false" target="_blank" rel="noopener noreferrer">Washington University</a> and <a href="http://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30" target="_blank" rel="noopener noreferrer">Saint Louis University</a> in the late 19th century. After completing his studies, he returned home before setting out again for St. Louis and, in 1890, was rumored to be engaged with a woman in the city. Juan Armijo is a reflection of the mobility within the elite Mexican class, who could afford to base their lives in two geographical locations, with a growing circle in St. Louis.',
-      es: 'A finales del siglo 19, numerosas familias mexicanas destacadas establecieron sus vidas en St. Louis. Este artículo del <a href="https://timesmachine.nytimes.com/timesmachine/1890/12/23/103287788.html?auth=login-email&login=email&auth=login-email&pageNumber=1" target="_blank" rel="noopener noreferrer">New York Times</a> atrae la atención a Juan C. Armijo, el hijo del hombre más rico de México en ese tiempo, Nicholas F. Armijo. Juan Armijo asistió a la <a href="https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false" target="_blank" rel="noopener noreferrer">Universidad de Washington</a> y a la <a href="http://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30" target="_blank" rel="noopener noreferrer">Universidad de St. Louis</a> a finales del siglo 19. Después de completar sus estudios, regresó a casa antes de partir de nuevo hacia St. Louis, y en 1890, había rumor de que estaba comprometido con una mujer en la ciudad. Juan Armijo es un reflejo de la movilidad dentro de la clase alta de México, los cuales podían establecer sus vidas en dos lugares a la vez, con un círculo creciente en St Louis.'
+      en: 'By the late nineteenth century, many prominent Mexican families had settled and established their lives in St. Louis. Among them was Juan C. Armijo, the son of the wealthiest man in Mexico at the time, <a href="https://nyti.ms/4eRupxh" target="_blank" rel="noopener noreferrer">Nicholas F. Armijo</a>. Juan Armijo attended <a href="https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false" target="_blank" rel="noopener noreferrer">Washington University</a> and <a href="https://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30" target="_blank" rel="noopener noreferrer">Saint Louis University</a> in the late 19th century. After completing his studies, he returned home before setting out again for St. Louis and, in 1890, <a href="https://nyti.ms/4eRupxh" target="_blank" rel="noopener noreferrer">was rumored to be engaged with a woman in the city</a>. Juan Armijo is a reflection of the mobility within the elite Mexican class, who could afford to base their lives in two geographical locations, with a growing circle in St. Louis.',
+      es: 'A finales del siglo 19, numerosas familias mexicanas destacadas establecieron sus vidas en St. Louis. Entre ellos estaba Juan C. Armijo, el hijo del hombre más rico de México en ese tiempo, <a href="https://nyti.ms/4eRupxh" target="_blank" rel="noopener noreferrer">Nicholas F. Armijo</a>. Juan Armijo asistió a la <a href="https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false" target="_blank" rel="noopener noreferrer">Universidad de Washington</a> y a la <a href="https://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30" target="_blank" rel="noopener noreferrer">Universidad de St. Louis</a> a finales del siglo 19. Después de completar sus estudios, regresó a casa antes de partir de nuevo hacia St. Louis, y en 1890, <a href="https://nyti.ms/4eRupxh" target="_blank" rel="noopener noreferrer">había rumor de que estaba comprometido con una mujer en la ciudad</a>. Juan Armijo es un reflejo de la movilidad dentro de la clase alta de México, los cuales podían establecer sus vidas en dos lugares a la vez, con un círculo creciente en St Louis.'
     },
-    center: [-90.2120, 38.6356], // Home of Juan C. Armijo
+    center: [-90.2160, 38.6339], // 2635 Lucas Avenue (approx)
     zoom: 16,
     pitch: 50,
-    bearing: 0
+    bearing: 0,
+    sources: {
+      en: [
+        {
+          text: '“A Wealthy Young Mexican.” <i>The New York Times</i>. December 22, 1890. https://nyti.ms/4eRupxh.',
+          url: 'https://nyti.ms/4eRupxh'
+        },
+        {
+          text: '<i>A Catalogue of the Officers and Students of Washington University, for the Academic Year 1881-82.</i> St. Louis, Missouri: Washington University in St. Louis, 1882, 112. https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false.',
+          url: 'https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false'
+        },
+        {
+          text: '<i>Catalogue of the St. Louis University, 1880-81.</i> Saint Louis University Libraries Special Collections. Vol. 5. St. Louis, Missouri: St. Louis University, 1881, 26. https://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30.',
+          url: 'https://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30'
+        }
+      ],
+      es: [
+        {
+          text: '“A Wealthy Young Mexican.” <i>The New York Times</i>. December 22, 1890. https://nyti.ms/4eRupxh.',
+          url: 'https://nyti.ms/4eRupxh'
+        },
+        {
+          text: '<i>A Catalogue of the Officers and Students of Washington University, for the Academic Year 1881-82.</i> St. Louis, Missouri: Washington University in St. Louis, 1882, 112. https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false.',
+          url: 'https://books.google.com/books?id=D7M4AAAAMAAJ&pg=RA1-PA187&ci=54%2C524%2C918%2C771&source=bookclip#v=onepage&q=armijo&f=false'
+        },
+        {
+          text: '<i>Catalogue of the St. Louis University, 1880-81.</i> Saint Louis University Libraries Special Collections. Vol. 5. St. Louis, Missouri: St. Louis University, 1881, 26. https://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30.',
+          url: 'https://digitalcollections.slu.edu/digital/collection/catalogs/id/1856/rec/30'
+        }
+      ]
+    }
   },
   {
     id: 'railway-headquarters',
