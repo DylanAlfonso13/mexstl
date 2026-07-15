@@ -288,11 +288,9 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    // TODO: both images point at the existing placeholder for now — swap in the
-    // Mercantile Exchange building and John F. Cahill portrait once available
     images: [
       {
-        src: '/Mexican_mercantile_exchange.png',
+        src: '/story-map/mexican-mercantile-exchange/Mexican_mercantile_exchange.png',
         citation: 1,
         caption: {
           en: 'The Mexican and Spanish American Mercantile Exchange building was three stories tall and housed the organization’s headquarters as well as a Spanish printing office.',
@@ -301,7 +299,7 @@ export const storyChapters: StoryChapter[] = [
         credit: 'Diálogo'
       },
       {
-        src: '/Mexican_mercantile_exchange.png',
+        src: '/story-map/mexican-mercantile-exchange/john-f-cahill.jpg',
         citation: 2,
         caption: {
           en: 'John F. Cahill, the founder of the Mexican and Spanish American Mercantile Exchange.',
