@@ -364,6 +364,19 @@ export const storyChapters: StoryChapter[] = [
     zoom: 16,
     pitch: 50,
     bearing: 0,
+    // Only archival element #2 ("A Wealthy Young Mexican") is available so far —
+    // rendered from the NYT article PDF; the other 5 images remain TBD
+    images: [
+      {
+        src: '/story-map/juan-c-armijo-home/a-wealthy-young-mexican.png',
+        citation: 1,
+        caption: {
+          en: 'This New York Times article, published December 22, 1890, details Juan C. Armijo’s inheritance after the death of his father and his plans to return to St. Louis to marry.',
+          es: 'Este artículo del New York Times, publicado el 22 de diciembre de 1890, detalla la herencia de Juan C. Armijo tras la muerte de su padre y sus planes de regresar a St. Louis para casarse.'
+        },
+        credit: 'The New York Times'
+      }
+    ],
     sources: {
       en: [
         {
