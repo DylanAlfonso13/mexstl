@@ -52,8 +52,52 @@ function formatCitationHtml(citation: Citation): string {
   return `<a href="${citation.url}" target="_blank" rel="noopener noreferrer" class="italic ${CITATION_LINK_CLASS}">${citation.text}</a>`;
 }
 
-/** Extracts <a> links from HTML, replaces them with plain text + [N] superscript,
- *  and returns the modified HTML alongside a deduplicated citations list.
+// Private-use chars mark a pending citation until it's moved to the sentence end
+const CITE_OPEN = '\uE000';
+const CITE_CLOSE = '\uE001';
+const CITE_PLACEHOLDER = new RegExp(`${CITE_OPEN}(\\d+)${CITE_CLOSE}`, 'g');
+
+// A period only ends a sentence when it isn't an initial ("Nicholas F.") or a known
+// abbreviation ("St. Louis", "U.S."), and is followed by whitespace or the string end.
+const SENTENCE_END =
+  /(?<!\b[A-Z])(?<!\b(?:St|Mr|Mrs|Ms|Dr|Jr|Sr|Sra|Srta|vs|etc|Inc|Co|Ave|No|Vol|EE|UU))([.!?]["”’]?)(?=\s|$)/g;
+
+function citationSup(num: number): string {
+  return `<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
+}
+
+/** Pulls the pending placeholders out of one sentence and re-emits them, deduplicated,
+ *  after its closing punctuation. */
+function flushSentence(chunk: string): string {
+  const nums: number[] = [];
+  const stripped = chunk.replace(CITE_PLACEHOLDER, (_match, num: string) => {
+    nums.push(Number(num));
+    return '';
+  });
+  return stripped + [...new Set(nums)].map(citationSup).join('');
+}
+
+/** Moves every pending citation marker to the end of the sentence it sits in, so
+ *  markers never interrupt a sentence mid-clause. */
+function markersToSentenceEnds(text: string): string {
+  const chunks: string[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  SENTENCE_END.lastIndex = 0;
+  while ((match = SENTENCE_END.exec(text)) !== null) {
+    const end = match.index + match[0].length;
+    chunks.push(flushSentence(text.slice(lastIndex, end)));
+    lastIndex = end;
+  }
+  chunks.push(flushSentence(text.slice(lastIndex)));
+
+  return chunks.join('');
+}
+
+/** Strips the <a> links from HTML (they render as plain text — the anchor only marks
+ *  which footnote applies and where), then emits a [N] superscript at the end of each
+ *  citing sentence. Returns the modified HTML alongside a deduplicated citations list.
  *  When curated sources are provided they become the citation list (numbered in
  *  source order, matched to links by URL); otherwise citations are derived from
  *  the links themselves. */
@@ -69,23 +113,20 @@ function processDescriptionLinks(html: string, sources?: Source[]): { processedH
   );
   let counter = citations.length + 1;
 
-  // Capture any punctuation immediately after the link so the marker can sit
-  // after it (Chicago style: superscript follows the comma/period, not before)
-  const processedHtml = html.replace(
-    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>([.,;:]?)/g,
-    (_match, url: string, text: string, punct: string) => {
+  const withPlaceholders = html.replace(
+    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/g,
+    (_match, url: string, text: string) => {
       const key = normalizeUrl(url);
       if (!urlToNum.has(key)) {
         urlToNum.set(key, counter);
         citations.push({ num: counter, url, text });
         counter++;
       }
-      const num = urlToNum.get(key)!;
-      return `${text}${punct}<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
+      return `${text}${CITE_OPEN}${urlToNum.get(key)}${CITE_CLOSE}`;
     }
   );
 
-  return { processedHtml, citations };
+  return { processedHtml: markersToSentenceEnds(withPlaceholders), citations };
 }
 
 interface StorySectionProps {

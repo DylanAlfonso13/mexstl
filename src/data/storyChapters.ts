@@ -87,8 +87,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'The Conestoga wagon was popular on the Santa Fe Trail because its curved design kept cargo centered on rough terrain.',
           es: 'La carreta Conestoga era popular en el Camino de Santa Fe porque su diseño curvado mantenía la carga centrada en terrenos accidentados.'
-        },
-        credit: 'National Park Service'
+        }
       },
       {
         src: '/story-map/santa-fe/francisca_lopez.webp',
@@ -96,8 +95,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'Francisca López, who journeyed from New Mexico to St. Louis via the Santa Fe Trail in 1850.',
           es: 'Francisca López, quien viajó de Nuevo México a St. Louis por el Camino de Santa Fe en 1850.'
-        },
-        credit: 'National Park Service'
+        }
       },
       {
         src: '/story-map/santa-fe/felipe_chavez.jpg',
@@ -105,8 +103,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'Don Felipe Chávez, an elite New Mexican scholar, was a highly successful trader along the Santa Fe Trail known as <i>el millonario</i>.',
           es: 'Don Felipe Chávez, un erudito de la élite nuevomexicana, fue un comerciante muy exitoso a lo largo del Camino de Santa Fe, conocido como <i>el millonario</i>.'
-        },
-        credit: 'Santa Fe National Historic Trail: Special History Study'
+        }
       },
       {
         src: '/story-map/santa-fe/santa_fe_trail_map.png',
@@ -114,8 +111,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'The Santa Fe Trail connected Franklin, Missouri to Santa Fe, New Mexico (Spanish territory until 1848). St. Louis was connected via the Mississippi River.',
           es: 'El Camino de Santa Fe conectaba Franklin, Missouri con Santa Fe, Nuevo México (territorio español hasta 1848). St. Louis estaba conectado a través del río Mississippi.'
-        },
-        credit: 'ArcGIS web application, National Park Service'
+        }
       }
     ],
     sources: {
@@ -199,7 +195,7 @@ export const storyChapters: StoryChapter[] = [
     },
     description: {
       en: 'The Missouri Pacific Railroad Company was instrumental in physically connecting St. Louis to Mexico. During the late 19th century, Mexican President Porfirio Díaz <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">championed the expansion of the Mexican National and Mexican Central Railroads</a>, seeking to stimulate the economy by improving access to U.S. markets and lowering transportation costs. <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">In 1883, the Mexican Central Railway Line was connected to U.S. railways</a>; in 1888, the Mexican National Railway Line was extended into the United States. Together, the Missouri Pacific and Mexican Central Railways formed <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer">a direct link from Mexico City to St. Louis via El Paso, Texas</a>. Celebrating this expanding binational infrastructure, the <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer"><i>St. Louis Globe-Democrat</i></a> noted that the new routes made St. Louis a highly competitive trading partner with the "sister republic."',
-      es: 'La Compañía Ferroviaria del Pacífico de Missouri fue instrumental en la conexión física entre St. Louis y México. A finales del siglo XIX, el presidente mexicano Porfirio Díaz <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">promovió la expansión de los Ferrocarriles Nacionales y Centrales de México</a>, con la meta de estimular la economía mexicana a través del acceso a los mercados estadounidenses con costos de transportación reducidos. <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">En 1883, el Ferrocarril Central Mexicano fue conectado a los ferrocarriles de los EE.UU</a>; en 1888, los Ferrocarriles Nacionales de México fueron extendidos a los Estados Unidos. Juntos, el Missouri Pacific y los Ferrocarriles Centrales Mexicanos formaron <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer">un enlace directo desde la Ciudad de México a St. Louis a través de El Paso, Texas</a>. Celebrando esta infraestructura binacional expandida, el <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer"><i>St. Louis Globe-Democrat</i></a> señaló que las nuevas vías convirtieron a St. Louis en un socio comercial altamente competitivo con la "república hermana."'
+      es: 'La Compañía Ferroviaria Missouri Pacific fue instrumental en la conexión física entre St. Louis y México. A finales del siglo XIX, el presidente mexicano Porfirio Díaz <a href="https://www.houstonculture.org/hispanic/roads.html" target="_blank" rel="noopener noreferrer">promovió la expansión de los Ferrocarriles Nacionales y Centrales de México</a>, con la meta de estimular la economía mexicana a través del acceso a los mercados estadounidenses con costos de transportación reducidos. <a href="https://muse.jhu.edu/pub/15/article/690128/pdf" target="_blank" rel="noopener noreferrer">En 1883, el Ferrocarril Central Mexicano fue conectado a los ferrocarriles de los EE.UU</a>; en 1888, los Ferrocarriles Nacionales de México fueron extendidos a los Estados Unidos. Juntos, el Missouri Pacific y los Ferrocarriles Centrales Mexicanos formaron <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer">un enlace directo desde la Ciudad de México a St. Louis a través de El Paso, Texas</a>. Celebrando esta infraestructura binacional expandida, el <a href="https://www.mexstl.org/looking-towards-mexico" target="_blank" rel="noopener noreferrer"><i>St. Louis Globe-Democrat</i></a> señaló que las nuevas vías convirtieron a St. Louis en un socio comercial altamente competitivo con la "república hermana."'
     },
     center: [-90.1907, 38.6274], // 611 Olive Street, downtown St. Louis
     zoom: 16,
@@ -212,8 +208,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'Missouri Pacific Railway lines (c. 1891), showing connections to El Paso and Mexican rail networks.',
           es: 'Líneas del Ferrocarril Missouri Pacific (c. 1891), mostrando las conexiones con El Paso y las redes ferroviarias mexicanas.'
-        },
-        credit: 'Wikipedia'
+        }
       },
       {
         src: '/story-map/missouri_pacific_railroad_company/mexican_central_railway.jpg',
@@ -221,8 +216,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'Mexican Central Railway lines (c. 1898), showing connections to El Paso and U.S. rail networks.',
           es: 'Líneas del Ferrocarril Central Mexicano (c. 1898), mostrando las conexiones con El Paso y las redes ferroviarias de los EE.UU.'
-        },
-        credit: 'Internet Archive'
+        }
       }
     ],
     sources: {
@@ -295,8 +289,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'The Mexican and Spanish American Mercantile Exchange building was three stories tall and housed the organization’s headquarters as well as a Spanish printing office.',
           es: 'El edificio del Intercambio Mercantil de México e Hispanoamérica tenía tres pisos y albergaba la sede de la organización, así como una imprenta en español.'
-        },
-        credit: 'Diálogo'
+        }
       },
       {
         src: '/story-map/mexican-mercantile-exchange/john-f-cahill.jpg',
@@ -304,8 +297,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'John F. Cahill, the founder of the Mexican and Spanish American Mercantile Exchange.',
           es: 'John F. Cahill, el fundador del Intercambio Mercantil de México e Hispanoamérica.'
-        },
-        credit: 'Missouri Historical Society'
+        }
       }
     ],
     sources: {
@@ -373,8 +365,7 @@ export const storyChapters: StoryChapter[] = [
         caption: {
           en: 'This New York Times article, published December 22, 1890, details Juan C. Armijo’s inheritance after the death of his father and his plans to return to St. Louis to marry.',
           es: 'Este artículo del New York Times, publicado el 22 de diciembre de 1890, detalla la herencia de Juan C. Armijo tras la muerte de su padre y sus planes de regresar a St. Louis para casarse.'
-        },
-        credit: 'The New York Times'
+        }
       }
     ],
     sources: {
