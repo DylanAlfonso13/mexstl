@@ -65,7 +65,7 @@ const SENTENCE_END =
 function citationSup(num: number): string {
   return `<sup data-citation="${num}" style="color:#C8102E;font-weight:700;font-size:0.7em;cursor:pointer" title="View citation ${num}">[${num}]</sup>`;
 }
-// one more test
+
 /** Pulls the pending placeholders out of one sentence and re-emits them, deduplicated,
  *  after its closing punctuation. */
 function flushSentence(chunk: string): string {
