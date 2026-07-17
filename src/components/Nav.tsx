@@ -12,6 +12,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const navigation = [
   { name: "Home", esName: "Inicio", href: "/" },
+  { name: "Map", esName: "Mapa", href: "/story-map" },
   { name: "Media", esName: "Media", href: "/media" },
   { name: "Events", esName: "Eventos", href: "/events" },
   { name: "About Us", esName: "¿Quiénes somos?", href: "/about" },

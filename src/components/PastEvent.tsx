@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ImageCarousel from "@/components/EventImageCarousel";
+import EventImageCarousel from "@/components/EventImageCarousel";
 
 interface CarouselImage {
   src: string;
@@ -70,7 +70,7 @@ export default function PastEvent({
             </p>
             {images && images.length > 0 && (
               <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-                <ImageCarousel images={images} />
+                <EventImageCarousel images={images} />
               </div>
             )}
             <div className="mt-6">

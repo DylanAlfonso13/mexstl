@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useCallback } from "react";
 import Image from "next/image";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
@@ -6,14 +7,13 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 interface CarouselImage {
   src: string;
   alt: string;
-  coverFit?: boolean;
 }
 
-interface ImageCarouselProps {
+interface EventImageCarouselProps {
   images: CarouselImage[];
 }
 
-export default function ImageCarousel({ images }: ImageCarouselProps) {
+export default function EventImageCarousel({ images }: EventImageCarouselProps) {
   const [current, setCurrent] = useState(0);
 
   const prev = useCallback(() => {
@@ -39,7 +39,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           src={images[current].src}
           alt={images[current].alt}
           fill
-          className={images[current].coverFit ? "object-cover" : "object-contain"}
+          className="object-contain"
           sizes="(max-width: 768px) 100vw, 896px"
           priority={current === 0}
         />
