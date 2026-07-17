@@ -231,6 +231,30 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     }
   };
 
+  // The story layer sits above the map and must stay pointer-events:auto, or WebKit
+  // refuses to touch-scroll it. That means it also swallows taps meant for the map,
+  // so anything landing outside a story card is forwarded to the map instead.
+  const handleStoryLayerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMapInteractive) return;
+    // The image lightbox is portalled to <body>, but React still bubbles its clicks
+    // through this handler — ignore anything that isn't really inside the story layer.
+    if (!e.currentTarget.contains(e.target as Node)) return;
+    if ((e.target as HTMLElement).closest('article')) return;
+
+    // Chapter pins are part of the map, so they sit under the story layer too and
+    // would otherwise be unreachable — forward the click before falling back.
+    const marker = document
+      .elementsFromPoint(e.clientX, e.clientY)
+      .find((el) => el.closest('.mapboxgl-marker'))
+      ?.closest('.mapboxgl-marker');
+    if (marker instanceof HTMLElement) {
+      marker.click();
+      return;
+    }
+
+    activateMap();
+  };
+
   // Keep refs current so Mapbox event handlers always call the latest versions
   exitMapModeRef.current = exitMapMode;
   flyToChapterFnRef.current = flyToChapter;
@@ -238,11 +262,10 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   return (
     <div className="relative w-full h-screen overflow-hidden" role="region" aria-label="Interactive story map">
       {/* Fixed Map Background */}
-      <div 
+      <div
         ref={mapContainerRef}
-        onClick={!isMapInteractive ? activateMap : undefined}
         className={`absolute top-0 left-0 w-full h-full z-0 ${
-          !isMapInteractive ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'
+          isMapInteractive ? 'cursor-grab active:cursor-grabbing' : ''
         }`}
         role={!isMapInteractive ? "button" : undefined}
         aria-label={!isMapInteractive ? "Click to explore map" : undefined}
@@ -278,9 +301,12 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
       )}
 
       {/* Scrollable Story Sections - Hidden when map is interactive */}
-      <div 
-        className={`absolute top-0 left-0 w-full h-full z-10 overflow-y-auto overflow-x-hidden transition-opacity duration-300 pointer-events-none scroll-smooth ${
-          isMapInteractive ? 'opacity-0' : 'opacity-100'
+      <div
+        onClick={handleStoryLayerClick}
+        className={`absolute top-0 left-0 w-full h-full z-10 overflow-y-auto overflow-x-hidden transition-opacity duration-300 scroll-smooth ${
+          isMapInteractive
+            ? 'opacity-0 pointer-events-none'
+            : 'opacity-100 pointer-events-auto cursor-pointer'
         }`}
         aria-hidden={isMapInteractive}
       >
