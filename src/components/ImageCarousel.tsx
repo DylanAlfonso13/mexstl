@@ -225,6 +225,9 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false,
           <div
             className="relative w-full h-full max-w-5xl max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             <Image
               src={currentImage.src}
@@ -235,6 +238,36 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, priority = false,
               priority
             />
           </div>
+
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrevious();
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-2 sm:p-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/60"
+                aria-label="Previous image"
+              >
+                <ChevronLeftIcon className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-2 sm:p-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/60"
+                aria-label="Next image"
+              >
+                <ChevronRightIcon className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />
+              </button>
+
+              <div className="absolute top-4 left-4 bg-black/60 text-white text-xs sm:text-sm px-3 py-1 rounded-md font-medium">
+                {currentIndex + 1} / {images.length}
+              </div>
+            </>
+          )}
           {(currentImage.caption || currentImage.credit) && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-sm px-4 py-2 rounded-md text-center max-w-xl">
               {currentImage.caption && (

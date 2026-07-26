@@ -218,7 +218,7 @@ const StorySection: React.FC<StorySectionProps> = ({
     >
       <article
         className={`
-          bg-white
+          bg-white cursor-auto
           p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16
           rounded-2xl shadow-2xl
           max-w-4xl xl:max-w-5xl w-full
