@@ -66,10 +66,14 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   const [isMapInteractive, setIsMapInteractive] = useState(false);
 
   const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
-  
+  const hasToken = MAPBOX_TOKEN.length > 0;
+
   // Initialize map with interactions disabled
   useEffect(() => {
     if (!mapContainerRef.current) return;
+    // Without a token mapbox-gl throws on construction, taking down the whole page.
+    // Bail out and let the story render over the fallback notice instead.
+    if (!hasToken) return;
 
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
@@ -235,7 +239,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
   // refuses to touch-scroll it. That means it also swallows taps meant for the map,
   // so anything landing outside a story card is forwarded to the map instead.
   const handleStoryLayerClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isMapInteractive) return;
+    if (isMapInteractive || !hasToken) return;
     // The image lightbox is portalled to <body>, but React still bubbles its clicks
     // through this handler — ignore anything that isn't really inside the story layer.
     if (!e.currentTarget.contains(e.target as Node)) return;
@@ -265,12 +269,12 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
       <div
         ref={mapContainerRef}
         className={`absolute top-0 left-0 w-full h-full z-0 ${
-          isMapInteractive ? 'cursor-grab active:cursor-grabbing' : ''
+          hasToken && isMapInteractive ? 'cursor-grab active:cursor-grabbing' : ''
         }`}
-        role={!isMapInteractive ? "button" : undefined}
-        aria-label={!isMapInteractive ? "Click to explore map" : undefined}
-        tabIndex={!isMapInteractive ? 0 : -1}
-        onKeyDown={!isMapInteractive ? (e) => {
+        role={hasToken && !isMapInteractive ? "button" : undefined}
+        aria-label={hasToken && !isMapInteractive ? "Click to explore map" : undefined}
+        tabIndex={hasToken && !isMapInteractive ? 0 : -1}
+        onKeyDown={hasToken && !isMapInteractive ? (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             activateMap();
@@ -278,8 +282,19 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
         } : undefined}
       />
 
+      {/* Map failed to load (no access token) — keep the story readable instead of crashing */}
+      {!hasToken && (
+        <div className="absolute inset-0 z-0 flex items-center justify-center bg-gray-100 px-6 pointer-events-none">
+          <p className="text-center text-sm sm:text-base text-gray-500 font-[family-name:var(--font-manrope)] max-w-xs">
+            {language === 'en'
+              ? 'The interactive map could not be loaded, but you can still read the story below.'
+              : 'No se pudo cargar el mapa interactivo, pero aún puedes leer la historia a continuación.'}
+          </p>
+        </div>
+      )}
+
       {/* Map Interaction Hint - Only show when not interactive */}
-      {!isMapInteractive && (
+      {hasToken && !isMapInteractive && (
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
           <div className="bg-black/70 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg">
             Scroll or click map to explore
@@ -306,7 +321,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
         className={`absolute top-0 left-0 w-full h-full z-10 overflow-y-auto overflow-x-hidden transition-opacity duration-300 scroll-smooth ${
           isMapInteractive
             ? 'opacity-0 pointer-events-none'
-            : 'opacity-100 pointer-events-auto cursor-pointer'
+            : `opacity-100 pointer-events-auto ${hasToken ? 'cursor-pointer' : ''}`
         }`}
         aria-hidden={isMapInteractive}
       >
