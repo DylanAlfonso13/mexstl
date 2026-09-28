@@ -39,58 +39,64 @@ export default function UpcomingEvent({
   imageAlt,
   language,
 }: UpcomingEventProps) {
-  return (
-    <div className="max-w-4xl w-full my-8">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            {language === "en" ? titleEn : titleEs}
-          </h2>
-          <div className="text-lg sm:text-xl mb-4">
-            <p className="font-semibold">
-              {language === "en" ? dateEn : dateEs}
+  const card = (
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-[1.02] hover:shadow-xl">
+      <div className="p-6 sm:p-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          {language === "en" ? titleEn : titleEs}
+        </h2>
+        <div className="text-lg sm:text-xl mb-4">
+          <p className="font-semibold">{language === "en" ? dateEn : dateEs}</p>
+          {(locationEn || locationEs || location) && (
+            <p className="text-gray-700">
+              {language === "en"
+                ? locationEn || location
+                : locationEs || location}
             </p>
-            {(locationEn || locationEs || location) && (
-              <p className="text-gray-700">
-                {language === "en"
-                  ? locationEn || location
-                  : locationEs || location}
-              </p>
-            )}
-            {(admissionEn || admissionEs) && (
-              <p className="font-semibold mt-2">
-                {language === "en" ? admissionEn : admissionEs}
-              </p>
-            )}
-          </div>
-          <p className="text-base sm:text-lg md:text-xl mb-4">
-            {language === "en" ? descriptionEn : descriptionEs}
-          </p>
-          {registerUrl && (
-            <div className="mt-6">
-              <a
-                href={registerUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#006341] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-              >
-                {language === "en" ? registerTextEn : registerTextEs}
-              </a>
-            </div>
+          )}
+          {(admissionEn || admissionEs) && (
+            <p className="font-semibold mt-2">
+              {language === "en" ? admissionEn : admissionEs}
+            </p>
           )}
         </div>
-        {imageUrl && (
-          <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-            <Image
-              src={imageUrl}
-              alt={imageAlt || "Event flyer"}
-              width={1200}
-              height={1600}
-              className="w-full h-auto object-cover rounded-lg"
-            />
+        <p className="text-base sm:text-lg md:text-xl mb-4">
+          {language === "en" ? descriptionEn : descriptionEs}
+        </p>
+        {registerUrl && (
+          <div className="mt-6">
+            <span className="inline-block bg-[#006341] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+              {language === "en" ? registerTextEn : registerTextEs}
+            </span>
           </div>
         )}
       </div>
+      {imageUrl && (
+        <div className="px-6 pb-6 sm:px-8 sm:pb-8">
+          <Image
+            src={imageUrl}
+            alt={imageAlt || "Event flyer"}
+            width={1200}
+            height={1600}
+            className="w-full h-auto object-cover rounded-lg"
+          />
+        </div>
+      )}
     </div>
+  );
+
+  if (!registerUrl) {
+    return <div className="max-w-4xl w-full my-8">{card}</div>;
+  }
+
+  return (
+    <a
+      href={registerUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block max-w-4xl w-full my-8 cursor-pointer"
+    >
+      {card}
+    </a>
   );
 }

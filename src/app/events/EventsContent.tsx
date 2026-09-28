@@ -2,6 +2,7 @@
 import Nav from "@/components/Nav";
 import TitleText from "@/components/TitleText";
 import PastEvent from "@/components/PastEvent";
+import UpcomingEvent from "@/components/UpcomingEvent";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function EventsContent() {
@@ -18,14 +19,122 @@ export default function EventsContent() {
           }
         />
 
-        {/* Empty State for Upcoming Events */}
-        <div className="max-w-4xl w-full my-8 text-center">
-          <p className="text-lg sm:text-xl text-gray-600 py-8">
-            {language === "en"
-              ? "No upcoming events at this time. Check back soon for future events!"
-              : "No hay eventos próximos en este momento. ¡Vuelva pronto para eventos futuros!"}
-          </p>
-        </div>
+        {/* Nuestra Comunidad, Nuestras Historias - Upcoming Event */}
+        <UpcomingEvent
+          language={language}
+          titleEn="Thursday Nights at the Museum: Nuestra Comunidad, Nuestras Historias (Our Community, Our Stories)"
+          titleEs="Thursday Nights at the Museum: Nuestra Comunidad, Nuestras Historias"
+          dateEn="Thursday, October 8, 2026 from 5:00 PM - 8:30 PM"
+          dateEs="Jueves, 8 de octubre de 2026 de 5:00 a 8:30 PM"
+          locationEn={
+            <>
+              Missouri History Museum
+              <br />
+              5700 Lindell Blvd, St. Louis, MO 63112
+            </>
+          }
+          locationEs={
+            <>
+              Missouri History Museum
+              <br />
+              5700 Lindell Blvd, St. Louis, MO 63112
+            </>
+          }
+          descriptionEn={
+            <>
+              Step into the heart of Hispanic Heritage Month with an evening of
+              powerful storytelling that honors the experience, traditions, and
+              voices that continue to shape St. Louis. Hosted by storytelling
+              facilitator Adam Flores, local St. Louisans Eric Acevedo,
+              Catherine Baez, Stephanie Calero, and Luis Torres will share their
+              personal stories in a way that promises to stir emotions, spark
+              laughter, and invite moments of reflection and connection.
+              Discover how the Missouri Historical Society’s Migration and
+              Memory Initiative is working to preserve the stories of people who
+              have come from around the globe and made St. Louis their home,
+              ensuring these lived experiences become part of our region’s
+              history. Before and after the storytelling program, explore
+              cultural resource tables, enjoy performances by Folkloric Group
+              Colombia and Alma de Mexico, and purchase food and drinks from
+              Hispanic vendors.
+            </>
+          }
+          descriptionEs={
+            <>
+              Adéntrese en el corazón del Mes de la Herencia Hispana con una
+              noche de poderosas historias que honran las experiencias,
+              tradiciones y voces que siguen dando forma a St. Louis. Con la
+              facilitación de Adam Flores, los residentes de St. Louis Eric
+              Acevedo, Catherine Baez, Stephanie Calero y Luis Torres
+              compartirán sus historias personales de una manera que promete
+              conmover, provocar risas e invitar a momentos de reflexión y
+              conexión. Descubra cómo la Iniciativa de Migración y Memoria del
+              Missouri Historical Society trabaja para preservar las historias
+              de personas que han llegado de todo el mundo y han hecho de St.
+              Louis su hogar, asegurando que estas experiencias vividas formen
+              parte de la historia de nuestra región. Antes y después del
+              programa, explore mesas de recursos culturales, disfrute de
+              presentaciones de Folkloric Group Colombia y Alma de Mexico, y
+              compre comida y bebidas de vendedores hispanos.
+            </>
+          }
+          registerUrl="https://mohistory.org/events/hispanic-heritage-month"
+          registerTextEn="Learn More"
+          registerTextEs="Más Información"
+        />
+
+        {/* Celebrating Hispanic Heritage Month - Upcoming Event */}
+        <UpcomingEvent
+          language={language}
+          titleEn="History Exploration Days: Celebrating Hispanic Heritage Month"
+          titleEs="History Exploration Days: Celebrando el Mes de la Herencia Hispana"
+          dateEn="Friday, October 9, 2026 from 10:00 AM - 1:00 PM"
+          dateEs="Viernes, 9 de octubre de 2026 de 10:00 AM a 1:00 PM"
+          locationEn={
+            <>
+              Missouri History Museum
+              <br />
+              5700 Lindell Blvd, St. Louis, MO 63112
+            </>
+          }
+          locationEs={
+            <>
+              Missouri History Museum
+              <br />
+              5700 Lindell Blvd, St. Louis, MO 63112
+            </>
+          }
+          descriptionEn={
+            <>
+              Explore the histories and cultural contributions of Hispanic and
+              Latino communities in St. Louis and beyond as you learn stories of
+              immigration, identity, and community. Explore how culture and
+              community are expressed through games, food, music, art and
+              language. Discover connections between St. Louis and Latin America
+              through trade, immigration, and baseball. Use artifacts and other
+              historical sources to explore the stories of Hispanic and Latino
+              communities. Create and engage with art inspired by Spanish and
+              Latin American artists.
+            </>
+          }
+          descriptionEs={
+            <>
+              Explore las historias y contribuciones culturales de las
+              comunidades hispanas y latinas en St. Louis y más allá mientras
+              aprende historias de inmigración, identidad y comunidad. Explore
+              cómo la cultura y la comunidad se expresan a través de juegos,
+              comida, música, arte e idioma. Descubra las conexiones entre St.
+              Louis y América Latina a través del comercio, la inmigración y el
+              béisbol. Use artefactos y otras fuentes históricas para explorar
+              las historias de las comunidades hispanas y latinas. Cree y
+              disfrute de arte inspirado en artistas españoles y
+              latinoamericanos.
+            </>
+          }
+          registerUrl="https://mohistory.org/events/heritage-month"
+          registerTextEn="Learn More"
+          registerTextEs="Más Información"
+        />
 
         <TitleText
           text={
