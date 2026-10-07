@@ -118,7 +118,7 @@ function processDescriptionLinks(html: string, sources?: Source[]): { processedH
   let counter = citations.length + 1;
 
   const withPlaceholders = html.replace(
-    /<a([^>]+)>(.*?)<\/a>/g,
+    /<a\s([^>]+)>(.*?)<\/a>/g,
     (match, attrs: string, text: string) => {
       const url = attrs.match(/\bhref="([^"]*)"/)?.[1];
       if (url === undefined) return match;
