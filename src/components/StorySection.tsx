@@ -173,6 +173,8 @@ const StorySection: React.FC<StorySectionProps> = ({
   const citationRefs = useRef<Record<number, HTMLElement | null>>({});
 
   const { processedHtml, citations } = processDescriptionLinks(description, sources);
+  // Titles may contain <i> (e.g. newspaper names); attributes need plain text
+  const plainTitle = title.replace(/<[^>]+>/g, '');
 
   const scrollToCitation = (num: number) => {
     if (!num) return;
@@ -214,7 +216,7 @@ const StorySection: React.FC<StorySectionProps> = ({
         ${isFirst ? 'items-start pt-24 sm:pt-28 md:pt-32' : 'items-center pt-20'}
         ${isLast ? 'pb-32 md:pb-40' : 'pb-20'}
       `}
-      aria-label={`Story section: ${title}`}
+      aria-label={`Story section: ${plainTitle}`}
     >
       <article
         className={`
@@ -240,9 +242,10 @@ const StorySection: React.FC<StorySectionProps> = ({
         )}
 
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-outfit)] leading-tight mb-2">
-          {title}
-        </h2>
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-outfit)] leading-tight mb-2"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         {subtitle && (
           <p className="text-lg sm:text-xl md:text-2xl text-gray-500 italic font-[family-name:var(--font-manrope)] mb-6 md:mb-8">
             {subtitle}
@@ -269,7 +272,7 @@ const StorySection: React.FC<StorySectionProps> = ({
           <div className="mb-6 md:mb-8">
             <ImageWithCaption
               src={image}
-              alt={title}
+              alt={plainTitle}
               caption={imageCaption}
               captionHref={imageCaptionHref}
               priority={isFirst}
