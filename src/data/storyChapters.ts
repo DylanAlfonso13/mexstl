@@ -446,18 +446,16 @@ export const storyChapters: StoryChapter[] = [
       es: 'Periódico <i>Regeneración</i>'
     },
     description: {
-      en: 'In 1905, Ricardo Flores Magón, an exiled journalist, <a href="pending:thrilling-history-st-louis-junta" target="_blank" rel="noopener noreferrer">escaped the Porfiriato dictatorship in Mexico and settled in St. Louis</a>. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspired uprisings and the Mexican Revolution in 1910</a>. From an apartment building that would later become the campus of St. Louis University, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Magón founded the Mexican Liberal Party</a>. His writings would give birth to the iconic Mexican Revolution battlecry: ‘<i>Tierra y Libertad</i>’–land and liberty. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
-      es: 'En 1905, Ricardo Flores Magón, un periodista expulsado de México, <a href="pending:thrilling-history-st-louis-junta" target="_blank" rel="noopener noreferrer">escapó de la dictadura del Porfiriato y se estableció en St. Louis</a>. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910</a>. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Magón fundó el Partido Liberal Mexicano</a>. Sus escritos darían origen al icónico grito de batalla de la Revolución Mexicana: ‘Tierra y Libertad.’ El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
+      en: 'In 1905, Ricardo Flores Magón, an exiled journalist, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escaped the Porfiriato dictatorship in Mexico and settled in St. Louis</a>. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspired uprisings and the Mexican Revolution in 1910</a>. From an apartment building that would later become the campus of St. Louis University, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Magón founded the Mexican Liberal Party</a>. His writings would give birth to the iconic Mexican Revolution battlecry: ‘<i>Tierra y Libertad</i>’–land and liberty. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
+      es: 'En 1905, Ricardo Flores Magón, un periodista expulsado de México, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escapó de la dictadura del Porfiriato y se estableció en St. Louis</a>. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910</a>. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Magón fundó el Partido Liberal Mexicano</a>. Sus escritos darían origen al icónico grito de batalla de la Revolución Mexicana: ‘Tierra y Libertad.’ El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
     },
     center: [-90.2346, 38.6354], // 107 N Channing Avenue (now SLU athletic complex)
     zoom: 16,
     pitch: 50,
     bearing: 0,
-    // /regeneracion.jpg is the real scan for element 2 (the Junta article);
-    // elements 1, 3 and 4 reuse it as a PLACEHOLDER until their images are added
     images: [
       {
-        src: '/regeneracion.jpg', // PLACEHOLDER: Ricardo Flores Magón
+        src: '/story-map/regeneracion/Ricardo-Flores-Magon.webp',
         citation: 1,
         caption: {
           en: 'Ricardo Flores Magón (left).',
@@ -465,7 +463,8 @@ export const storyChapters: StoryChapter[] = [
         }
       },
       {
-        src: '/regeneracion.jpg', // The Thrilling History of the St. Louis Junta
+        // Rendered from St-Louis-Post-Dispatch.pdf (Newspapers.com header/footer cropped)
+        src: '/story-map/regeneracion/St-Louis-Post-Dispatch.jpg',
         citation: 2,
         caption: {
           en: '<i>St. Louis Post-Dispatch</i> article (December 16, 1906) reporting on Ricardo Flores Magón and the Mexican Liberal Party (PLM) operating in exile in St. Louis.',
@@ -473,17 +472,8 @@ export const storyChapters: StoryChapter[] = [
         }
       },
       {
-        src: '/regeneracion.jpg', // PLACEHOLDER: Regeneración Headquarters (element still TBD)
+        src: '/story-map/regeneracion/Magons-Funeral.jpg',
         citation: 3,
-        caption: {
-          // Helper text TBD in the source doc — element title used for now
-          en: '<i>Regeneración</i> headquarters.',
-          es: 'Sede de <i>Regeneración</i>.'
-        }
-      },
-      {
-        src: '/regeneracion.jpg', // PLACEHOLDER: Magón's Funeral
-        citation: 4,
         caption: {
           en: 'Ricardo Flores Magón’s funeral in 1922. His famous motto, ‘Tierra y Libertad’, would later become the battlecry of the Mexican Revolution.',
           es: 'El funeral de Ricardo Flores Magón en 1922. Su famoso lema, ‘Tierra y Libertad’, se convertiría después en el grito de batalla de la Revolución Mexicana.'
@@ -497,13 +487,8 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://archivomagon.net/galeria/'
         },
         {
-          // Embedded link pending — placeholder url keeps it from matching other sources
-          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906.',
-          url: 'pending:thrilling-history-st-louis-junta'
-        },
-        {
-          text: 'Citation TBD.',
-          url: 'pending:regeneracion-headquarters'
+          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906. https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf.',
+          url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
           text: '<i>Retrato de cuerpo presente</i>. Photograph. Ca. November 26, 1922. Funeraria Breese, Los Angeles. Fototeca Nacional, INAH. Archivo Magón. https://archivomagon.net/galeria/.',
@@ -512,8 +497,8 @@ export const storyChapters: StoryChapter[] = [
         {
           // Same work as footnote 2; the in-text link resolves here, the image
           // caption resolves to footnote 2
-          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906.',
-          url: 'pending:thrilling-history-st-louis-junta'
+          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906. https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf.',
+          url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
           // Also cited ("Ibid.") for the Mexican Liberal Party sentence
@@ -527,13 +512,8 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://archivomagon.net/galeria/'
         },
         {
-          // Embedded link pending — placeholder url keeps it from matching other sources
-          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906.',
-          url: 'pending:thrilling-history-st-louis-junta'
-        },
-        {
-          text: 'Citation TBD.',
-          url: 'pending:regeneracion-headquarters'
+          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906. https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf.',
+          url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
           text: '<i>Retrato de cuerpo presente</i>. Photograph. Ca. November 26, 1922. Funeraria Breese, Los Angeles. Fototeca Nacional, INAH. Archivo Magón. https://archivomagon.net/galeria/.',
@@ -542,8 +522,8 @@ export const storyChapters: StoryChapter[] = [
         {
           // Same work as footnote 2; the in-text link resolves here, the image
           // caption resolves to footnote 2
-          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906.',
-          url: 'pending:thrilling-history-st-louis-junta'
+          text: '“The Thrilling History of the St. Louis Junta.” <i>St. Louis Post-Dispatch</i>. December 16, 1906. https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf.',
+          url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
           // Also cited ("Ibid.") for the Mexican Liberal Party sentence
