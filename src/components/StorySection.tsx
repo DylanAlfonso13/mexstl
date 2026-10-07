@@ -24,7 +24,7 @@ interface Citation {
 
 interface Source {
   text: string;
-  url: string;
+  url?: string;
 }
 
 // Description hrefs may carry #:~:text= fragments or trailing slashes that the
@@ -101,22 +101,31 @@ function markersToSentenceEnds(text: string): string {
  *  citing sentence. Returns the modified HTML alongside a deduplicated citations list.
  *  When curated sources are provided they become the citation list (numbered in
  *  source order, matched to links by URL); otherwise citations are derived from
- *  the links themselves. */
+ *  the links themselves. A link can name its footnote directly with data-cite="N"
+ *  when URL matching can't pick it (e.g. an "Ibid." entry). */
 function processDescriptionLinks(html: string, sources?: Source[]): { processedHtml: string; citations: Citation[] } {
   const citations: Citation[] = (sources ?? []).map((source, index) => ({
     num: index + 1,
-    url: source.url,
+    url: source.url ?? '',
     text: source.text,
     curated: true
   }));
   const urlToNum = new Map<string, number>(
-    citations.map((citation) => [normalizeUrl(citation.url), citation.num])
+    citations
+      .filter((citation) => citation.url)
+      .map((citation) => [normalizeUrl(citation.url), citation.num])
   );
   let counter = citations.length + 1;
 
   const withPlaceholders = html.replace(
-    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/g,
-    (_match, url: string, text: string) => {
+    /<a([^>]+)>(.*?)<\/a>/g,
+    (match, attrs: string, text: string) => {
+      const url = attrs.match(/\bhref="([^"]*)"/)?.[1];
+      if (url === undefined) return match;
+      const explicitNum = Number(attrs.match(/\bdata-cite="(\d+)"/)?.[1]);
+      if (explicitNum >= 1 && explicitNum <= (sources?.length ?? 0)) {
+        return `${text}${CITE_OPEN}${explicitNum}${CITE_CLOSE}`;
+      }
       const key = normalizeUrl(url);
       if (!urlToNum.has(key)) {
         urlToNum.set(key, counter);

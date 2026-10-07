@@ -18,7 +18,7 @@ interface ImageData {
 
 interface Source {
   text: string;
-  url: string;
+  url?: string;
 }
 
 interface Chapter {

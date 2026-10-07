@@ -13,7 +13,9 @@ export interface ImageData {
 
 export interface Source {
   text: string; // Chicago-format citation; may contain minimal HTML (e.g. <i> for journal titles)
-  url: string; // Link target; must match the href used in the description for in-text numbering
+  // Link target; must match the href used in the description for in-text numbering.
+  // Omit for entries like "Ibid." that are reached only via an explicit data-cite.
+  url?: string;
 }
 
 export interface StoryChapter {
@@ -446,8 +448,8 @@ export const storyChapters: StoryChapter[] = [
       es: 'Periódico <i>Regeneración</i>'
     },
     description: {
-      en: 'In 1905, Ricardo Flores Magón, an exiled journalist, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escaped the Porfiriato dictatorship in Mexico and settled in St. Louis</a>. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspired uprisings and the Mexican Revolution in 1910</a>. From an apartment building that would later become the campus of St. Louis University, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Magón founded the Mexican Liberal Party</a>. His writings would give birth to the iconic Mexican Revolution battlecry: ‘<i>Tierra y Libertad</i>’–land and liberty. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
-      es: 'En 1905, Ricardo Flores Magón, un periodista expulsado de México, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escapó de la dictadura del Porfiriato y se estableció en St. Louis</a>. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910</a>. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">Magón fundó el Partido Liberal Mexicano</a>. Sus escritos darían origen al icónico grito de batalla de la Revolución Mexicana: ‘Tierra y Libertad.’ El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
+      en: 'In 1905, Ricardo Flores Magón, an exiled journalist, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escaped the Porfiriato dictatorship in Mexico and settled in St. Louis</a>. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspired uprisings and the Mexican Revolution in 1910</a>. From an apartment building that would later become the campus of St. Louis University, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" data-cite="6" target="_blank" rel="noopener noreferrer">Magón founded the Mexican Liberal Party</a>. His writings would give birth to the iconic Mexican Revolution battlecry: ‘<i>Tierra y Libertad</i>’–land and liberty. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
+      es: 'En 1905, Ricardo Flores Magón, un periodista expulsado de México, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escapó de la dictadura del Porfiriato y se estableció en St. Louis</a>. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910</a>. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" data-cite="6" target="_blank" rel="noopener noreferrer">Magón fundó el Partido Liberal Mexicano</a>. Sus escritos darían origen al icónico grito de batalla de la Revolución Mexicana: ‘Tierra y Libertad.’ El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
     },
     center: [-90.2346, 38.6354], // 107 N Channing Avenue (now SLU athletic complex)
     zoom: 16,
@@ -501,9 +503,12 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
-          // Also cited ("Ibid.") for the Mexican Liberal Party sentence
           text: '“How a Mexican Journalist Sparked a Revolution from St. Louis.” <i>St. Louis Post-Dispatch</i>. https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html.',
           url: 'https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
+        },
+        {
+          // Reached via data-cite="6" on the Mexican Liberal Party sentence
+          text: 'Ibid.'
         }
       ],
       es: [
@@ -526,9 +531,12 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
-          // Also cited ("Ibid.") for the Mexican Liberal Party sentence
           text: '“How a Mexican Journalist Sparked a Revolution from St. Louis.” <i>St. Louis Post-Dispatch</i>. https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html.',
           url: 'https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
+        },
+        {
+          // Reached via data-cite="6" on the Mexican Liberal Party sentence
+          text: 'Ibid.'
         }
       ]
     }
