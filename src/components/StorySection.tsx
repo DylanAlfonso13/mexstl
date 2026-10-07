@@ -24,7 +24,7 @@ interface Citation {
 
 interface Source {
   text: string;
-  url: string;
+  url?: string;
 }
 
 // Description hrefs may carry #:~:text= fragments or trailing slashes that the
@@ -101,22 +101,31 @@ function markersToSentenceEnds(text: string): string {
  *  citing sentence. Returns the modified HTML alongside a deduplicated citations list.
  *  When curated sources are provided they become the citation list (numbered in
  *  source order, matched to links by URL); otherwise citations are derived from
- *  the links themselves. */
+ *  the links themselves. A link can name its footnote directly with data-cite="N"
+ *  when URL matching can't pick it (e.g. an "Ibid." entry). */
 function processDescriptionLinks(html: string, sources?: Source[]): { processedHtml: string; citations: Citation[] } {
   const citations: Citation[] = (sources ?? []).map((source, index) => ({
     num: index + 1,
-    url: source.url,
+    url: source.url ?? '',
     text: source.text,
     curated: true
   }));
   const urlToNum = new Map<string, number>(
-    citations.map((citation) => [normalizeUrl(citation.url), citation.num])
+    citations
+      .filter((citation) => citation.url)
+      .map((citation) => [normalizeUrl(citation.url), citation.num])
   );
   let counter = citations.length + 1;
 
   const withPlaceholders = html.replace(
-    /<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/g,
-    (_match, url: string, text: string) => {
+    /<a\s([^>]+)>(.*?)<\/a>/g,
+    (match, attrs: string, text: string) => {
+      const url = attrs.match(/\bhref="([^"]*)"/)?.[1];
+      if (url === undefined) return match;
+      const explicitNum = Number(attrs.match(/\bdata-cite="(\d+)"/)?.[1]);
+      if (explicitNum >= 1 && explicitNum <= (sources?.length ?? 0)) {
+        return `${text}${CITE_OPEN}${explicitNum}${CITE_CLOSE}`;
+      }
       const key = normalizeUrl(url);
       if (!urlToNum.has(key)) {
         urlToNum.set(key, counter);
@@ -173,6 +182,8 @@ const StorySection: React.FC<StorySectionProps> = ({
   const citationRefs = useRef<Record<number, HTMLElement | null>>({});
 
   const { processedHtml, citations } = processDescriptionLinks(description, sources);
+  // Titles may contain <i> (e.g. newspaper names); attributes need plain text
+  const plainTitle = title.replace(/<[^>]+>/g, '');
 
   const scrollToCitation = (num: number) => {
     if (!num) return;
@@ -214,7 +225,7 @@ const StorySection: React.FC<StorySectionProps> = ({
         ${isFirst ? 'items-start pt-24 sm:pt-28 md:pt-32' : 'items-center pt-20'}
         ${isLast ? 'pb-32 md:pb-40' : 'pb-20'}
       `}
-      aria-label={`Story section: ${title}`}
+      aria-label={`Story section: ${plainTitle}`}
     >
       <article
         className={`
@@ -240,9 +251,10 @@ const StorySection: React.FC<StorySectionProps> = ({
         )}
 
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-outfit)] leading-tight mb-2">
-          {title}
-        </h2>
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-outfit)] leading-tight mb-2"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         {subtitle && (
           <p className="text-lg sm:text-xl md:text-2xl text-gray-500 italic font-[family-name:var(--font-manrope)] mb-6 md:mb-8">
             {subtitle}
@@ -269,7 +281,7 @@ const StorySection: React.FC<StorySectionProps> = ({
           <div className="mb-6 md:mb-8">
             <ImageWithCaption
               src={image}
-              alt={title}
+              alt={plainTitle}
               caption={imageCaption}
               captionHref={imageCaptionHref}
               priority={isFirst}

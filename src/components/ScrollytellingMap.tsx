@@ -18,7 +18,7 @@ interface ImageData {
 
 interface Source {
   text: string;
-  url: string;
+  url?: string;
 }
 
 interface Chapter {
@@ -104,7 +104,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
 
           // Label pill above the pin
           const label = document.createElement('div');
-          label.textContent = chapter.title['en'];
+          label.innerHTML = chapter.title['en'];
           label.style.cssText = [
             'background:white',
             'color:#1c1917',
@@ -178,7 +178,7 @@ const ScrollytellingMap: React.FC<ScrollytellingMapProps> = ({ chapters, languag
     chapters.forEach((chapter) => {
       const labelEl = labelsRef.current[chapter.id];
       if (labelEl) {
-        labelEl.textContent = chapter.title[language];
+        labelEl.innerHTML = chapter.title[language];
       }
     });
   }, [language, chapters]);
