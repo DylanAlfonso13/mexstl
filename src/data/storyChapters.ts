@@ -111,8 +111,8 @@ export const storyChapters: StoryChapter[] = [
         src: '/story-map/santa-fe/santa_fe_trail_map.png',
         citation: 4,
         caption: {
-          en: 'The Santa Fe Trail connected Franklin, Missouri to Santa Fe, New Mexico (Spanish territory until 1848). St. Louis was connected via the Mississippi River.',
-          es: 'El Camino de Santa Fe conectaba Franklin, Missouri con Santa Fe, Nuevo México (territorio español hasta 1848). St. Louis estaba conectado a través del río Mississippi.'
+          en: 'The Santa Fe Trail connected Franklin, Missouri to Santa Fe, New Mexico (Spanish territory until 1821; Mexican territory from 1821-1848). St. Louis was connected via the Mississippi River.',
+          es: 'El Camino de Santa Fe conectaba Franklin, Missouri con Santa Fe, Nuevo México (territorio español hasta 1821; territorio mexicano de 1821 a 1848). St. Louis estaba conectado a través del río Mississippi.'
         }
       }
     ],
