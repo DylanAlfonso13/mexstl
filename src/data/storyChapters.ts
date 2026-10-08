@@ -448,8 +448,8 @@ export const storyChapters: StoryChapter[] = [
       es: 'Periódico <i>Regeneración</i>'
     },
     description: {
-      en: 'In 1905, Ricardo Flores Magón, an exiled journalist, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escaped the Porfiriato dictatorship in Mexico and settled in St. Louis</a>. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspired uprisings and the Mexican Revolution in 1910</a>. From an apartment building that would later become the campus of St. Louis University, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" data-cite="6" target="_blank" rel="noopener noreferrer">Magón founded the Mexican Liberal Party</a>. His writings would give birth to the iconic Mexican Revolution battlecry: ‘<i>Tierra y Libertad</i>’–land and liberty. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
-      es: 'En 1905, Ricardo Flores Magón, un periodista expulsado de México, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escapó de la dictadura del Porfiriato y se estableció en St. Louis</a>. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910</a>. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" data-cite="6" target="_blank" rel="noopener noreferrer">Magón fundó el Partido Liberal Mexicano</a>. Sus escritos darían origen al icónico grito de batalla de la Revolución Mexicana: ‘Tierra y Libertad.’ El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
+      en: 'In 1905, Ricardo Flores Magón, an exiled journalist, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escaped the Porfiriato dictatorship in Mexico and settled in St. Louis</a>. Here, Magón published the revolutionary newspaper <i>Regeneración</i>, a leftist publication that <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspired uprisings and the Mexican Revolution in 1910</a>. From an apartment building that would later become the campus of St. Louis University, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" data-cite="7" target="_blank" rel="noopener noreferrer">Magón founded the Mexican Liberal Party</a>. His writings would give birth to the iconic Mexican Revolution battlecry: ‘<i>Tierra y Libertad</i>’–land and liberty. The legacy of Ricardo Flores Magón highlights the transnational nature of the Mexican Revolution, where influential figures penetrated Mexican politics from the United States.',
+      es: 'En 1905, Ricardo Flores Magón, un periodista expulsado de México, <a href="https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf" target="_blank" rel="noopener noreferrer">escapó de la dictadura del Porfiriato y se estableció en St. Louis</a>. Aquí, Magón publicaba el periódico revolucionario <i>Regeneración</i>, una publicación democrática que <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" target="_blank" rel="noopener noreferrer">inspiró levantamientos y, finalmente, la Revolución Mexicana en 1910</a>. Localizado en un departamento que después se convertiría en la Universidad de St. Louis, <a href="https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html" data-cite="7" target="_blank" rel="noopener noreferrer">Magón fundó el Partido Liberal Mexicano</a>. Sus escritos darían origen al icónico grito de batalla de la Revolución Mexicana: ‘Tierra y Libertad.’ El legado de Ricardo Flores Magón atrae la atención de la naturaleza transnacional de la Revolución Mexicana, donde figuras influyentes impulsaron la política mexicana desde los Estados Unidos.'
     },
     center: [-90.2346, 38.6354], // 107 N Channing Avenue (now SLU athletic complex)
     zoom: 16,
@@ -460,8 +460,8 @@ export const storyChapters: StoryChapter[] = [
         src: '/story-map/regeneracion/Ricardo-Flores-Magon.webp',
         citation: 1,
         caption: {
-          en: 'Ricardo Flores Magón (left).',
-          es: 'Ricardo Flores Magón (izquierda).'
+          en: 'Ricardo Flores Magón (left) and Enrique Flores Magón (right), circa 1915, likely in the <i>Regeneración</i> office at 2325 Ivanhoe Avenue in Edendale, Los Angeles, California.',
+          es: 'Ricardo Flores Magón (izquierda) y Enrique Flores Magón (derecha), alrededor de 1915, probablemente en la oficina de <i>Regeneración</i> en 2325 Ivanhoe Avenue en Edendale, Los Ángeles, California.'
         }
       },
       {
@@ -474,8 +474,16 @@ export const storyChapters: StoryChapter[] = [
         }
       },
       {
-        src: '/story-map/regeneracion/Magons-Funeral.jpg',
+        src: '/story-map/regeneracion/Regeneracion-headquarters.jpg',
         citation: 3,
+        caption: {
+          en: 'The Magón brothers rented an apartment at 107 North Channing Avenue (pictured), where they were joined by fellow opponents of Porfirio Díaz’s regime and their families. Here, they established the St. Louis headquarters of <i>Regeneración</i>, on the site now occupied by Saint Louis University’s football field.',
+          es: 'Los hermanos Magón rentaron un departamento en 107 North Channing Avenue (en la imagen), donde se les unieron otros opositores al régimen de Porfirio Díaz y sus familias. Aquí establecieron la sede de <i>Regeneración</i> en St. Louis, en el sitio que hoy ocupa el campo de fútbol americano de la Universidad de St. Louis.'
+        }
+      },
+      {
+        src: '/story-map/regeneracion/Magons-Funeral.jpg',
+        citation: 4,
         caption: {
           en: 'Ricardo Flores Magón’s funeral in 1922. His famous motto, ‘Tierra y Libertad’, would later become the battlecry of the Mexican Revolution.',
           es: 'El funeral de Ricardo Flores Magón en 1922. Su famoso lema, ‘Tierra y Libertad’, se convertiría después en el grito de batalla de la Revolución Mexicana.'
@@ -493,6 +501,10 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
+          text: 'Swekosky, William. Lamotte Row. Lawton and Channing Northwest Corner. Ca. 1914-1915. Photograph. Missouri Historical Society. St. Louis. https://mohistory.org/collections/item/N05762.',
+          url: 'https://mohistory.org/collections/item/N05762'
+        },
+        {
           text: '<i>Retrato de cuerpo presente</i>. Photograph. Ca. November 26, 1922. Funeraria Breese, Los Angeles. Fototeca Nacional, INAH. Archivo Magón. https://archivomagon.net/galeria/.',
           url: 'https://archivomagon.net/galeria/'
         },
@@ -507,7 +519,7 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
         },
         {
-          // Reached via data-cite="6" on the Mexican Liberal Party sentence
+          // Reached via data-cite="7" on the Mexican Liberal Party sentence
           text: 'Ibid.'
         }
       ],
@@ -521,6 +533,10 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://www.mexstl.org/story-map/regeneracion/St-Louis-Post-Dispatch.pdf'
         },
         {
+          text: 'Swekosky, William. Lamotte Row. Lawton and Channing Northwest Corner. Ca. 1914-1915. Photograph. Missouri Historical Society. St. Louis. https://mohistory.org/collections/item/N05762.',
+          url: 'https://mohistory.org/collections/item/N05762'
+        },
+        {
           text: '<i>Retrato de cuerpo presente</i>. Photograph. Ca. November 26, 1922. Funeraria Breese, Los Angeles. Fototeca Nacional, INAH. Archivo Magón. https://archivomagon.net/galeria/.',
           url: 'https://archivomagon.net/galeria/'
         },
@@ -535,7 +551,7 @@ export const storyChapters: StoryChapter[] = [
           url: 'https://www.stltoday.com/life-entertainment/how-a-mexican-journalist-sparked-a-revolution-from-st-louis/article_258177d2-3a52-5fd0-a9d3-f0127d93b38b.html'
         },
         {
-          // Reached via data-cite="6" on the Mexican Liberal Party sentence
+          // Reached via data-cite="7" on the Mexican Liberal Party sentence
           text: 'Ibid.'
         }
       ]
