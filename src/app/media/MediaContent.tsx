@@ -45,7 +45,7 @@ export default function MediaContent() {
               ? "The WashU Department of History highlights Francisco Perez's lecture on Ricardo Flores Magón and St. Louis's role in the Mexican Revolution, presented as part of the Missouri Historical Society's Library Speaker Series. Developed with MexStl.org and WashU alumni, it became the series' second-best-attended event."
               : "El Departamento de Historia de WashU destaca la conferencia de Francisco Perez sobre Ricardo Flores Magón y el papel de St. Louis en la Revolución Mexicana, presentada en la serie de conferencias de la biblioteca de la Missouri Historical Society. Desarrollada junto con MexStl.org y exalumnos de WashU, fue el segundo evento con mayor asistencia en la historia de la serie."
           }
-          imageSrc="/washu-history-perez-lecture.webp"
+          imageSrc="/washu-history-perez-lecture-crop.webp"
           articleUrl="https://history.washu.edu/news/undergrad-francisco-perez-organizes-lecture-missouri-historical-society"
         />
 
